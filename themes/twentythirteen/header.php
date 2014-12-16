@@ -34,62 +34,65 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<div id="page" class="hfeed site">
+	  <div class="site">
 		<!--<header id="masthead" class="site-header" role="banner" <?php //if ( get_header_image() != '' ) { echo 'style="background-image: url(' . esc_url( get_header_image() ) . ')";'; } ?>> -->
-		<header id="masthead" class="site-header"  >
-			<div class="header_top">
-				<!-- logo-->
-				<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+		<!-- header-->
+		<header id="masthead" class="site-header">
+			 <!-- Static navbar -->
+      <nav class="navbar navbar-default witdh-1085">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+			<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 					<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" height="" width=""/>
 				</a>
-				<!-- menu primary-->
-				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
-					<button class="menu-toggle"><?php _e( 'Menu', 'twentythirteen' ); ?></button>
-					<a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentythirteen' ); ?>"><?php _e( 'Skip to content', 'twentythirteen' ); ?></a>
-					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-				</nav><!-- #site-navigation -->
-				<!-- right menu-->
-				<div class="left-navigation">
-					
-					<?php get_search_form(); ?>
-					
-					<a class="btn-nav mr-15 login-btn" href="#" title="View your shopping cart">#</a>
-					<a class="btn-nav cart-button" href="#" title="View your shopping cart">#</a>
-					<!--<div class="cart-button"><a  href="#">Login</a>-->
-					</div>
-					
-				</div>
-			</div>
-			<div class="line-top"></div>
-			<!-- coltop-->
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav navbar-nav' ) ); ?>
+			<ul class="nav navbar-nav navbar-right inline-block-li">
+				<li><?php get_search_form(); ?></li>
+				<li class="login-btn"><a href="#"></a></li>
+				<li class="cart-btn"><a href="#"></a></li>
+			</ul>
+		</div><!--/.nav-collapse -->
+		</div><!--/.container-fluid -->
+	</nav>
+		<div class="row line-top"></div>
+			<div class="clearfix"></div>
+		<div class="row">
 			<div class="under-line-head">
 				<div class="row witdh-1085 line-title-head">
-					<div class="col-md-6 pl-0"><p>Kiến thức là một tài sản mới</p></div>
-					<div class="col-md-6 feature">
-						<div class="row">
-							<div class="col-md-4 book-icon-servise">
-							<span>Chuyên đóng sách</span>
-							<span>Chuyên đóng sách</span>
-							<span>Chuyên đóng sách</span>
-							</div>
-							<div class="col-md-4 book-icon-dis">
-							<span>Chuyên đóng sách</span>
-							<span>Chuyên đóng sách</span>
-							<span>Chuyên đóng sách</span>
-							</div>
-							<div class="col-md-4 book-icon-tel">
-							<span>Chuyên đóng sách</span>
-							<span>Chuyên đóng sách</span>
-							<span>Chuyên đóng sách</span>
-							</div>
-						</div>
+					<div class="col-md-3 title-intro"><p>Kiến thức là một tài sản mới</p></div>
+					<div class="col-md-9 feature">
+						<ul>
+							<li class="text-uppercase book-icon-servise">
+								<span>Chuyên dóng sách</span>
+								<span>Chuyên dóng sách</span>
+								<span>Chuyên dóng sách</span>
+							</li>
+							<li class="text-uppercase book-icon-dis">
+								<span>Chuyên dóng sách</span>
+								<span>Chuyên dóng sách</span>
+								<span>Chuyên dóng sách</span>
+							</li>
+							<li class="text-uppercase book-icon-tel">
+								<span>Chuyên dóng sách</span>
+								<span>Chuyên dóng sách</span>
+								<span>Chuyên dóng sách</span>
+							</li>
+						<ul>
 						
 					</div>
 				</div>
 			<div style="clear:both"></div>
 			</div>
-  </div>
-			<div style="clear:both"></div>
+		</div>
 		</header><!-- #masthead -->
+		<!-- end header-->
 <div style="clear:both"></div>
 		<div id="main" class="site-main">
