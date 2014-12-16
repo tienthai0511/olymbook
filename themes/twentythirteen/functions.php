@@ -544,6 +544,8 @@ add_action( 'wp_enqueue_scripts', 'scf_enqueue' );
 
 function add_css(){
 	wp_enqueue_style('boot trap css', get_template_directory_uri() . '/css/bootstrap.min.css',false,'','all');
+	wp_enqueue_style('grid css', get_template_directory_uri() . '/css/grid.css',false,'','all');
+	wp_enqueue_style('carousel css', get_template_directory_uri() . '/css/carousel.css',false,'','all');
 	wp_enqueue_style('site style', get_template_directory_uri() . '/css/style-editor.css',false,'','all');
 }
 if (!is_admin()){
