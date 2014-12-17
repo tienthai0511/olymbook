@@ -55,7 +55,7 @@
           <div id="navbar" class="navbar-collapse collapse">
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav navbar-nav' ) ); ?>
 			<ul class="nav navbar-nav navbar-right inline-block-li">
-				<li><?php get_search_form(); ?></li>
+				<li class="login-btn"><?php get_search_form(); ?><a href="#"></a></li>
 				<li class="login-btn"><a href="#"></a></li>
 				<li class="cart-btn"><a href="#"></a></li>
 			</ul>
@@ -71,9 +71,7 @@
 					<div class="col-md-9 feature">
 						<ul>
 							<li class="text-uppercase book-icon-servise">
-								<span>Chuyên dóng sách</span>
-								<span>Chuyên dóng sách</span>
-								<span>Chuyên dóng sách</span>
+								<span>Chuyên đóng sách<br>kinh doanh& <br>Phát triển bản thân</span>
 							</li>
 							<li class="text-uppercase book-icon-dis">
 								<span>Chuyên dóng sách</span>
@@ -91,6 +89,11 @@
 				</div>
 			<div style="clear:both"></div>
 			</div>
+		</div>
+		<div class="row" style="background:#404042">
+				<div class="witdh-1085" style="margin:0 auto">
+					<img src="<?php echo get_template_directory_uri(); ?>/images/banner1.png">
+				</div>
 		</div>
 		</header><!-- #masthead -->
 		<!-- end header-->

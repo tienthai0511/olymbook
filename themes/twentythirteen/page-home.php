@@ -25,17 +25,21 @@ get_header(); ?>
 		});
 		});
 	</script>
-	
-<div class="row motopress-wrapper content-holder clearfix">
-	<div class="container">
+<div class="motopress-wrapper content-holder clearfix">
+	<div class="container pd-6">
+		<div class="row">
+			<div class="witdh-1085" >
+			<?php get_template_part( 'template-parts/book-store-area' ); ?>
+			</div>
+		</div>
 		<div class="row">
 			<div class="span12" data-motopress-wrapper-file="page-home.php" data-motopress-wrapper-type="content">
 				<div class="page_home_top">
 					<div class="row">
 					
-	<div class="head-layout w-1000">
+	<div class="head-layout w-1000"><!-- slider-bar-->
 
-	<!--<div class="carousel slide" id="myCarousel">
+	<div class="carousel slide" id="myCarousel">
 		<div class="carousel-inner">
 		<div class="item">
 		  <div class="col-md-4"><a href="#"><img src="https://fbexternal-a.akamaihd.net/safe_image.php?d=AQBe7PFBsbVhScL0&bust=1&w=470&h=246&url=https%3A%2F%2Fscontent-b-sin.xx.fbcdn.net%2Fhphotos-xpf1%2Fv%2Ft1.0-9%2F10492375_10152968361055786_3250237143140613650_n.jpg%3Foh%3Dacecbeb83c5d24a92cae311854a82c2a%26oe%3D550F3DE2&cfs=1&upscale=1&sx=0&sy=121&sw=500&sh=262" class="img-responsive"></a></div>
@@ -56,32 +60,16 @@ get_header(); ?>
 		</div>
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
 		<a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-	</div>-->
-	 <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
+	</div><!-- /.carousel -->
 		<div class="clearfix"></div>
-	</div>
-						<div class="span8" data-motopress-type="static" data-motopress-static-file="static/static-slider.php">
-							<?php //get_template_part("static/static-slider"); ?>
-						</div>
-						<div class="span4" data-motopress-type="static" data-motopress-static-file="static/static-home-banner.php">
-							<?php //get_template_part("static/static-home-banner"); ?>
-						</div>
+	</div><!-- slider-bar-->
+					
 					</div>
 				</div>
-				<div class="row">
-					<div class="span12" data-motopress-type="loop" data-motopress-loop-file="loop/loop-page.php">
-						<?php //get_template_part("loop/loop-page"); ?>
-					</div>
-				</div>
+
 			</div>
 		</div>
-	</div> 
+	</div>
 </div>
 
 <?php get_footer(); ?>
