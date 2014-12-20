@@ -13,106 +13,59 @@
           $footer_text = do_shortcode( __(get_option(THEME_NAME_S.'_copyright_left_area'), 'cp_front_end') );
          ?>
       </div>
-       <footer> 
-        <?php if( $cp_show_footer == 'enable' ){
+      <div class="row line-top mt30"></div>
+		<footer id="colophon" class="site-footer witdh-1085" role="contentinfo">
+			<div class="row" style="max-width:1075px;margin:0 auto;">
+				<div class="span7 static-position foot-info">
+				 <span>Khám phá và xem nh?ng thông tin t? Olymbook.com</span>
+					<div class="footer-menu mt-20">
+						<ul>
+							<li>Khám phá và xem</li>
+							<li>Khám phá và xem</li>
+							<li>Khám phá và xem</li>
+							<li>Khám phá và xem</li>
+							<li>Khám phá và xem</li>
+							<li>Khám phá</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="mt20 social-contain">
+					<span>&copy; Olymbook.com All rights reserved.</span>
+					<div class="social">
+						<ul id="footer-social" class="clr">
+				<li><a href="#" target="_blank" class="facebook-icon">a</a></li>
+				<li><a href="#" target="_blank" class="twiter-icon">a</a></li>
+				<li><a href="#" target="_blank" class="pint-icon">a</a></li>
+				<li><a href="#" target="_blank" class="youtube-icon">a</a></li>
+				<li><a href="#" target="_blank" class="mail-icon">a</a></li>
+				
+			</ul>
+					</div>
+					</div>
+				</div>
+				<div class="span4 foot-contact">
+					<div style="width:364px">
+					 <p>B?n không mu?n b? l? nh?ng thông tin h?p d?n nh?t?</p>
+						<form class="mt-20">
+							<div class="">
+								<label class="text-normal for="email">Ðang ký d? nh?n Newletter hàng tu?n</label></br>
+								<input type="email" class="text-input-custom" name="email" id="email" width="200"/><br>
+								<input class="mt-20" type="submit" value="ÐANG KÝ">
+							</div>
+						</form>
+					</div>
+			   </div>
 			
-			  if( $cp_top_footer == 'enable' ){
-			 ?>  
-		 
-                <!-- Start Footer Top 1 -->
-              <section class="container-fluid footer-top1">
-                <section class="container">
-                  <section class="row-fluid">
-                    <article class="span3">
-                    <?php dynamic_sidebar( 'Footer Top 1' );  ?>
-                    </article>
-                    <article class="span3">
-                    <?php dynamic_sidebar( 'Footer Top 2' );  ?>
-                    </article>
-                    <article class="span3">
-                    <?php dynamic_sidebar( 'Footer Top 3' );  ?>
-                    </article>
-                    <article class="span3">
-                    <?php dynamic_sidebar( 'Footer Top 4' );  ?>
-                    </article>
-                  </section>
-                </section>
-              </section>
-              
-              <?php } ?>
-              <!-- End Footer Top 1 -->
-            
-              <!-- Start Footer Top 2 -->
-              <section class="container-fluid footer-top2">
-               <?php  if( $cp_social_footer == 'enable' ){ ?>
-               <script type="text/javascript">
-                							  /* <![CDATA[ */
-											  jQuery(document).ready(function() {
-											  jQuery('.social_active').hoverdir( {} );
-											})
-											/* ]]> */
-        		       				   </script> 
-                <section class="social-ico-bar">
-                  <section class="container">
-                    <section class="row-fluid">
-                    <?php $cp_show_social_icons = get_option(THEME_NAME_S.'show_social_icons','disable');  if( $cp_show_social_icons == 'enable' ){ echo  '<div id="socialicons" class="hidden-phone">'; social_media_footer(); echo '</div>'; } ?>
-                      <div class="footer2-link">
-                      <?php wp_nav_menu( array( 'theme_location' => 'footer_menu' ) );  ?>
-                      </div>
-                    </section>
-                  </section>
-                </section>
-              <?php } ?>
-              
-                <section class="container">
-                  <section class="row-fluid footer">
-                  
-                     <?php
-									$cp_footer_class = array(
-									'footer-style1'=>array('1'=>'span3', '2'=>'span3', '3'=>'span3', '4'=>'span3'),
-									'footer-style4'=>array('1'=>'span4', '2'=>'span4', '3'=>'span4', '4'=>'display-none'),
-									);
+      </div>
+	
+			<?php// get_sidebar( 'main' ); ?>
 
-                                                $cp_footer_style = get_option(THEME_NAME_S.'_footer_style', 'footer-style7');
-                                                for( $i=1 ; $i<=4; $i++ ){
-                                                    echo '<figure class="' . $cp_footer_class[$cp_footer_style][$i] . ' ">';
-                                                    dynamic_sidebar('Footer '. $i);
-                                                    echo '</figure>';
-                                                ?>
-                                              
-                                        
-
-                                <?php } ?>
-                    
-                   
-                  </section>
-                </section>
-              </section>
-           <?php } ?>
-              <!-- End Footer Top 2 -->
-              <!-- Start Main Footer -->
-           
-                <section class="social-ico-bar">
-                  <section class="container">
-                    <section class="row-fluid">
-                      <article class="span6 copy-left">
-                        <?php if ($footer_text != '' ){
-                                echo sprintf(__('%s','crunchpress'), $footer_text);
-                                }else {
-                                echo __('<p>Copyright &copy; 2012.','crunchpress'). __('Designed by  <a href="http://crunchpress.com/">CrunchPress.com</a></p>','crunchpress');
-                                }
-                                ?>
-                      </article>
-                      <article class="span6 copy-right">
-                        <p></p>
-                      </article>
-                    </section>
-                  </section>
-                </section>
-             
-              <!-- End Main Footer -->
-          
-           </footer>
+			<!--<div class="site-info">
+				<?php //do_action( 'twentythirteen_credits' ); ?>
+				<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentythirteen' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentythirteen' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentythirteen' ), 'WordPress' ); ?></a>
+			</div><!-- .site-info -->
+			
+		</footer><!-- #colophon -->
            
   
  									 <script type="text/javascript">

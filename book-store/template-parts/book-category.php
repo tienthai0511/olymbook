@@ -1,19 +1,19 @@
-<div class="row block-store">
+<div class="block-store mt30">
 	<div class="head-layout w-1000"><!-- slider-bar-->
 
 	<div class="carousel slide" id="myCarousel">
 		<div class="carousel-inner">
 		<div class="item active">
-		  <div class="col-md-4"><a href="#">
+		  <div class="span4"><a href="#">
 			<div class="price right">175K</div>
 			<div class="clearfix"></div>
-			<div class="main-block">
+			<div class="main-block text-center">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
 			</div>
 			<div class="clearfix"></div>
 			<div class="content-block-bot">
 				
-				<a href="#">Dòng sách<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
+				<a href="#">Dòng sách1<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
 				<a class="right" href="#">click</a>
 			</div>
 			</a>
@@ -21,16 +21,16 @@
 			
 		</div>
 		<div class="item">
-		  <div class="col-md-4"><a href="#">
+		  <div class="span4"><a href="#">
 			<div class="price right">175K</div>
 			<div class="clearfix"></div>
-			<div class="main-block">
+			<div class="main-block text-center">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
 			</div>
 			<div class="clearfix"></div>
 			<div class="content-block-bot">
 				
-				<a href="#">Dòng sách<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
+				<a href="#">Dòng sách2<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
 				<a class="right" href="#">click</a>
 			</div>
 			</a>
@@ -38,16 +38,16 @@
 			
 		</div>
 		<div class="item">
-		  <div class="col-md-4"><a href="#">
+		  <div class="span4"><a href="#">
 			<div class="price right">175K</div>
 			<div class="clearfix"></div>
-			<div class="main-block">
+			<div class="main-block text-center">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
 			</div>
 			<div class="clearfix"></div>
 			<div class="content-block-bot">
 				
-				<a href="#">Dòng sách<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
+				<a href="#">Dòng sách3<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
 				<a class="right" href="#">click</a>
 			</div>
 			</a>
@@ -55,16 +55,16 @@
 			
 		</div>
 		<div class="item">
-		  <div class="col-md-4"><a href="#">
+		  <div class="span4"><a href="#">
 			<div class="price right">175K</div>
 			<div class="clearfix"></div>
-			<div class="main-block">
+			<div class="main-block text-center">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
 			</div>
 			<div class="clearfix"></div>
 			<div class="content-block-bot">
 				
-				<a href="#">Dòng sách<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
+				<a href="#">Dòng sách4<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
 				<a class="right" href="#">click</a>
 			</div>
 			</a>
@@ -72,16 +72,16 @@
 			
 		</div>
 		<div class="item">
-		  <div class="col-md-4"><a href="#">
+		  <div class="span4"><a href="#">
 			<div class="price right">175K</div>
 			<div class="clearfix"></div>
-			<div class="main-block">
+			<div class="main-block text-center">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
 			</div>
 			<div class="clearfix"></div>
 			<div class="content-block-bot">
 				
-				<a href="#">Dòng sách<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
+				<a href="#">Dòng sách5<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
 				<a class="right" href="#">click</a>
 			</div>
 			</a>
@@ -95,14 +95,9 @@
 		<div class="clearfix"></div>
 	</div><!-- slider-bar-->
 	<div class="clearfix"></div>
-		<div class="clearfix"></div>
-	<div class="col-md-12 height-75 nav-view-more widh-1075">
+<div class="clearfix"></div>
+	<div class=" height-75 nav-view-more widh-1075">
 		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách(10)</span></a>
-		<a href="#" class="btn-view-more">Xem thêm</a>
-	</div>
-	<div class="clearfix"></div>
-	<div class="col-md-12 height-75 nav-view-more widh-1075">
-		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">123</span></a>
 		<a href="#" class="btn-view-more">Xem thêm</a>
 	</div>
 </div>

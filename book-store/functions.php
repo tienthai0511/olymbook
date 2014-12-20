@@ -113,3 +113,13 @@
 		$item_fetch =  get_option(THEME_NAME_S.'_products_item_fetch','12'); 
 		add_filter( 'loop_shop_per_page', create_function( '$cols', 'return '.$item_fetch.';' ), 20 );
 		
+function add_css(){
+	
+	wp_enqueue_style('grid css', get_template_directory_uri() . '/stylesheet/grid.css',false,'','all');
+	//slide one to one
+	//wp_enqueue_style('carousel css', get_template_directory_uri() . '/stylesheet/carousel.css',false,'','all');
+	//wp_enqueue_style('site style', get_template_directory_uri() . '/css/style-editor.css',false,'','all');
+}
+if (!is_admin()){
+add_action('wp_enqueue_scripts','add_css');
+}

@@ -12,6 +12,13 @@
 			<p class="text-justify">With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're ba</p>
 			<p class="text-justify">With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're ba
 			</p>
+			<p>
+			nstead of adding on optional mobile styles, they're ba
+			</p>
+		</div>
+		<div class="clearfix"></div>
+		<div class="view-more-c">
+			<a href="#">Xem thêm </a>
 		</div>
 	</div>
 	<div class="clearfix"></div>

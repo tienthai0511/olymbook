@@ -6,7 +6,7 @@ get_header(); ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$('#myCarousel').carousel({
-				interval: 100000
+				interval: 1000000
 			})
 
 		$('.carousel .item').each(function(){
@@ -26,14 +26,15 @@ get_header(); ?>
 		});
 	</script>
 	 <section class="page-body-outer mt30">
-                   <section class="page-body-wrapper container "> 
-                         <div  style="max-width:1071px;">
+			<section class="page-body-wrapper container "> 
+			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-store' ); ?>
 			</div>
-			<div  style="max-width:1071px;">
+			
+			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-category' ); ?>
 			</div>
-			<div  style="max-width:1071px;">
+			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-new' ); ?>
 			</div>
                   </section> <!--page-body-wrapper-end-->
