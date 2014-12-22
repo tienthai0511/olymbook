@@ -17,20 +17,21 @@
 		<footer id="colophon" class="site-footer witdh-1085" role="contentinfo">
 			<div class="row" style="max-width:1075px;margin:0 auto;">
 				<div class="span7 static-position foot-info">
-				 <span>Kh·m ph· v‡ xem nh?ng thÙng tin t? Olymbook.com</span>
+				 <span>Kh√°m ph√° v√† xem nh·ªØng th√¥ng tin quan tr·ªçng t·ª´ Olymbook.com</span>
 					<div class="footer-menu mt-20">
 						<ul>
-							<li>Kh·m ph· v‡ xem</li>
-							<li>Kh·m ph· v‡ xem</li>
-							<li>Kh·m ph· v‡ xem</li>
-							<li>Kh·m ph· v‡ xem</li>
-							<li>Kh·m ph· v‡ xem</li>
-							<li>Kh·m ph·</li>
+							<li>H·ªó tr·ª£ kh√°ch h√†ng</li>
+							<li>Khuy·∫øn m√£i</li>
+							<li>V·ªÅ Olymbook.com</li>
+							<li>T√†i kho·∫£n c·ªßa b·∫°n</li>
+							<li>Block</li>
+							<li>Sitemap</li>
 						</ul>
 						<div class="clearfix"></div>
 					</div>
-					<div class="mt20 social-contain">
+					<div class="mt-30 social-contain">
 					<span>&copy; Olymbook.com All rights reserved.</span>
+					<div class="clearfix"></div>
 					<div class="social">
 						<ul id="footer-social" class="clr">
 				<li><a href="#" target="_blank" class="facebook-icon">a</a></li>
@@ -45,12 +46,12 @@
 				</div>
 				<div class="span4 foot-contact">
 					<div style="width:364px">
-					 <p>B?n khÙng mu?n b? l? nh?ng thÙng tin h?p d?n nh?t?</p>
+					 <b class="color-1">B·∫°n kh√¥ng mu·ªën b·ªè l·ª° nh·ªØng th√¥ng tin h·∫•p d·∫´n nh·∫•t?</b>
 						<form class="mt-20">
 							<div class="">
-								<label class="text-normal for="email">–ang k˝ d? nh?n Newletter h‡ng tu?n</label></br>
-								<input type="email" class="text-input-custom" name="email" id="email" width="200"/><br>
-								<input class="mt-20" type="submit" value="–ANG K›">
+								<label class="text-normal color-1" for="email">ƒêƒÉng k√Ω ƒë·ªÉ nh·∫≠n NewLetter h√†ng tu·∫ßn</label>
+								<input type="email" class="text-input-custom" name="email" id="email" placeholder="Email c·ªßa b·∫°n" width="200"/><br>
+								<input class="mt-20 btn-submit-custom" type="submit" value="ƒëƒÉng k√Ω">
 							</div>
 						</form>
 					</div>

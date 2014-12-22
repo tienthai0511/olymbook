@@ -222,7 +222,10 @@ img
 	margin-right: 1px;
 }
 .mt-30{
-	margin-top:30!important;
+	margin-top:30px !important;
+}
+.mt-20{
+	margin-top:20px !important;
 }
 .top-nav li a
 {
@@ -5332,9 +5335,17 @@ a.cartplus-contents
 .border-right-block{
 	border-right: 1px solid #DCDDDF;
 }
-
+.block-new-item{
+	text-align:center;
+}
 @media (min-width: 990px){
-
+	.block-new-item img{
+		padding-top:30px;
+	}
+	.main-block{
+		height:305px;
+		padding-top:10px;
+	}
 	.e-commerce-list{
 		line-height:75px;
 	}
@@ -5388,7 +5399,7 @@ a.cartplus-contents
 	#footer-social {
 		position: absolute;
 		left: 0;
-		bottom: 0px;
+		bottom: -20px;
 		text-align: right;
 	}
 footer{
@@ -5401,9 +5412,18 @@ footer div.foot-contact,footer div.foot-info{
 .static-position{
 	position:relative !important;
 }
+.color-1{
+	color:#828186 !important;
+}
 .foot-contact,.foot-info{
 	margin-left:0 !important;
-	padding-left: 28px;
+	padding-left: 24px;
+}
+.foot-contact b{
+	font-size:97%;
+}
+.footer-menu ul li{
+	list-style-type: none;
 }
 body{
 	border-top:none !important;
@@ -5534,7 +5554,6 @@ body{
 .block-store .item  > div {
 	padding:0 !important;
 	height: 419px;
-	border-left: 1px solid #DCDDDF;
 }
 .content-block-bot{
 	padding: 15px 30px;
@@ -5659,9 +5678,24 @@ height:23px;
 /*form input bot*/
 /*input email*/
 .text-input-custom{
-	width:335px;
-	border:1px solid #dedede;
+	width:335px !important;
+	border:1px solid #828186!important;
+	background:#F3F3F5 !important;
+	box-shadow: none !important;
+	padding: 6px !important;
+	border:1px solid #CACACA !important;
 }
 .text-normal{
 	font-weight:normal !important;
+}
+/*border odd*/
+.carousel-inner div.active div.span4:nth-child(even){
+	border-left: 1px solid #DCDDDF;
+	border-right: 1px solid #DCDDDF;
+}
+.carousel-inner div.active div.span4:last-child .price{
+	margin-right:-1px;
+}
+.page-template-page-home-php a{
+	color:#000 !important;
 }
