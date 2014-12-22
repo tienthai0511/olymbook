@@ -6,7 +6,10 @@ get_header(); ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$('#myCarousel').carousel({
-				interval: 1000000
+				interval: 2000
+			})
+			$('#myCarousel1').carousel({
+				interval: 2000
 			})
 
 		$('.carousel .item').each(function(){

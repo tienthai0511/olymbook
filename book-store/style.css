@@ -5299,7 +5299,7 @@ a.cartplus-contents
 }
 @media (min-width: 1101px){
 	.left-store,.left-block{
-		 width:717px !important; 
+		 width:718px !important; 
 	}
 	.right-store,.right-block{
 
@@ -5405,9 +5405,6 @@ footer div.foot-contact,footer div.foot-info{
 	margin-left:0 !important;
 	padding-left: 28px;
 }
-a{
-	color:#000 !important;
-}
 body{
 	border-top:none !important;
 	font-family:"Arial" !important;
@@ -5462,7 +5459,7 @@ body{
 .inline-block-li li{
 	display:inline-block !Important;
 	height:25px;
-	width:21px;
+	width:25px;
 	color: transparent !important;
 	/* float: right; */
 }
@@ -5480,7 +5477,7 @@ body{
 }
 /*block*/
 .left-store,.left-block{
-	max-width:717px;
+	max-width:718px;
 	height:355px;
 	background: #fff;
 	border-right: 1px solid #DCDDDF;
