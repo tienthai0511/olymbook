@@ -1,30 +1,29 @@
 <div class="row-fluid block-new mt30">
 	<div class="span6 block-new-item text-center border-right-block ">
-		<div class="price right">175K</div>
-		<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
-		<div class="content-block-bot">
+		<div class="block-new-item-content">
+			<div class="price right">175K</div>
+			<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
+		</div>
+		<div class="content-block-bot text-middle">
 				
-				<a href="#">Dòng sách<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
-				<a class="right" href="#">click</a>
+				<a href="#">Dòng sách<span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
+				<a class="right arrow-icon text-transparent" href="#">#</a>
 			</div>
 	</div>
 	<div class="span6 block-new-item text-center">
-		<div class="price right">175K</div>
-	<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
-<div class="content-block-bot">
-				
-				<a href="#">Dòng sách<br><span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
-				<a class="right" href="#">click</a>
-			</div>
+		<div class="block-new-item-content">
+			<div class="price right">175K</div>
+			<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
+		</div>
+		<div class="content-block-bot text-middle">
+			
+			<a href="#">Dòng sách<span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
+			<a class="right arrow-icon text-transparent" href="#">#</a>
+		</div>
 	</div>
 	<div class="clearfix"></div>
-	<div class="col-md-12 height-75 nav-view-more widh-1075">
-		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách(10)</span></a>
-		<a href="#" class="btn-view-more">Xem thêm</a>
-	</div>
-	<div class="clearfix"></div>
-</div>
-<div class="row-fluid  block-store">
+</div><!--/* end bock new-->
+<div class="row-fluid  block-store mt30">
 	<div class="span8 left-store">
 		<img src="<?php echo get_template_directory_uri(); ?>/images/news.png"/>
 	</div>

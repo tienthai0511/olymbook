@@ -181,6 +181,7 @@ jQuery(document).ready(function(){
       </section>
     </section>
   </section>
+  <?php echo do_shortcode('[product_category category="appliances"]');?>
   <section><div class="row line-top"></div></section>
   <!-- End Top Nav Bar -->
   <!--<header id="main-header">

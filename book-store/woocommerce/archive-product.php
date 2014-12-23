@@ -97,13 +97,12 @@ get_header(); ?>
 									$category_slug = $category_slug . $item_category->slug . ' ';
 								}
 							}
-							echo "TânTV insert debug:  -  - Dec 21, 2014 11:48:21 AM <pre>";
-							print_r($category_slug);
-							echo "</pre>";
+							
 							$counter_product = 0;
 							while( have_posts() ){
 							global $post;
 							the_post();	
+							
 							if($counter_product % 4 == 0 ){
 								
 								echo '<div class="span3 slide columns">';

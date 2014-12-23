@@ -5,11 +5,11 @@
 get_header(); ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
-			$('#myCarousel').carousel({
-				interval: 2000
+			$('#bookstore').carousel({
+				interval: 200000
 			})
 			$('#myCarousel1').carousel({
-				interval: 2000
+				interval: 2000000
 			})
 
 		$('.carousel .item').each(function(){
@@ -28,19 +28,21 @@ get_header(); ?>
 		});
 		});
 	</script>
-	 <section class="page-body-outer mt30">
-			<section class="page-body-wrapper container "> 
+	<section class="page-body-outer mt30">
+		<section class="page-body-wrapper container "> 
 			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-store' ); ?>
 			</div>
-			
 			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-category' ); ?>
 			</div>
 			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-new' ); ?>
 			</div>
-                  </section> <!--page-body-wrapper-end-->
-                </section>  
+			<div  style="max-width:1075px;margin:0 auto;">
+			<?php get_template_part( 'template-parts/book-images' ); ?>
+			</div>
+		</section> <!--page-body-wrapper-end-->
+	</section>  
 
 <?php get_footer(); ?>
