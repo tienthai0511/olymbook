@@ -5,7 +5,7 @@
 				<div class="line-title-head">
 					<div class="span4 title-intro text-uppercase">Kiến thức là một tài sản mới</div>
 					<div class="span8 feature">
-						<ul class="right">
+						<ul>
 							<li class="text-uppercase book-icon-servise">
 								<p>Chuyên đóng sách</p>
 								<p>kinh doanh& </p>
