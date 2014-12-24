@@ -30,7 +30,7 @@
 -->
 <div class="block-store mt30">
 	<div class="head-layout w-1000"><!-- slider-bar-->
-	<div class="carousel slide" id="bookstore">
+	<div class="carousel slide" id="bookstore" data-interval="false">
 		<div class="carousel-inner" style="height:355px;overflow:hidden;">
 		<?php for($i = 0;$i< 5;$i++):?>
 		<div class="item <?php if ($i ==0) echo "active";?>">

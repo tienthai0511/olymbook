@@ -7,10 +7,10 @@ get_header(); ?>
 		jQuery(document).ready(function($) {
 			$('#bookstore').carousel({
 				interval: 200000
-			})
-			$('#myCarousel1').carousel({
-				interval: 2000000
-			})
+			});
+			$('#trainning').carousel({
+				interval: 200000
+			});
 
 		$('.carousel .item').each(function(){
 			var next = $(this).next();
@@ -28,7 +28,10 @@ get_header(); ?>
 		});
 		});
 	</script>
-	<section class="page-body-outer mt30">
+	<section class="header-banner">
+		<?php get_template_part( 'template-parts/header-banner' ); ?>
+	</section>
+	<section class="page-body-outer">
 		<section class="page-body-wrapper container "> 
 			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-store' ); ?>
@@ -36,13 +39,18 @@ get_header(); ?>
 			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-category' ); ?>
 			</div>
-			<!-- block 3 images-->
+			<div  style="max-width:1075px;margin:0 auto;">
+			<?php get_template_part( 'template-parts/book-new' ); ?>
+			</div>
+			<!-- trainning-->
+			<div  style="max-width:1075px;margin:0 auto;">
+			<?php get_template_part( 'template-parts/trainning' ); ?>
+			</div>
 			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-images' ); ?>
 			</div>
-			<!-- block popular posts-->
 			<div  style="max-width:1075px;margin:0 auto;">
-			<?php get_template_part( 'template-parts/book-new' ); ?>
+			<?php get_template_part( 'template-parts/popular-post' ); ?>
 			</div>
 		</section> <!--page-body-wrapper-end-->
 	</section>  
