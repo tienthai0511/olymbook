@@ -5293,12 +5293,14 @@ a.cartplus-contents
 	.left-store,.right-store,.left-block{
 		width:100% !important;
 	}
+	
 }
 @media (min-width: 769px){
 	.e-commerce-list{
 		line-height: 46px;
 		text-align: right;
 	}
+
 }
 @media (min-width: 1101px){
 	.left-store,.left-block{
@@ -5310,6 +5312,9 @@ a.cartplus-contents
 	.right-store,.right-block{
 
 		max-width:358px !important;
+		width:100% !important;
+	}
+	.block-images-item{
 		width:100% !important;
 	}
 }
@@ -5725,4 +5730,13 @@ height:23px;
 }
 #bookstore .item .right-store{
 	border:none;
+}
+/*block images item*/
+.block-images-item{
+	max-width:357px !Important;
+	margin:0 !important;
+	float:left !important;
+}
+.block-images-item:nth-child(2){
+	margin: 0 1px !important;
 }

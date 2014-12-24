@@ -36,11 +36,13 @@ get_header(); ?>
 			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-category' ); ?>
 			</div>
-			<div  style="max-width:1075px;margin:0 auto;">
-			<?php get_template_part( 'template-parts/book-new' ); ?>
-			</div>
+			<!-- block 3 images-->
 			<div  style="max-width:1075px;margin:0 auto;">
 			<?php get_template_part( 'template-parts/book-images' ); ?>
+			</div>
+			<!-- block popular posts-->
+			<div  style="max-width:1075px;margin:0 auto;">
+			<?php get_template_part( 'template-parts/book-new' ); ?>
 			</div>
 		</section> <!--page-body-wrapper-end-->
 	</section>  
