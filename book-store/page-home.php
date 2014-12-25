@@ -11,6 +11,7 @@ get_header(); ?>
 			$('#trainning').carousel({
 				interval: 200000
 			});
+			//$('#myCarousel').carousel('cycle');
 
 		$('.carousel .item').each(function(){
 			var next = $(this).next();
