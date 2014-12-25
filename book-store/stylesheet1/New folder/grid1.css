@@ -1,0 +1,10 @@
+.carousel .span4 {
+	max-width: 358px !important;
+	margin: 0 !important;
+}
+.carousel-inner{
+	background:#fff;
+}
+.carousel{
+	margin:0 !important;
+}

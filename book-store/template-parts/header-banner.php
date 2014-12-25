@@ -25,7 +25,7 @@
 						
 					</div>
 				</div>
-			
+			<div style="clear:both"></div>
 			</div>
 		<div style="clear:both"></div>
 		<div class="witdh-1075" class="span12" style="background:#404042">
