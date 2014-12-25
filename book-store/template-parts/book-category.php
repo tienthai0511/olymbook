@@ -1,7 +1,7 @@
 <div class="block-store mt30">
 	<div class="head-layout w-1000"><!-- slider-bar-->
 
-	<div class="carousel slide " id="myCarousel" data-interval="false" data-cycle-fx="carousel" data-cycle-timeout="" data-cycle-next="#next4" data-cycle-prev="#prev4" data-cycle-pager="#myCarousel" data-cycle-carousel-visible="5" data-cycle-allow-wrap="false">
+	<div class="carousel slide " id="myCarousel" data-interval="false" data-cycle-fx="carousel" data-cycle-timeout="0" data-cycle-pager="#myCarousel" data-cycle-carousel-visible="3" data-cycle-allow-wrap="false">
 		<div class="carousel-inner block-store-slide">
 		<?php for($i=0;$i<3;$i++){?>
 		<div class="item <?php if($i ==0) echo "active";?>">
