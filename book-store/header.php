@@ -93,7 +93,7 @@
   <!-- Start Top Nav Bar -->
   <section class="top-nav-bar">
     <section class="container-fluid container">
-      <section class="row-fluid">
+      <section class="row-fluid header-block">
 		    <section class="span3 header-logo">
           <h1 id="logo"> <?php
 		            echo '<a href="' . home_url( '/' ) . '">';

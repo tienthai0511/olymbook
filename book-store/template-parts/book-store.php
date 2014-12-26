@@ -31,7 +31,7 @@
 <div class="block-store mt30">
 	<div class="head-layout w-1000"><!-- slider-bar-->
 	<div class="carousel slide" id="bookstore" data-interval="false">
-		<div class="carousel-inner" style="height:355px;overflow:hidden;">
+		<div class="carousel-inner row-fluid">
 		<?php for($i = 0;$i< 5;$i++):?>
 		<div class="item <?php if ($i ==0) echo "active";?>">
 		 <div>
@@ -70,7 +70,7 @@
 	</div><!-- slider-bar-->
 	<div class="clearfix"></div>
 <div class="clearfix"></div>
-	<div class=" height-75 nav-view-more widh-1075 relative">
+	<div class=" height-75 nav-view-more row-fluid relative">
 		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách(10)</span></a>
 		<a class="right arrow-icon text-transparent" href="#">#</a>
 		</div>

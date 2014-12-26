@@ -14,8 +14,9 @@
          ?>
       </div>
       <div class="row line-top mt30"></div>
+	  <div class="clearfix"></div>
 		<footer id="colophon" class="site-footer witdh-1085" role="contentinfo">
-			<div class="row" style="max-width:1075px;margin:0 auto;">
+			<div class="row-fluid main-content-block">
 				<div class="span7 static-position foot-info">
 				 <span>Khám phá và xem những thông tin quan trọng từ Olymbook.com</span>
 					<div class="footer-menu mt-20">
@@ -45,7 +46,7 @@
 					</div>
 				</div>
 				<div class="span4 foot-contact">
-					<div style="width:364px">
+					<div>
 					 <b class="color-1">Bạn không muốn bỏ lỡ những thông tin hấp dẫn nhất?</b>
 						<form class="mt-20">
 							<div class="">
@@ -65,7 +66,7 @@
 				<?php //do_action( 'twentythirteen_credits' ); ?>
 				<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentythirteen' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentythirteen' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentythirteen' ), 'WordPress' ); ?></a>
 			</div><!-- .site-info -->
-			
+		<div class="clearfix"></div>
 		</footer><!-- #colophon -->
            
   
