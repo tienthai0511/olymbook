@@ -6,7 +6,7 @@
 }
 /**/
 .home .main-content-block a{
-	color:#77787C!important;
+	color:#404041!important;
 }
 ul,li{
 	list-style-type:none;
@@ -32,20 +32,14 @@ ul,li{
 		padding-left: 33px;
 		padding-top: 17px;
 	}
+	
 }
 .main-content-block .left-store{
 	background:#fff;
 }
 
-	.block-images .span4:nth-child(2){
-		margin:0;
-		padding:0;
-		max-width:358px;
-		width:358px;
-	}
-	.block-images .span4{
-		margin: 0 1px;
-	}
+
+	
 @media (min-width: 1101px){
 	.left-store,.left-block{
 		 width:717px ; 
@@ -86,6 +80,18 @@ ul,li{
 	.block-post .right-block{
 		width:357px;
 	}
+		.block-images .span4:nth-child(2){
+		margin:0;
+		padding:0;
+		max-width:358px;
+		width:358px;
+	}
+	.block-images .span4{
+		margin: 0 1px;
+	}
+	.block-images{
+		margin-top:30px;
+	}
 }
 .block-post .right-block{
 	margin:0;
@@ -103,6 +109,12 @@ ul,li{
 	.main-content-block{
 		padding:10px;
 	}
+	.block-images .span4{
+		margin-left:1px;
+		width:33.2%;
+		float:left;
+	}
+
 }
 @media (max-width: 1100px) and (min-width: 990px){
 	.main-content-block{
@@ -427,7 +439,7 @@ footer{
 body{
 	border-top:none ;
 	font-family:"SFUHelvetica" ;
-	background:#C7C8CA;
+	background:#C6C8CA;
 }
 .sf-menu li:hover, .sf-menu li.sfHover{
 	background:none;
@@ -504,9 +516,9 @@ body{
 	height:50px;
 	width:100px;
 	line-height: 50px;
-	background: #DCDDDF;
+	background: #DBDCDE;
 	text-align: center;
-	color: #898A8E;
+	color: #808284;
 	font-size: 180%;
 }
 .t-tini{
@@ -539,7 +551,7 @@ body{
 .content-block-bot{
 	padding: 0px 30px;
 	height: 75px ;
-	background: #F3F3F5;
+	background: #F1F1F2;
 	text-align:left;
 	position: relative;
 }

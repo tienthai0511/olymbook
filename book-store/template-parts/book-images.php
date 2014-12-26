@@ -1,4 +1,4 @@
-<div class="block-images mt30">
+<div class="block-images">
 	<div class="row-fluid">
 		  <div class="span4"><a href="#">
 			<div class="main-block text-center">
