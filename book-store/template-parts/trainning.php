@@ -22,6 +22,7 @@
 					<p>
 					nstead of adding on optional mobile styles, they're ba
 					</p>
+					<div class="clearfix"></div>
 				</div>
 				<div class="clearfix"></div>
 				<div class="view-more-c">
@@ -39,7 +40,7 @@
 	</div><!-- slider-bar-->
 	<div class="clearfix"></div>
 <div class="clearfix"></div>
-	<div class=" height-75 nav-view-more widh-1075 relative">
+	<div class=" height-75 nav-view-more widh-1075 relative content-block-bot">
 		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách(10)</span></a>
 		<a class="right arrow-icon text-transparent" href="#">#</a>
 		</div>

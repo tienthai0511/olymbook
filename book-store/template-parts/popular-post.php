@@ -36,7 +36,7 @@
 	</div>
 	</div>
 	<div class="clearfix"></div>
-	<div class=" height-75 nav-view-more row-fluid">
+	<div class=" height-75 nav-view-more row-fluid content-block-bot">
 			<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Những câu danh ngôn hay nhất(10)</span></a>
 			<a class="right arrow-icon text-transparent" href="#">#</a>
 	</div>

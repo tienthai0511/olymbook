@@ -85,6 +85,7 @@ if($categories != array()){
 			<!-- item 0-->
 			<div class="span4">
 			<div class="price right">171<?php echo $key?></div>
+			<div class="clearfix"></div>
 			<div class="main-block text-center">
 				<?php 
 				if($category['image'] != false){
