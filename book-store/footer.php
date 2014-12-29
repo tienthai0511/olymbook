@@ -30,7 +30,7 @@
 						</ul>
 						<div class="clearfix"></div>
 					</div>
-					<div class="mt-30 social-contain">
+					<div class="mt-15 social-contain">
 					<span>&copy; Olymbook.com All rights reserved.</span>
 					<div class="clearfix"></div>
 					<div class="social">
@@ -45,14 +45,14 @@
 					</div>
 					</div>
 				</div>
-				<div class="span4 foot-contact">
+				<div class="span5 foot-contact">
 					<div>
 					 <b class="color-1">Bạn không muốn bỏ lỡ những thông tin hấp dẫn nhất?</b>
-						<form class="mt-20">
+						<form class="mt-15">
 							<div class="">
 								<label class="text-normal color-1" for="email">Đăng ký để nhận NewLetter hàng tuần</label>
 								<input type="email" class="text-input-custom" name="email" id="email" placeholder="Email của bạn" width="200"/><br>
-								<input class="mt-20 btn-submit-custom" type="submit" value="đăng ký">
+								<input class="mt-15 btn-submit-custom" type="submit" value="đăng ký">
 							</div>
 						</form>
 					</div>
