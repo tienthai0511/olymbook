@@ -6018,7 +6018,7 @@ input, textarea, .uneditable-input {
 	z-index: 9999;
 }
 .sf-menu a {
-	padding: 12.5px 18px 12.5px 18px !important;
+	padding: 12.5px 18px 12.5px 18px ;
 	text-decoration: none;
 	zoom: 1; /* IE7 */
 }

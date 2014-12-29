@@ -15,73 +15,79 @@ $args = array(
   'title_li'     => $title,
   'hide_empty'   => $empty
 );
-$all_categories = get_categories( $args );
-$categories = array();
-foreach ($all_categories as $cat) {
-    if($cat->category_parent == 0) {
-        $category_id = $cat->term_id;
-
-?>      
-        <?php
-        $args2 = array(
-          'taxonomy'     => $taxonomy,
-          'child_of'     => 0,
-          'parent'       => $category_id,
-          'orderby'      => $orderby,
-          'show_count'   => $show_count,
-          'pad_counts'   => $pad_counts,
-          'hierarchical' => $hierarchical,
-          'title_li'     => $title,
-          'hide_empty'   => $empty
-        );
-        $sub_cats = get_categories( $args2 );
-        if($sub_cats) {
-            foreach($sub_cats as $sub_category) {
-                $cateUrl = get_term_link($sub_category->slug, 'product_cat');
-                $cateName = $sub_category->name;
-                $thumbnail_id = get_woocommerce_term_meta( $sub_category->term_id, 'thumbnail_id', true );
-                $image = wp_get_attachment_url( $thumbnail_id );
-                $categories[] = array(
-                	'cateUrl' =>	$cateUrl,
-                	'cateName' =>	$cateName,
-                	'image' =>	$image
-                );
-                if(count($categories) == 3){
-               		$blockCategories[] = $categories;
-               		$categories = array();
-                }
-            }
-
-        }else{
-        	$cateUrl = get_term_link($cat->slug, 'product_cat');
-        	$cateName = $cat->name;
-        	$thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
-        	$image = wp_get_attachment_url( $thumbnail_id );		        	
-        	$categories[] = array(
-        			'cateUrl' =>	$cateUrl,
-        			'cateName' =>	$cateName,
-        			'image' =>	$image
-        	);
-        	if(count($categories) == 3){
-        		$blockCategories[] = $categories;
-        		$categories = array();
-        	}
-        }
-    	?>
-    <?php }     
-}
-if($categories != array()){
-	$blockCategories[] = $categories;
-	$categories = array();
-}
 ?>
 <div class="block-store mt30">
 	<div class="head-layout w-1000"><!-- slider-bar-->
 
 	<div class="carousel slide " id="myCarousel" data-interval="false" data-cycle-fx="carousel" data-cycle-timeout="0" data-cycle-pager="#myCarousel" data-cycle-carousel-visible="3" data-cycle-allow-wrap="false">
 		<div class="carousel-inner block-store-slide">
-		<?php foreach ($blockCategories as $key => $categories){?>
+		<?php 
+		$all_categories = get_categories( $args );
+		$categories = array();
+		foreach ($all_categories as $cat) {
+		    if($cat->category_parent == 0) {
+		        $category_id = $cat->term_id;
+		
+		?>      
+		        <?php
+		        $args2 = array(
+		          'taxonomy'     => $taxonomy,
+		          'child_of'     => 0,
+		          'parent'       => $category_id,
+		          'orderby'      => $orderby,
+		          'show_count'   => $show_count,
+		          'pad_counts'   => $pad_counts,
+		          'hierarchical' => $hierarchical,
+		          'title_li'     => $title,
+		          'hide_empty'   => $empty
+		        );
+		        $sub_cats = get_categories( $args2 );
+		        if($sub_cats) {
+		            foreach($sub_cats as $sub_category) {
+		                $cateUrl = get_term_link($sub_category->slug, 'product_cat');
+		                $cateName = $sub_category->name;
+		                $thumbnail_id = get_woocommerce_term_meta( $sub_category->term_id, 'thumbnail_id', true );
+		                $image = wp_get_attachment_url( $thumbnail_id );
+		                $categories[] = array(
+		                	'cateUrl' =>	$cateUrl,
+		                	'cateName' =>	$cateName,
+		                	'image' =>	$image
+		                );
+		                if(count($categories) == 3){
+		               		$blockCategories[] = $categories;
+		               		$categories = array();
+		                }
+		            }
+		
+		        }else{
+		        	$cateUrl = get_term_link($cat->slug, 'product_cat');
+		        	$cateName = $cat->name;
+		        	$thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
+		        	$image = wp_get_attachment_url( $thumbnail_id );		        	
+		        	$categories[] = array(
+		        			'cateUrl' =>	$cateUrl,
+		        			'cateName' =>	$cateName,
+		        			'image' =>	$image
+		        	);
+		        	if(count($categories) == 3){
+		        		$blockCategories[] = $categories;
+		        		$categories = array();
+		        	}
+		        }
+		    	?>
+		    <?php }     
+		}
+		if($categories != array()){
+			$blockCategories[] = $categories;
+			$categories = array();
+		}
+		?>
+		<?php 
+		foreach ($blockCategories as $key => $categories){?>
 		<div class="item <?php if($key ==0) echo "active";?>">
+			<?php 
+			foreach ($categories as $category){
+			?>
 			<!-- item 0-->
 			<div class="span4">
 			<div class="price right">171<?php echo $key?></div>
@@ -102,13 +108,15 @@ if($categories != array()){
 
 			<div class="content-block-bot">
 				<div class="left title-sub-store">
-				<a href="<?php echo $category['cateUrl'];?>"><span">Xem thêm</span><p class="text-uppercase"><?php echo $category['cateName'];?></p></a>
+				<a href="<?php echo $category['cateUrl'];?>"><span">Dòng sách</span><p class="text-uppercase"><?php echo $category['cateName'];?></p></a>
 				</div>
 				<a class="right arrow-icon text-transparent" href="<?php echo $category['cateUrl'];?>">#</a>
 			</div>
 			<div class="clearfix"></div>
 		  </div><!-- /*item 0*/-->
-		  <!-- item 1-->
+		  <?php 
+			}
+		  ?>
 		</div>
 		<?php }?>
 	</div>
@@ -118,10 +126,10 @@ if($categories != array()){
 		<div class="clearfix"></div>
 		<div class="control-slide-book-category relative">
 			<ul class="carousel-indicators" >
-				<?php 
-				foreach ($blockCategories as $key => $categories){?>
-					<li data-target="#myCarousel" data-slide-to="<?php echo $key;?>" <?php if($key == 0)echo 'class="active"';?>><?php echo $key+1;?></li>
-				<?php }?>
+			<?php 
+			foreach ($blockCategories as $key => $categories){?>
+				<li data-target="#myCarousel" data-slide-to="<?php echo $key;?>" <?php if($key == 0)echo 'class="active"';?>><?php echo $key+1;?></li>
+			<?php }?>
 			</ul>
 		</div>
 	</div><!-- /.carousel -->

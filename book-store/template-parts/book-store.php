@@ -47,7 +47,7 @@
 				<span class="author text-uppercase">John Kenl</span>
 				
 				<div class="content-store-text">
-					<p class="text-justify">With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're ba</p>
+					<p class="text-justify color-style-1">With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're ba</p>
 					<p class="text-justify">With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're ba
 					</p>
 					<p>

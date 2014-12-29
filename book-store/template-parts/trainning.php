@@ -11,14 +11,10 @@
 			</div><!--/*image*/-->
 			<!-- content-->
 			<div class="span4 right-store">
-				<p class="t-tini text-uppercase">Tủ sách</p>
-				<h2 class="title-store text-uppercase text-justify">Tinh hoa lãnh đạo</h2>
-				<span class="author text-uppercase">John Kenl</span>
+				<p class="t-tini text-uppercase">2 NGÀY CUỐI TUẦN SẼ LẤP ĐẦY THÀNH CÔNG TOÀN BỘ 07 KHÍA CẠNH CUỘC SỐNG CỦA BẠN</p>
 				
 				<div class="content-store-text">
-					<p class="text-justify">With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're ba</p>
-					<p class="text-justify">With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're ba
-					</p>
+					<p class="text-justify">Nổi tiếng với câu chuyện bữa tối 21 xu & nỗ lực vươn lên từ khốn khó - Jack Canfield đã làm bừng tỉnh thế giới về niềm tin vào khoa học thành công. Trở thành Tiến sỹ/ Giảng viên của Đại học Harvard chưa làm dừng bước chân ông. Khám phá & ứng dụng bí mật Luật hấp dẫn trong thực tiễn, ông trở thành một đa tỷ phú với lợi nhuận ròng hàng tỷ USD mỗi năm - suốt từ hơn 20 năm qua; phá mọi kỷ lục thế giới về xuất bản sách với trên 225 tựa Chicken Soup for the Soul - bán được trên 25 triệu ấn bản...</p>
 					<p>
 					nstead of adding on optional mobile styles, they're ba
 					</p>

@@ -6,7 +6,7 @@
 			<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
 		</div>
 		<div class="content-block-bot text-center">
-			<a href="#">Dòng sách<span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
+			<a href="#">Xem thêm <span class="text-uppercase">Nghệ thuật lãnh dạo và quản ly</span></a>
 			<a class="right arrow-icon text-transparent" href="#">#</a>
 			</div>
 	</div>
@@ -17,7 +17,7 @@
 			<img src="<?php echo get_template_directory_uri(); ?>/images/book1.png"/>
 		</div>
 		<div class="content-block-bot text-middle">
-			<a href="#">Dòng sách <span class="text-uppercase">Nghệ thuật lãnh dạo và quản lý</span></a>
+			<a href="#">Xem thêm <span class="text-uppercase">Nghệ thuật lãnh dạo và quản lý</span></a>
 			<a class="right arrow-icon text-transparent" href="#">#</a>
 		</div>
 	</div>

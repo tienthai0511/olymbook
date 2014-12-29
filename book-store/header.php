@@ -149,34 +149,26 @@
             <?php // wp_nav_menu( array( 'theme_location' => 'header_menu' ) );?>
           </div>
         </section>
-         
-        
-<script>
-jQuery(document).ready(function(){
 
-				jQuery('.widget_shopping_cartplus').hover(function() {
-					jQuery('.cartplus-dropdown').slideToggle(200);
-				});
-  });
-</script>
-<style>
-.cartplus-dropdown{
-	display:none;
-	background:red;
-}
-</style>
         <section class="span3 e-commerce-list">
 		<ul class="nav navbar-nav navbar-right inline-block-li">
-			<li class="login-btn"><?php //get_search_form(); ?><a href="#">ss</a></li>
+			<li class=""><?php get_search_form(); ?><a href="#">ss</a></li>
 			<li class="login-btn"><a href="#">ss</a></li>
-			<li class="cart-btn widget_shopping_cartplus" ><a href="#">s</a></li>
-			 <div class="cartplus-dropdown">
-			 sasdsd</div>
+			<li class="relative shopping-cart"><a href="#">ss</a>
+			
+				 <div>
+						 <?php if(cp_woocommerce_enabled()) {
+							global $woocommerce;
+								if(cp_woocommerce_enabled()) {
+									echo cp_woocommerce_cart_dropdown();
+								}
+					} ?>
+				</div>
+			</li>
+			
 		</ul>
 		<?php //get_search_form();?>
-		<?php //if(cp_woocommerce_enabled()) {  //echo  cp_shop_nav_top(); ?>
-           <div class="c-btn">  <?php  //global $woocommerce;  if(cp_woocommerce_enabled()) {  echo cp_woocommerce_cart_dropdown();}?></div>
-        <?php//} ?>
+		
         </section>
       </section>
     </section>

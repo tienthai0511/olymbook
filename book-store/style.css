@@ -205,20 +205,9 @@ img
 	background:#fff;
 	color: #fff;
 }
-.top-nav-bar ul
-{
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
 .top-nav-bar .row-fluid [class*="span"]
 {
 	margin-bottom: 0;
-}
-.top-nav li
-{
-	line-height: 50px;
-	margin-right: 1px;
 }
 .mt-30{
 	margin-top:30px !important;
@@ -250,7 +239,7 @@ img
 .e-commerce-list li
 {
 	/* background: url(images/top-nav-sep.png) left center no-repeat; */
-	margin-left: 15px;
+	margin-left: 32px;
 	padding-left: 15px;
 }
 .e-commerce-list li a
