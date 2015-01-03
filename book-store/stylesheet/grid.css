@@ -836,7 +836,8 @@ body{
 
 .price{
 	height:50px;
-	width:100px;
+	max-width: 170px;
+    min-width: 160px;
 	line-height: 50px;
 	background: #DBDCDE;
 	text-align: center;

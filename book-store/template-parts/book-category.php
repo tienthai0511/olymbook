@@ -76,7 +76,14 @@ foreach ($all_categories as $cat) {
 		while ( $loop->have_posts() ) : $loop->the_post(); global $product;
 	?>
    <div class="book-slide-container">
-        <div class="price right"><?php echo $product->get_price_html(); ?></div>
+        <div class="price right">
+        	<a class="add_to_cart_button product_type_simple added" 
+        		data-quantity="1" 
+        		data-product_sku="1200" 
+        		data-product_id="<?php echo $product->id;?>" 
+        		rel="nofollow" 
+        		href="/shop/?add-to-cart=<?php echo $product->id;?>"><?php echo number_format($product->get_price(),0,".",".")." VNĐ"; ?></a>
+        </div>
 			<div class="clearfix"></div>
 			<div class="main-block text-center">
 				<?php 
@@ -100,6 +107,7 @@ foreach ($all_categories as $cat) {
 	<?php
 	}
 	?>
+	
 	</div>
 	
 	<div class=" height-75 nav-view-more widh-1075">
