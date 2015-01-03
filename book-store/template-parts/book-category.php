@@ -88,10 +88,14 @@ foreach ($all_categories as $cat) {
 			<div class="main-block text-center">
 				<?php 
 				if(has_post_thumbnail( $loop->post->ID )){
-					echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog');
-					//<a href="echo get_permalink( $loop->post->ID )"><img src="echo $category['image'];"/></a>
+					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
+					if(isset($image[0])){
+						echo "<a href=\"".get_permalink( $loop->post->ID )."\"><img src=\"{$image[0]}\"/></a>";
+					}else{
+						echo '<img src="'.woocommerce_placeholder_img_src().'" alt="Placeholder"/>';
+					}
 				}else{
-					echo '<img src="'.woocommerce_placeholder_img_src().'" alt="Placeholder" width="300px" height="300px" />';
+					echo '<img src="'.woocommerce_placeholder_img_src().'" alt="Placeholder"/>';
 				}?>
 			</div>
 			<div class="content-block-bot-slide">
