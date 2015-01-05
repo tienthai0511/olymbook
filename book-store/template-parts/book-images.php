@@ -18,7 +18,7 @@
 			$loop->the_post();
 			global $product;
 			if (has_post_thumbnail( $loop->post->ID )) {
-				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), '357x355' );
 			}
 			else {
 				
