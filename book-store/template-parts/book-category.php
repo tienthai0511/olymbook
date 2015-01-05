@@ -38,25 +38,28 @@ foreach ($all_categories as $cat) {
                 $cateName = $sub_category->name;
                 $thumbnail_id = get_woocommerce_term_meta( $sub_category->term_id, 'thumbnail_id', true );
                 $image = wp_get_attachment_url( $thumbnail_id );
-                $categories[] = array(
-                	'cateUrl' =>	$cateUrl,
-                	'cateName' =>	$cateName,
-                	'image' =>	$image,
-                	'slug' => $sub_category->slug
-                );
+                if($sub_category->slug != "bookcase"){
+	                $categories[] = array(
+	                	'cateUrl' =>	$cateUrl,
+	                	'cateName' =>	$cateName,
+	                	'image' =>	$image,
+	                	'slug' => $sub_category->slug
+	                );
+                }
             }
-
         }else{
         	$cateUrl = get_term_link($cat->slug, 'product_cat');
         	$cateName = $cat->name;
         	$thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
-        	$image = wp_get_attachment_url( $thumbnail_id );		        	
-        	$categories[] = array(
-        			'cateUrl' =>	$cateUrl,
-        			'cateName' =>	$cateName,
-        			'image' =>	$image,
-        			'slug' => $cat->slug
-        	);
+        	$image = wp_get_attachment_url( $thumbnail_id );	
+        	if($cat->slug != "bookcase"){	        	
+	        	$categories[] = array(
+	        			'cateUrl' =>	$cateUrl,
+	        			'cateName' =>	$cateName,
+	        			'image' =>	$image,
+	        			'slug' => $cat->slug
+	        	);
+        	}
         }
     	?>
     <?php }     
@@ -102,7 +105,7 @@ foreach ($all_categories as $cat) {
 				<div class="left title-sub-store">
 				<a href="<?php echo $category['cateUrl']?>"><span">Dòng sách</span><p class="text-uppercase"><?php echo $category['cateName']?></a>
 				</div>
-				<a class="right arrow-icon text-transparent" href="<?php echo $category['cateUrl']?>"><?php echo $category['cateName']?></a>
+				<a class="right arrow-icon arrow-customize text-transparent" href="<?php echo $category['cateUrl']?>"><?php echo $category['cateName']?></a>
 			</div>
 			
     </div>
