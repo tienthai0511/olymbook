@@ -264,7 +264,7 @@ background: none repeat scroll 0 0 #F2F2F2;
 	#footer-social {
 		position: absolute;
 		left: 22px;
-		bottom: -20px;
+		bottom: 4px;
 		text-align: right;
 	}
 	.block-new-item-sub img{
@@ -1043,12 +1043,21 @@ body{
 /*form input bot*/
 /*input email*/
 .text-input-custom{
-	max-width:335px ;
-	border:1px solid #828186;
+	max-width:320px ;
+	width:100%;
+	box-shadow:none !important;
 	background:#F3F3F5 ;
 	box-shadow: none ;
 	padding: 6px ;
-	border:1px solid #CACACA ;
+	border:1px solid #CACACA !important;
+	background:#F3F3F5 !important;
+}
+.btn-submit-custom{
+	background: #818286!important;
+	border-radius: 0!important;
+	text-transform: uppercase;
+	font-weight: 100 !important;
+	font-size: 120%!important;
 }
 .text-normal{
 	font-weight:normal ;
