@@ -1174,3 +1174,9 @@ body{
 	right: 26px;
 	color:#fff !important;
 }
+.added_to_cart.wc-forward{
+display:none;
+}
+.add_to_cart_button:hover{
+	text-decoration:none;
+}
