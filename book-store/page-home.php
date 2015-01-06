@@ -27,7 +27,18 @@ get_header(); ?>
 				$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
 			}
 		});
+		//hide next-prev button
+			$('.block-store')
+			  .mouseover(function() {
+				$( this ).find("button.slick-next").show();
+				$( this ).find("button.slick-prev").show();
+			  })
+			  .mouseout(function() {
+				$( this ).find( "button.slick-next" ).hide();
+				$( this ).find( "button.slick-prev" ).hide();
+			  });
 		});
+
 	</script>
 	<section class="header-banner">
 		<?php get_template_part( 'template-parts/header-banner' ); ?>

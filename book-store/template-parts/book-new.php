@@ -43,6 +43,7 @@ foreach ($woo_categories as $category){
 	        		href="/shop/?add-to-cart=<?php echo $product->id;?>"><?php echo number_format($product->get_price(),0,".",".")." VNĐ"; ?></a>
 			</div>
 			<div class="clearfix"></div>
+			<div class="main-block-new">
 			<?php 
 				if(has_post_thumbnail( $loop->post->ID )){
 					//echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog');
@@ -56,6 +57,7 @@ foreach ($woo_categories as $category){
 					echo '<img src="'.woocommerce_placeholder_img_src().'" alt="product"/>';
 				}
 			?>
+			</div>
 		</div>
 		<div class="content-block-bot text-center">
 			<a href="<?php echo $categories['new']['cateUrl']?>">Xem thêm <span class="text-uppercase"><?php echo $categories['new']['cateName']?></span></a>
@@ -83,6 +85,7 @@ foreach ($woo_categories as $category){
 	        		href="/shop/?add-to-cart=<?php echo $product->id;?>"><?php echo number_format($product->get_price(),0,".",".")." VNĐ"; ?></a>
 			</div>
 			<div class="clearfix"></div>
+			<div class="main-block-new">
 			<?php 
 				if(has_post_thumbnail( $loop->post->ID )){
 					//echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog');
@@ -96,6 +99,7 @@ foreach ($woo_categories as $category){
 					echo '<img src="'.woocommerce_placeholder_img_src().'" alt="product"/>';
 				}
 			?>
+			</div>
 		</div>
 		<div class="content-block-bot text-middle">
 			<a href="<?php echo $categories['best-seller']['cateUrl']?>">Xem thêm <span class="text-uppercase"><?php echo $categories['best-seller']['cateName']?></span></a>
