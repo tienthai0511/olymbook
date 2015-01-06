@@ -510,6 +510,11 @@ border-top:1px solid #DCDDDF;
 	background-size:cover !important;
 	background-repeat:no-repeat !important;
 }
+ @media only screen and (max-width: 868px){
+	.block-post .view-more-link ,.block-post .arrow-icon{
+		display:none;
+	}
+ }
  @media only screen and (max-width: 768px){
 	.line-head {
 		height: auto;
@@ -1010,10 +1015,9 @@ body{
 }
 .block-post-top-img p{
 	color:#fff;
-	padding-right:10px;
 	margin-top:10px;
 }
-.block-post-top-img a,a.view-more-link {
+.block-post-top-img a.view-more-link,a.view-more-link {
 	color: #fff ;
 	text-transform: uppercase;
 	position: absolute;
@@ -1160,4 +1164,13 @@ body{
 }
 .book-slide-container .add_to_cart_button:hover{
 	text-decoration:none !important;
+}
+.block-post .view-more-link {
+	color:#fff !important;
+}
+.block-post .arrow-icon{
+	position: absolute;
+	bottom: 10px;
+	right: 26px;
+	color:#fff !important;
 }
