@@ -38,7 +38,7 @@ foreach ($all_categories as $cat) {
                 $cateName = $sub_category->name;
                 $thumbnail_id = get_woocommerce_term_meta( $sub_category->term_id, 'thumbnail_id', true );
                 $image = wp_get_attachment_url( $thumbnail_id );
-                if($sub_category->slug != "bookcase" && $sub_category->slug != 'best-seller' && $sub_category->slug != 'new'){
+                if($sub_category->slug != "bookcase" && $sub_category->slug != 'best-seller' && $sub_category->slug != "course" && $sub_category->slug != 'new'){
 	                $categories[] = array(
 	                	'cateUrl' =>	$cateUrl,
 	                	'cateName' =>	$cateName,
@@ -52,7 +52,7 @@ foreach ($all_categories as $cat) {
         	$cateName = $cat->name;
         	$thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
         	$image = wp_get_attachment_url( $thumbnail_id );	
-        	if($cat->slug != "bookcase" && $cat->slug != 'best-seller' && $cat->slug != 'new'){	        	
+        	if($cat->slug != "bookcase" && $cat->slug != 'best-seller' && $cat->slug != 'new' && $cat->slug != 'course'){	        	
 	        	$categories[] = array(
 	        			'cateUrl' =>	$cateUrl,
 	        			'cateName' =>	$cateName,
