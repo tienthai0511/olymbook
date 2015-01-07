@@ -58,6 +58,8 @@
 			__('Flex Slider', 'crunchpress')=>'cp_panel_flex_slider'),
 		__('Dummy Content', 'crunchpress') => array(
 			__('Dummy Content', 'crunchpress')=>'cp_panel_dummy_content'),
+		__('Slick Slide', 'crunchpress')=> array(
+			__('Time', 'crunchpress') => 'cp_panel_slick_slider'),
 			
 		
 	);
@@ -499,7 +501,9 @@
 				'description'=>'This option is the pause time of each slider.'),
 			__('PAUSE ON ACTION', 'crunchpress')=>array('type'=>'radioenabled','oldname'=>'pauseOnAction','name'=>THEME_NAME_S.'_flex_slider_pause_on_action','default'=>'false'),
 		),
-	
+		'cp_panel_slick_slider' => array(
+			__('Slick PAUSE TIME ', 'crunchpress')=>array('type'=>'inputtext','oldname'=>'slideshowSpeed','name'=>THEME_NAME_S.'_slick_slider_pause_time','default'=>'7000'),
+		),
 				 
 		'cp_panel_refine_slider' => array(
 			__('SLIDER EFFECTS', 'crunchpress')=>array(

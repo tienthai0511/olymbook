@@ -71,14 +71,18 @@
 	</div>
 </div>
 <?php endif;?>
+<?php $timeSlideInterval =  get_option( 'cp_slick_slider_pause_time', 5000 ); ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function ($) {
+			var autoplaySpeedTime = <?php echo $timeSlideInterval;?>;
 			var option = {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				dots: true,
 				speed: 900,
 				draggable:false,
+				autoplay : true,
+				autoplaySpeed : autoplaySpeedTime
 			};
 			$('.block-store-slide').slick(option);
 		});
