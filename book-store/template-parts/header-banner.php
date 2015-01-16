@@ -29,9 +29,48 @@
 			</div>
 		<div style="clear:both"></div>
 		<div class="witdh-1075" class="span12" style="background:#404042">
+			<?php 
+			$styleOptinForm= get_option('styleOptinForm');
+			$description= get_option('description');
+			$shortDescription= get_option('shortDescription');
+			
+			if($styleOptinForm == 1){
+			?>
 			<div style="margin:0 auto">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/banner1.png">
+				<?php echo $description."<br/>".$shortDescription;?>
 			</div>
+			<?php 
+			}elseif($styleOptinForm == 2){
+			?>
+			<div style="margin:0 auto">
+				<img src="<?php echo get_template_directory_uri(); ?>/images/banner2.png">
+				<?php echo $description."<br/>".$shortDescription;?>
+			</div>
+			<?php 
+			}elseif($styleOptinForm == 3){
+			?>
+			<div style="margin:0 auto">
+				<img src="<?php echo get_template_directory_uri(); ?>/images/banner3.png">
+				<?php echo $description."<br/>".$shortDescription;?>
+			</div>
+			<?php 
+			}elseif($styleOptinForm == 4){
+			?>
+			<div style="margin:0 auto">
+				<img src="<?php echo get_template_directory_uri(); ?>/images/banner4.png">
+				<?php echo $description."<br/>".$shortDescription;?>
+			</div>
+			<?php 
+			}elseif($styleOptinForm == 5){
+			?>
+			<div style="margin:0 auto">
+				<img src="<?php echo get_template_directory_uri(); ?>/images/banner5.png">
+				<?php echo $description."<br/>".$shortDescription;?>
+			</div>
+			<?php 
+			}
+			?>
 		</div>
 		</div>
 	</div>
