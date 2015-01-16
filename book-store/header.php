@@ -161,11 +161,13 @@ jQuery(document).ready(function($) {
 		<ul class="nav navbar-nav navbar-right inline-block-li">
 			<li class=""><?php get_search_form(); ?><a href="#">&nbsp;&nbsp;</a></li>
 			<li class="login-btn"><a href="<?php get_site_url(); ?>/my-account/">&nbsp;&nbsp;</a></li>
+			<?php if (!(is_cart() || is_checkout())) :?>
 			<li class="relative shopping-cart relative" ><a href="#">&nbsp;&nbsp;</a>
 			<span id="cart_status_label"><?php
 				global $woocommerce;
 				echo ($woocommerce->cart->cart_contents_count > 0) ? $woocommerce->cart->cart_contents_count : 0;
 			?></span>
+			
 				 <div>
 			 <?php if(cp_woocommerce_enabled()) {
 						global $woocommerce;
@@ -176,7 +178,7 @@ jQuery(document).ready(function($) {
 			?>
 				</div>
 			</li>
-			
+			<?php endif;?>
 		</ul>
 		<?php //get_search_form();?>
 		
