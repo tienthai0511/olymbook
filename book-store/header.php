@@ -152,9 +152,9 @@
 
         <section class="span3 e-commerce-list">
 		<ul class="nav navbar-nav navbar-right inline-block-li">
-			<li class=""><?php get_search_form(); ?><a href="#">ss</a></li>
-			<li class="login-btn"><a href="#">ss</a></li>
-			<li class="relative shopping-cart"><a href="#">ss</a>
+			<li class=""><?php get_search_form(); ?><a href="#">&nbsp;&nbsp;</a></li>
+			<li class="login-btn"><a href="<?php get_site_url(); ?>/my-account/">&nbsp;&nbsp;</a></li>
+			<li class="relative shopping-cart"><a href="#">&nbsp;&nbsp;</a>
 			
 				 <div>
 						 <?php if(cp_woocommerce_enabled()) {
