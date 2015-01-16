@@ -1242,3 +1242,26 @@ max-width:1075px;
 .features-books .star-rating{
 	bottom: 24px;
 }
+.cartplus-contents {
+	display:none;
+	content:'';
+}
+#cart_status_label{
+	position:absolute;
+	top: -5px;
+	background: #FF6C25;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 11px;
+	padding: 2px;
+	height: 14px;
+	min-height: 14px;
+	line-height: 9px;
+}
+div.subtotal-buttons{
+	text-align:center;
+}
+.subtotal-buttons .cartplus-buttons  a.button{
+	color:#000 !important;
+	background:#D2D1CF;
+}

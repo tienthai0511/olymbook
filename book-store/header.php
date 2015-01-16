@@ -149,20 +149,31 @@
             <?php // wp_nav_menu( array( 'theme_location' => 'header_menu' ) );?>
           </div>
         </section>
-
+<script>
+jQuery(document).ready(function($) {
+    $('body').on('added_to_cart',function(e,data) {
+		if(data['hw_cart_status']) 
+		$('#cart_status_label').html(data['hw_cart_status']);
+	});
+});
+</script>
         <section class="span3 e-commerce-list">
 		<ul class="nav navbar-nav navbar-right inline-block-li">
 			<li class=""><?php get_search_form(); ?><a href="#">&nbsp;&nbsp;</a></li>
 			<li class="login-btn"><a href="<?php get_site_url(); ?>/my-account/">&nbsp;&nbsp;</a></li>
-			<li class="relative shopping-cart"><a href="#">&nbsp;&nbsp;</a>
-			
+			<li class="relative shopping-cart relative" ><a href="#">&nbsp;&nbsp;</a>
+			<span id="cart_status_label"><?php
+				global $woocommerce;
+				echo ($woocommerce->cart->cart_contents_count > 0) ? $woocommerce->cart->cart_contents_count : 0;
+			?></span>
 				 <div>
-						 <?php if(cp_woocommerce_enabled()) {
-							global $woocommerce;
-								if(cp_woocommerce_enabled()) {
-									echo cp_woocommerce_cart_dropdown();
-								}
-					} ?>
+			 <?php if(cp_woocommerce_enabled()) {
+						global $woocommerce;
+						if(cp_woocommerce_enabled()) {
+							echo cp_woocommerce_cart_dropdown();
+						}
+					}
+			?>
 				</div>
 			</li>
 			
