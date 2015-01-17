@@ -39,6 +39,31 @@
 			<div style="margin:0 auto">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/banner1.png">
 				<?php echo $description."<br/>".$shortDescription;?>
+				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
+				<table width="280" cellspacing="0" cellpadding="5" border="0" align="center" background-color="#ffff00">
+					<tbody>
+						<tr>
+							<td width="99"><label for="CustomFields_2_1">First Name*</label></td>
+							<td width="181"><input type="text" name="CustomFields[2]" id="CustomFields_2_1" class="infusion-field-input-container"></td>
+						</tr>
+						<tr>
+							<td><label for="inf_field_FirstName">Your Email*</label></td>
+							<td>
+								<input type="text" name="email" id="email" class="infusion-field-input-container">
+								<input type="hidden" name="format" value="h">
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: center" colspan="2">
+								<input type="image" border="0" value="Start Now!" src="images/popup/start.jpg" name="submit">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p style="text-align: center;">
+				<em style="font-size: 12px">We respect your email privacy. </em>
+					</p>
+				</form>
 			</div>
 			<?php 
 			}elseif($styleOptinForm == 2){
@@ -46,6 +71,31 @@
 			<div style="margin:0 auto">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/banner2.png">
 				<?php echo $description."<br/>".$shortDescription;?>
+				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
+				<table width="280" cellspacing="0" cellpadding="5" border="0" align="center" background-color="#ffff00">
+					<tbody>
+						<tr>
+							<td width="99"><label for="CustomFields_2_1">First Name*</label></td>
+							<td width="181"><input type="text" name="CustomFields[2]" id="CustomFields_2_1" class="infusion-field-input-container"></td>
+						</tr>
+						<tr>
+							<td><label for="inf_field_FirstName">Your Email*</label></td>
+							<td>
+								<input type="text" name="email" id="email" class="infusion-field-input-container">
+								<input type="hidden" name="format" value="h">
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: center" colspan="2">
+								<input type="image" border="0" value="Start Now!" src="images/popup/start.jpg" name="submit">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p style="text-align: center;">
+				<em style="font-size: 12px">We respect your email privacy. </em>
+					</p>
+				</form>
 			</div>
 			<?php 
 			}elseif($styleOptinForm == 3){
@@ -53,6 +103,31 @@
 			<div style="margin:0 auto">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/banner3.png">
 				<?php echo $description."<br/>".$shortDescription;?>
+				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
+				<table width="280" cellspacing="0" cellpadding="5" border="0" align="center" background-color="#ffff00">
+					<tbody>
+						<tr>
+							<td width="99"><label for="CustomFields_2_1">First Name*</label></td>
+							<td width="181"><input type="text" name="CustomFields[2]" id="CustomFields_2_1" class="infusion-field-input-container"></td>
+						</tr>
+						<tr>
+							<td><label for="inf_field_FirstName">Your Email*</label></td>
+							<td>
+								<input type="text" name="email" id="email" class="infusion-field-input-container">
+								<input type="hidden" name="format" value="h">
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: center" colspan="2">
+								<input type="image" border="0" value="Start Now!" src="images/popup/start.jpg" name="submit">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p style="text-align: center;">
+				<em style="font-size: 12px">We respect your email privacy. </em>
+					</p>
+				</form>
 			</div>
 			<?php 
 			}elseif($styleOptinForm == 4){
@@ -60,6 +135,31 @@
 			<div style="margin:0 auto">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/banner4.png">
 				<?php echo $description."<br/>".$shortDescription;?>
+				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
+				<table width="280" cellspacing="0" cellpadding="5" border="0" align="center" background-color="#ffff00">
+					<tbody>
+						<tr>
+							<td width="99"><label for="CustomFields_2_1">First Name*</label></td>
+							<td width="181"><input type="text" name="CustomFields[2]" id="CustomFields_2_1" class="infusion-field-input-container"></td>
+						</tr>
+						<tr>
+							<td><label for="inf_field_FirstName">Your Email*</label></td>
+							<td>
+								<input type="text" name="email" id="email" class="infusion-field-input-container">
+								<input type="hidden" name="format" value="h">
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: center" colspan="2">
+								<input type="image" border="0" value="Start Now!" src="images/popup/start.jpg" name="submit">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p style="text-align: center;">
+				<em style="font-size: 12px">We respect your email privacy. </em>
+					</p>
+				</form>
 			</div>
 			<?php 
 			}elseif($styleOptinForm == 5){
@@ -67,6 +167,31 @@
 			<div style="margin:0 auto">
 				<img src="<?php echo get_template_directory_uri(); ?>/images/banner5.png">
 				<?php echo $description."<br/>".$shortDescription;?>
+				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
+				<table width="280" cellspacing="0" cellpadding="5" border="0" align="center" background-color="#ffff00">
+					<tbody>
+						<tr>
+							<td width="99"><label for="CustomFields_2_1">First Name*</label></td>
+							<td width="181"><input type="text" name="CustomFields[2]" id="CustomFields_2_1" class="infusion-field-input-container"></td>
+						</tr>
+						<tr>
+							<td><label for="inf_field_FirstName">Your Email*</label></td>
+							<td>
+								<input type="text" name="email" id="email" class="infusion-field-input-container">
+								<input type="hidden" name="format" value="h">
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: center" colspan="2">
+								<input type="image" border="0" value="Start Now!" src="images/popup/start.jpg" name="submit">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p style="text-align: center;">
+				<em style="font-size: 12px">We respect your email privacy. </em>
+					</p>
+				</form>
 			</div>
 			<?php 
 			}
