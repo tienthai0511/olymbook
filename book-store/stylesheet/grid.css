@@ -1293,7 +1293,7 @@ div.subtotal-buttons{
 	bottom: 0;
 	display: inline;
 	right: 6%;
-	height: 42px;
+	/*height: 42px;*/
 	margin: 0;
 	width:665px;
 }
