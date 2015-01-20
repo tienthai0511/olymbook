@@ -809,7 +809,7 @@ footer{
 }
 body{
 	border-top:none ;
-	font-family:"SFUHelvetica" !important;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif!important;
 	background:#C6C8CA;
 }
 .carousel-control{
@@ -1290,7 +1290,7 @@ div.subtotal-buttons{
 }
 /*form opt-in*/
 .infusion-form{
-	bottom: 0;
+	bottom: 17px;
 	display: inline;
 	right: 6%;
 	/*height: 42px;*/
@@ -1343,4 +1343,10 @@ div.subtotal-buttons{
 }
 .header-block .cart-btn2{
 	left:0;
+}
+.img-optin-bg{
+	max-height: 185px;
+	max-width: 350px;
+	width: 100%;
+	height: 185px;
 }

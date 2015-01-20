@@ -28,15 +28,15 @@ function my_optin_form_options() {
  * GET form Optin
  */
 function optinforms_create_my_form() {
-	global $styleOptinForm;
+	global $styleOptinForm,$description, $shortDescription;
 	$urlImg = get_template_directory_uri();
 	if ($styleOptinForm == 1) {
 		return "" . '
-				<img src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
+				<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
 				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
-					<div id="optinforms-form1" >
-					<p id="optinforms-form1-title" style="font-family:Damion; font-size:36px; line-height:36px; color:#eb432c">Get Free Email Updates!</p>
-					<p id="optinforms-form1-subtitle" style="font-family:Arial; font-size:16px; line-height:16px; color:#000000">Signup now and receive an email once I publish new content.</p>
+					<div id="optinforms-form1">
+					<div class="description-opt">'.$description.'</div>
+					<div class="short-desciprtion-opt">'.$shortDescription.'</div>
 					<div id="optinforms-form1-name-field-container">
 						<input type="text" id="optinforms-form1-name-field" name="FNAME" placeholder="Enter Your Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666"></div>
 					<!--optinforms-form1-name-field-container-->
@@ -48,35 +48,78 @@ function optinforms_create_my_form() {
 					</div>
 					<!--optinforms-form1-button-container-->
 					<div class="clear"></div>
-						<p id="optinforms-form1-disclaimer" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:12px; color:#666666">I will never give away, trade or sell your email address. You can unsubscribe at any time.</p>
+						
 					</div>
 			</form>';
 	}
 	elseif ($styleOptinForm == 2) {
 		return "" . '
-			<img src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
+			<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
 			<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
 				<div id="optinforms-form2-container">
-						<div id="optinforms-form2" style="background: #266d7c;">
-							<div id="optinforms-form2-title-container">
-								<div id="optinforms-form2-title" style="font-family:Pacifico; font-size:28px; line-height:28px; color:#ffffff">Receive Updates</div><!--optinforms-form2-title-->
-							</div><!--optinforms-form2-title-container-->
-							<div id="optinforms-form2-email-field-container">
-								<input type="text" id="optinforms-form2-email-field" placeholder="Enter Your Email Address" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000;">
-							</div><!--optinforms-form2-email-field-container-->
-							<div id="optinforms-form2-button-container">
-								<input type="button" id="optinforms-form2-button" value="Sign Up" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF; background-color:#49A3FE">
-							</div><!--optinforms-form2-button-container-->
-							<div id="optinforms-form2-disclaimer-container">
-								<p id="optinforms-form2-disclaimer" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height: 11px; color:#ffffff">No spam guarantee.</p>
-							</div><!--optinforms-form2-disclaimer-container-->
-							<div class="clear"></div>
-						</div><!--optinforms-form2-->
-					</div>
+				<div id="optinforms-form2" style="background: #266d7c;background: #266d7c;padding-top: 31px;padding: 31px 0 0 11px;">
+					<div id="optinforms-form2-email-field-container" style="margin-right:4px;">
+						<input type="text" id="optinforms-form2-email-field" placeholder="Nhập tên" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000;margin-right:4px">
+					</div><!--optinforms-form2-email-field-container-->
+					<div id="optinforms-form2-email-field-container">
+						<input type="text" id="optinforms-form2-email-field" placeholder="Nhập Email" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000;">
+					</div><!--optinforms-form2-email-field-container-->
+					<div id="optinforms-form2-button-container">
+						<input type="button" id="optinforms-form2-button" value="Sign Up" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF; background-color:#49A3FE">
+					</div><!--optinforms-form2-button-container-->
+					<div style="clear:both"></div>
+					<div id="" style="color: #fff;font-size: 19px;padding: 10px;">
+						'.$shortDescription.'
+					</div><!--optinforms-form2-title-container-->
+					<div class="clear"></div>
+				</div><!--optinforms-form2-->
+					</form>
+						';
+	} else if ($styleOptinForm == 3){
+		return ''.'
+				<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
+				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
+				<div id="optinforms-form3-container">
+                            <div id="optinforms-form3">
+                                <div id="optinforms-form3-inside" style="background: #FFFFFF;">
+                                    <div id="optinforms-form3-container-left">
+                                        <div id="optinforms-form3-title" style="font-family:Droid Serif; font-size:26px; line-height:28px; color:#505050; ">'.$shortDescription.'</div><!--optinforms-form3-title-->
+                                        <div id="optinforms-form3-subtitle" style="font-family:Arial; font-size:16px; color:#000000; ">'.$description.'</div><!--optinforms-form3-subtitle-->
+                                    </div><!--optinforms-form3-container-left-->
+                                    <div id="optinforms-form3-container-right">
+                                        <input type="text" id="optinforms-form3-name-field" placeholder="Your Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666;margin-bottom:4px !important; ">
+                                        <input type="text" id="optinforms-form3-email-field" placeholder="Your Email Address" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666;margin-bottom:4px !important;">
+                                        <input type="button" id="optinforms-form3-button" value="Sign Up Today!" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#FFFFFF; background-color:#49A3FE">
+                                    </div><!--optinforms-form3-container-right-->
+                                    <div class="clear"></div>
+                                </div><!--optinforms-form3-inside-->
+                            </div><!--optinforms-form3-->
+                        </div>
 					</form>
 						';
 	}
-	elseif ($styleOptinForm == 3){
+	elseif ($styleOptinForm == 5){
+		return ''. '
+		<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
+			<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
+		<div id="optinforms-form5-container">
+                            <div id="optinforms-form5" style="background: #333333;">
+                                <div id="optinforms-form5-container-left">
+                                    <input type="text" id="optinforms-form5-name-field" placeholder="Enter Your Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000;margin-bottom:4px !important; ">
+                                    <input type="text" id="optinforms-form5-email-field" placeholder="Enter Your Email" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000;margin-bottom:4px !important;">
+                                    <input type="button" id="optinforms-form5-button" value="SUBSCRIBE FOR FREE" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#fb6a13">
+                                </div><!--optinforms-form5-container-left-->
+                                <div id="optinforms-form5-container-right">
+									<div id="optinforms-form5-title" style="font-family:News Cycle; font-size:24px; line-height:24px; color:#fb6a13; ">'.$shortDescription.'</div><!--optinforms-form5-title-->
+                                    <div id="optinforms-form5-subtitle" style="font-family:Georgia; font-size:16px; color:#cccccc; ">'.$description.'</div><!--optinforms-form5-subtitle-->
+                                    <!--<div id="optinforms-form5-disclaimer" style="font-family:Georgia, Times New Roman, Times, serif; font-size:14px; color:#727272;  ">We hate spam. Your email address will not be sold or shared with anyone else.</div>--><!--optinforms-form5-disclaimer-->
+                                </div><!--optinforms-form5-container-right-->
+                                <div class="clear"></div>
+                            </div><!--optinforms-form5-->
+                        </div>
+						</form>
+						';
+						
 	}
  }
  //add shortcode
