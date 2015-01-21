@@ -5,6 +5,7 @@
 
 	 */	
 ?>
+
 		<?php 
           $cp_show_footer = get_option(THEME_NAME_S.'_show_footer','enable');
 		  $cp_top_footer = get_option(THEME_NAME_S.'_top_footer','enable');

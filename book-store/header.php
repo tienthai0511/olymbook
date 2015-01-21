@@ -91,7 +91,7 @@
 <div class="wrapper">
   <!-- Start Main Header -->
   <!-- Start Top Nav Bar -->
-  <section class="top-nav-bar">
+  <section class="top-nav-bar fixed">
     <section class="container-fluid container">
       <section class="row-fluid header-block">
 		    <section class="span3 header-logo">
@@ -185,9 +185,9 @@ jQuery(document).ready(function($) {
         </section>
       </section>
     </section>
+	<div class="row line-top">
   </section>
   <?php echo do_shortcode('[product_category category="appliances"]');?>
-  <section><div class="row line-top"></div></section>
   <!-- End Top Nav Bar -->
   <!--<header id="main-header">
     <section class="container-fluid container">

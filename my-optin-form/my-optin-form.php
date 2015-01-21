@@ -34,22 +34,16 @@ function optinforms_create_my_form() {
 		return "" . '
 				<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
 				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
-					<div id="optinforms-form1">
-					<div class="description-opt">'.$description.'</div>
-					<div class="short-desciprtion-opt">'.$shortDescription.'</div>
-					<div id="optinforms-form1-name-field-container">
-						<input type="text" id="optinforms-form1-name-field" name="FNAME" placeholder="Enter Your Name" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666"></div>
-					<!--optinforms-form1-name-field-container-->
-					<div id="optinforms-form1-email-field-container">
-						<input type="text" id="optinforms-form1-email-field" name="EMAIL" placeholder="Enter Your Email Address" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666"></div>
-					<!--optinforms-form1-email-field-container-->
-					<div id="optinforms-form1-button-container">
-						<input type="submit" name="submit" id="optinforms-form1-button" value="SIGN UP" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF; background-color:#20A64C">
-					</div>
-					<!--optinforms-form1-button-container-->
-					<div class="clear"></div>
-						
-					</div>
+				<div class="contain-optin">
+					<div class="descripttion-opt">'.$description.'</div>
+					<div class="shortdesciption-opt">'.$shortDescription.'</div>
+					<ul class="ul-opt-in">
+					
+					<li><input type="text" name="email" id="email" class="infusion-field-input-container" placeholder="Tên bạn"></li>
+					<li><input type="text" name="email" id="email" class="infusion-field-input-container" placeholder="Email của bạn"></li>
+					<li><input type="submit" border="0" value="đăng ký" class="submit-opt-in"  name="submit"></li>
+				</ul><!--/*ul-opt-in-->
+				</div>
 			</form>';
 	}
 	elseif ($styleOptinForm == 2) {

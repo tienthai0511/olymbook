@@ -350,6 +350,18 @@ background: none repeat scroll 0 0 #F2F2F2;
 	#bookstore .left-store{
 		height:355px;
 	}
+	.fixed,.fixed-line-top {
+		position: fixed;
+		top: 0px;
+		width:100%;
+		z-index:111;
+	}
+	.wrapper{
+		padding-top: 48px;
+	}
+	.top-nav-bar .container-fluid{
+		height:75px;
+	}
 }
 .searchform #s {
 background-color: transparent;
@@ -572,6 +584,13 @@ border-top:1px solid #DCDDDF;
 	}
 	#bookstore .left-store{
 		height:auto;
+	}
+	.ul-opt-in li input{
+		width: 100% !important;
+		max-width: 100%;
+	}
+	.ul-opt-in li:nth-child(2){
+		margin:0px !Important; 
 	}
 }
 
@@ -1288,53 +1307,7 @@ div.subtotal-buttons{
 	color:#000 !important;
 	background:#D2D1CF;
 }
-/*form opt-in*/
-.infusion-form{
-	bottom: 17px;
-	display: inline;
-	right: 6%;
-	/*height: 42px;*/
-	margin: 0;
-	width:665px;
-}
 
-.ul-opt-in li:nth-child(1){
-	padding-top:6px;
-}
-.ul-opt-in li{
-}
-.submit-opt-in{
-	text-transform: uppercase;
-	background: #818286!important;
-	font-weight: normal;
-	font-size: 18px;
-	border-radius: 0 !important;
-	max-width: 100px;
-	height: 35px;
-	font-family: "SFUHelvetica" !important;
-	line-height: 1;
-}
-.infusion-field-input-container{
-	margin: 0;
-	height: 35px;
-	padding: 5px;
-	max-width: 350px;
-	width: 350px;
-	border:2px solid #818286!important;
-}
-.title-opt-in{
-	max-height: 35px;
-	margin: 0;
-	color: #fff;
-	font-style: italic;
-	font-size: 12px;
-	margin-right: 22px;
-	line-height:1;
-}
-.opt-in-content{
-	position:relative;
-	margin:0 !important;
-}
 .cart-contents-toggle .cart-btn2{
 	max-width:27px;
 }
