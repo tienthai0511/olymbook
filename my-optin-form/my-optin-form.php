@@ -10,6 +10,7 @@ Author URI: https://www.facebook.com/lonelyghost.the
 ob_start();
 // ---------- admin configuration page ----------
 add_action( 'admin_menu', 'my_plugin_menu' );
+$imageOptinForm = get_option('imageOptinForm'); 
 $styleOptinForm = get_option('styleOptinForm');
 $description= get_option('description');
 $shortDescription= get_option('shortDescription');
@@ -28,11 +29,16 @@ function my_optin_form_options() {
  * GET form Optin
  */
 function optinforms_create_my_form() {
-	global $styleOptinForm,$description, $shortDescription;
-	$urlImg = get_template_directory_uri();
+	global $styleOptinForm;
+	return myFormHTML($styleOptinForm);
+}
+
+function myFormHTML($styleOptinForm){
+	global $description, $shortDescription,$imageOptinForm;
+	$urlImg = get_site_url();
 	if ($styleOptinForm == 1) {
 		return "" . '
-				<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
+				<img class="img-optin-bg" src="' . $urlImg. "/wp-admin/" .$imageOptinForm . '">
 				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
 				<div class="contain-optin">
 					<div class="descripttion-opt">'.$description.'</div>
@@ -115,7 +121,7 @@ function optinforms_create_my_form() {
 						';
 						
 	}
- }
+}
  //add shortcode
  add_shortcode( 'optinmyform', 'optinforms_create_my_form' );
 
