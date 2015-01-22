@@ -1,48 +1,25 @@
 <?php
 /*
 Description: This page is in wp admin control pannel to config parameter using to integration with zopim system 
-Author: TânTV 
+Author: Trung.Ngo 
 */
 if($_POST['ispost_hidden'] == 'Y') {  
 	//Form data sent  
-	if(isset($_FILES['myFormImageImage']['name']) && $_FILES['myFormImageImage']['name'] != "" && ($_FILES['myFormImageImage']['type'] == "image/jpeg" || $_FILES['myFormImageImage']['type'] == "image/png" || $_FILES['myFormImageImage']['type'] == "image/gif")){
-		// file hợp lệ, tiến hành upload
-		$path = "images/"; // file lưu vào thư mục data
-		if (!file_exists($path)) {
-		    mkdir($path, 0777, true);
-		}
-		
-	    $tmp_name = $_FILES['myFormImageImage']['tmp_name'];
-	    $name = $_FILES['myFormImageImage']['name'];
-	    move_uploaded_file($tmp_name,$path.$name);
-	     
-	    $imageOptinForm = $path.$name;  
-		update_option('imageOptinForm', $imageOptinForm);  
-	}else{
-		echo "Kiểu file không hợp lệ";
-	}
-	if(isset($_POST['styleOptinForm']) && $_POST['styleOptinForm'] != NULL){
-		$styleOptinForm = $_POST['styleOptinForm'];  
-		update_option('styleOptinForm', $styleOptinForm);   
-	}
+	$styleOptinForm = $_POST['styleOptinForm'];  
+	update_option('styleOptinForm', $styleOptinForm);   
 
-	if(isset($_POST['description']) && $_POST['description'] != NULL){
-		$description = $_POST['description'];
-		update_option('description', $description);
-	}
-	
-	if(isset($_POST['shortDescription']) && $_POST['shortDescription'] != NULL){
-		$shortDescription = $_POST['shortDescription'];
-		update_option('shortDescription', $shortDescription);
-	}
+	$description = $_POST['description'];
+	update_option('description', $description);
+
+	$shortDescription = $_POST['shortDescription'];
+	update_option('shortDescription', $shortDescription);
 ?>
 <div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>  
 <?php
 }
 else {
 	//Normal page display 
-	$imageOptinForm = get_option('imageOptinForm'); 
-	$styleOptinForm = get_option('styleOptinForm'); 
+	$styleOptinForm= get_option('styleOptinForm'); 
 	$description= get_option('description');
 	$shortDescription= get_option('shortDescription');
 }
@@ -72,12 +49,12 @@ jQuery( document ).ready( function() {
 </style>
 <div class="wrap">  
     <?php    echo "<h2>" . __( 'My Opt-in Form Option', 'myoptinform_trdom' ) . "</h2>"; ?>  
-    <form name="my_product" enctype="multipart/form-data" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">   
+    <form name="my_product" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">   
     	<input name="ispost_hidden" type="hidden" value="Y"/>
         <?php    echo "<h4>" . __( 'My Opt-in Form Option', 'myoptinform_trdom' ) . "</h4>"; ?> 
         <table>
         	<tr>
-        		<td><?php _e("My Optin Form: " ); ?></td>
+        		<td><?php _e("Zopim API Token: " ); ?></td>
         		<td>
         		<select id="styleoptinForm" name="styleOptinForm"">
         			<option <?php if($styleOptinForm == 1) echo "selected"; ?> value="1">Style 1</option>
@@ -91,26 +68,22 @@ jQuery( document ).ready( function() {
 	        		<div class="span12" style="background:#404042;">
 						<div id="style1" style="margin:0 auto;<?php if($styleOptinForm == 1) echo "display: block";?>">
 							<!--Style 1-->
-							<?php echo myFormHTML($styleOptinForm);?>
+							<?php include( plugin_dir_path( __FILE__ ) . 'includes/preview-form-1.php'); ?>
 						</div>
 						<div id="style2" style="margin:0 auto;<?php if($styleOptinForm == 2) echo "display: block";?>">
-							<?php echo myFormHTML($styleOptinForm);?>
+							<?php include( plugin_dir_path( __FILE__ ) . 'includes/preview-form-2.php'); ?>
 						</div>
 						<div id="style3" style="margin:0 auto;<?php if($styleOptinForm == 3) echo "display: block";?>">
-							<?php echo myFormHTML($styleOptinForm);?>
+							<?php include( plugin_dir_path( __FILE__ ) . 'includes/preview-form-3.php'); ?>
 						</div>
 						<div id="style4" style="margin:0 auto;<?php if($styleOptinForm == 4) echo "display: block";?>">
-							<?php echo myFormHTML($styleOptinForm);?>
+							<?php include( plugin_dir_path( __FILE__ ) . 'includes/preview-form-4.php'); ?>
 						</div>
 						<div id="style5" style="margin:0 auto;<?php if($styleOptinForm == 5) echo "display: block";?>">
-							<?php echo myFormHTML($styleOptinForm);?>
+							<?php include( plugin_dir_path( __FILE__ ) . 'includes/preview-form-5.php'); ?>
 						</div>
 					</div>
 				</td>
-        	</tr>
-        	<tr>
-        		<td><?php _e("My Optin Image: " ); ?></td>
-        		<td colspan="2"><input id="myFormImageImage" type="file" name="myFormImageImage" value="<?php echo $imageOptinForm;?>"></td>
         	</tr>
         	<tr>
         		<td><?php _e("Description: " ); ?></td>

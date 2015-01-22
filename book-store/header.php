@@ -235,4 +235,18 @@ jQuery(document).ready(function($) {
                     <?php }else{ ?>
                     <style >#content-holder { margin: 60px 0; }</style>
                    <?php } ?>              
-       
+    <script>
+		jQuery(document).ready(function($){
+			$(window).scroll(function () {
+			if ($(this).scrollTop() > 50) {
+				$('.top-nav-bar').addClass('height-menu');
+				$('.container-fluid').addClass('height-menu');
+				$('.line-top').addClass('line-top-scroll');
+			} else {
+				$('.top-nav-bar').removeClass('height-menu');
+				$('.container-fluid').removeClass('height-menu');
+				$('.line-top').removeClass('line-top-scroll');
+			}
+		});
+		});
+	</script>

@@ -1,0 +1,58 @@
+/*form opt-in*/
+.infusion-form{
+	bottom: 17px;
+	display: inline;
+	right: 6%;
+	/*height: 42px;*/
+	margin: 0;
+	width:665px;
+}
+
+.ul-opt-in li:nth-child(2){
+	margin:0 2px;
+}
+.ul-opt-in li{
+	display:inline-block;
+}
+
+.opt-in-content{
+	position:relative;
+	margin:0 !important;
+}
+.submit-opt-in{
+	text-transform: uppercase;
+	background: #818286!important;
+	font-weight: normal;
+	font-size: 18px;
+	border-radius: 0 !important;
+	max-width: 100px;
+	height: 35px;
+	font-family: "SFUHelvetica" !important;
+	line-height: 1;
+}
+.infusion-field-input-container{
+	margin: 0;
+	height: 35px;
+	padding: 5px;
+	max-width: 272px;
+	width:  272px;
+	border:2px solid #818286!important;
+}
+.title-opt-in{
+	max-height: 35px;
+	margin: 0;
+	color: #fff;
+	font-style: italic;
+	font-size: 12px;
+	margin-right: 22px;
+	line-height:1;
+}
+.shortdesciption-opt{
+	text-align: center;
+	color: #fff;
+}
+.descripttion-opt{
+	color: #fff;
+	font-size: 19px;
+	padding: 4px 0px 0 19px;
+}
