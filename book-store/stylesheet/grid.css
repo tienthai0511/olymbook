@@ -668,6 +668,7 @@ border-top:1px solid #DCDDDF;
 .nav-view-more,.content-block-bot{
 	background: #DBDCDE;
 	height:75px;
+	line-height:75px;
 }
 @media screen and (max-width: 691px) {
 	.block-new .block-new-item-sub{
