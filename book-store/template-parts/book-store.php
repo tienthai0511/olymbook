@@ -47,7 +47,9 @@
 			<!-- content-->
 			<div class="span4 right-store">
 				<p class="t-tini text-uppercase">Tủ sách</p>
-				<h2 class="title-store text-uppercase text-justify">Tinh hoa lãnh đạo</h2>
+				<h2 class="title-store text-uppercase text-justify">
+				<?php echo $product->post->post_title;?>
+				</h2>
 				<span class="author text-uppercase">John Kenl</span>
 				<div class="content-store-text">
 					<p class="text-justify color-style-1"><?php echo $product->post->post_content;?></p>
