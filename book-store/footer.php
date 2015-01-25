@@ -53,8 +53,9 @@
 						<form class="mt-15">
 							<div class="">
 								<label class="text-normal color-1" for="email">Đăng ký ngay để nhận NewLetter hàng tuần</label>
+								<input type="text" class="text-input-custom" name="name" id="name" placeholder="Tên của bạn" width="200"/><br>
 								<input type="email" class="text-input-custom" name="email" id="email" placeholder="Email của bạn" width="200"/><br>
-								<input class="mt-15 btn-submit-custom" type="submit" value="đăng ký">
+								<input class="btn-submit-custom" type="submit" value="đăng ký">
 							</div>
 						</form>
 					</div>
