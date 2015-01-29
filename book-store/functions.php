@@ -118,6 +118,7 @@ function add_css(){
 	
 	wp_enqueue_style('grid css', get_template_directory_uri() . '/stylesheet/grid.css',false,'','all');
 	wp_enqueue_style('slick css', get_template_directory_uri() . '/stylesheet/slick.css',false,'','all');
+	wp_enqueue_style('cat css', get_template_directory_uri() . '/stylesheet/cat.css',false,'','all');
 	//slide one to one
 	//wp_enqueue_style('carousel css', get_template_directory_uri() . '/stylesheet/carousel.css',false,'','all');
 	//wp_enqueue_style('site style', get_template_directory_uri() . '/css/style-editor.css',false,'','all');

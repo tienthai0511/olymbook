@@ -240,12 +240,12 @@ jQuery(document).ready(function($) {
 			$(window).scroll(function () {
 			if ($(this).scrollTop() > 50) {
 				$('.top-nav-bar').addClass('height-menu');
-				$('.container-fluid').addClass('height-menu');
-				$('.line-top').addClass('line-top-scroll');
+				$('.top-nav-bar .container-fluid').addClass('height-menu');
+				$('.top-nav-bar .line-top').addClass('line-top-scroll');
 			} else {
 				$('.top-nav-bar').removeClass('height-menu');
-				$('.container-fluid').removeClass('height-menu');
-				$('.line-top').removeClass('line-top-scroll');
+				$('.top-nav-bar .container-fluid').removeClass('height-menu');
+				$('.top-nav-bar .line-top').removeClass('line-top-scroll');
 			}
 		});
 		});

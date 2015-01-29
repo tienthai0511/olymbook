@@ -28,12 +28,106 @@ get_header(); ?>
 		}
 		
 	?>
-            
+	<script>
+		jQuery(document).ready(function($){
+			var nav = $('.sort-content'),
+			animateTime = 300,
+			navLink = $('.check-sort-button');
+			autoHeightAnimate(nav, animateTime);
+			navLink.removeClass('close-status').addClass('open-status');
+			$( window ).resize(function() {
+			  autoHeightAnimate(nav, animateTime);
+			});
+			navLink.click(function() {
+				if (nav.height() === 0) {
+					navLink.removeClass('close-status').addClass('open-status');
+					(autoHeightAnimate(nav, animateTime));
+				}
+				else{
+					navLink.removeClass('open-status').addClass('close-status');
+					nav.stop().animate({ height: '0' }, animateTime);
+				}
+			});
+
+			
+			function autoHeightAnimate(element, time) {
+				var curHeight = element.height(), // Get Default Height
+				autoHeight = element.css('height', 'auto').height(); // Get Auto Height
+				element.height(curHeight); // Reset to Default Height
+				element.stop().animate({ height: autoHeight }, parseInt(time)); // Animate to Auto Height
+			}
+		});
+	</script>
+	
+		<div class="row-fluid sort-condition main-content-block mt20">
+			<ul class="left-menu-sort">
+				<li><a href="#">Dòng Sách</a></li>
+				<li><a href="#">Tủ Sách</a></li>
+			</ul><!--./left-menu-sort-->
+			<ul class="right-menu-sort">
+				<li><a href="#">Tất cả</a></li>
+				<li><a href="#">Sách mới</a></li>
+				<li><a href="#">Best Seller</a></li>
+			</ul><!--./left-menu-sort-->
+			<div class="clear"></div>
+			<div class="span12 check-sort-content">
+				<span class="check-sort-button close-status"></span>
+					<div class="sort-content row-fluid">
+						<div class="span8">
+							<div class="filter-sort">
+								<span class="filter-sort-text">Điều kiện lọc</span>
+							</div><!--./div-->
+							<div class="span12 filter-sort-cd mt20 grid-holder features-condition">
+								<ul>
+									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
+								<ul>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="relative right-filter-cs" style="height:1px"><span class="filter-sort-text">Sắp sếp theo</span></div>
+							<select class="select-filter mt20">
+								<option value="">Tăng dần</option>
+								<option value="">Tăng dần</option>
+								<option value="">Tăng dần</option>
+								<option value="">Tăng dần</option>
+							</select>
+						</div>
+						<div class="clear"></div>
+						<div class="line-condition"></div>
+						<div class="tag-filter-cd">
+							<ul>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
+							</ul>
+							<div class="clear"></div>
+						</div><!--./tag-filter-cd-->
+					</div>
+
+				<div class="clear"></div>
+			</div><!--./check-sort-content-->
+			
+		</div><!--./row-fluid sort-condition-->
 		
   <?php
 							
 			echo '<section id="content-holder" class="container-fluid product-archive">';
 			 echo '<section class="container">';
+
 		       echo '<div class="row-fluid '.$sidebar_class.'">';
 		       	   echo "<div class='".$bcontainer_class." cp-page-float-left'>";
 		     			echo "<div class='".$container_class. " page-item columns'> ";
