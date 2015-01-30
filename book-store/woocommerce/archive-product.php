@@ -56,6 +56,20 @@ get_header(); ?>
 				element.height(curHeight); // Reset to Default Height
 				element.stop().animate({ height: autoHeight }, parseInt(time)); // Animate to Auto Height
 			}
+			//click search condition
+			$('.col-filter').each(function(){
+				$(this).bind('click', function(){
+					autoHeightAnimate(nav, animateTime);
+					text = $(this).text();
+					$('.tag-filter-cd ul li:last-child').after('<li class="term-tag"><i class="term-tag-close"></i><span href="#">' + text + '</span></li>');
+				});
+			});
+
+				$(document).on('click','.term-tag-close', function(){
+					autoHeightAnimate(nav, animateTime);
+					$(this).parent().remove();
+					//alert($(this).next().text());
+			});
 		});
 	</script>
 	
@@ -80,11 +94,11 @@ get_header(); ?>
 							<div class="span12 filter-sort-cd mt20 grid-holder features-condition">
 								<ul>
 									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 2</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 3</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 4</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 5</a></li>
+									<li class="span3 col-filter"><a href="#">conditon 6</a></li>
 								<ul>
 							</div>
 						</div>
