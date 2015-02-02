@@ -85,7 +85,7 @@ foreach ($all_categories as $cat) {
         		data-product_sku="1200" 
         		data-product_id="<?php echo $product->id;?>" 
         		rel="nofollow" 
-        		href="/shop/?add-to-cart=<?php echo $product->id;?>"><?php echo number_format($product->get_price()/1000,0,".",".")."K"; ?></a>
+        		href="/shop/?add-to-cart=<?php echo $product->id;?>"><?php echo number_format($product->get_price(),0,".",".")." VNĐ"; ?></a>
         </div>
 			<div class="clearfix"></div>
 			<div class="main-block text-center">
@@ -118,7 +118,7 @@ foreach ($all_categories as $cat) {
 	</div>
 	
 	<div class=" height-75 nav-view-more widh-1075">
-		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Danh mục dòng sách</span></a>
+		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách(10)</span></a>
 		<a class="right arrow-icon text-transparent" href="#">#</a>
 	</div>
 	</div>

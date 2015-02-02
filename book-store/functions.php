@@ -131,4 +131,13 @@ add_action( 'wp_enqueue_scripts', 'add_js_customize' );
 if (!is_admin()){
 add_action('wp_enqueue_scripts','add_css');
 }
-
+//add cart button
+add_filter('add_to_cart_fragments', 'woocommerce_header_add_to_cartplus_fragment_number_ordered');
+function woocommerce_header_add_to_cartplus_fragment_number_ordered( $fragments ) {
+    global $woocommerce;
+    if($woocommerce->cart->cart_contents_count){
+        //$fragments['hw_cart_status']=$woocommerce->cart->cart_contents_count.' '.__('s?n ph?m','hwtheme').' cho '.$woocommerce->cart->get_cart_total();
+		$fragments['hw_cart_status'] = $woocommerce->cart->cart_contents_count;
+    }
+    return $fragments;
+}
