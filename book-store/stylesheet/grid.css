@@ -249,7 +249,7 @@ background: none repeat scroll 0 0 #F2F2F2;
 	text-align:center;
 }
 	.e-commerce-list{
-		float:right;
+		float:right !important;
 	}
 .footer-menu ul li a,.social-contain a{
 	color:#828186;
@@ -410,10 +410,11 @@ top: -8px;
 	outline: 0;
 	width: 230px;
 }
-.navbar .nav  li  a{
+.navbar .nav  li > a{
 	 text-transform: uppercase;
 	 color:#404041;
 	 text-shadow:none !important;
+	 font-weight:bold ;
 }
 .sub-menu li a{
 	padding: 12.5px 18px 12.5px 18px !important;
@@ -1331,4 +1332,7 @@ div.subtotal-buttons{
 	-webkit-transition: height 0.5s;
 	-moz-transition: height 0.5s;
 	transition: height 0.5s;
+}
+.sub-menu li a{
+	font-weight:normal !important;
 }
