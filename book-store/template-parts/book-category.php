@@ -117,10 +117,12 @@ foreach ($all_categories as $cat) {
 	
 	</div>
 	
+	<!--
 	<div class=" height-75 nav-view-more widh-1075">
 		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách(10)</span></a>
 		<a class="right arrow-icon text-transparent" href="#">#</a>
 	</div>
+	-->
 	</div>
 </div>
 

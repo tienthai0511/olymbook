@@ -68,8 +68,8 @@
 		</div>
 		<div class="clearfix"></div>
 	<div class=" height-75 nav-view-more row-fluid relative">
-		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách(10)</span></a>
-		<a class="right arrow-icon text-transparent" href="#">#</a>
+		<a href="/product-category/bookcase/" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách</span></a>
+		<a class="right arrow-icon text-transparent" href="/product-category/bookcase/">#</a>
 	</div>
 </div>
 <?php endif;?>
