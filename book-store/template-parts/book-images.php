@@ -39,7 +39,7 @@
 	</div>
 	<div class="clearfix"></div>
 	<div class=" height-75 nav-view-more widh-1075 content-block-bot">
-		<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Những câu danh ngôn hay nhất(10)</span></a>
+		<a href="<?php echo get_category_link( 20 ); ?>" class="view-more">Xem thêm <span class="text-uppercase">Những câu danh ngôn hay nhất(10)</span></a>
 		<a class="right arrow-icon text-transparent" href="#">#</a>
 	</div>
 	<div class="clearfix"></div>
