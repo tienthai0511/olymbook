@@ -139,6 +139,9 @@
 	min-height: 10px !important;
 	line-height: 1.2;
 }
+.row-fluid .span3.col-filter{
+	width:25%;
+}
 
 .col-filter a{
 	color:#000;
@@ -176,9 +179,15 @@
 	float:left;
 }
 
-@media (max-width: 767px) and (min-width: 481px){
+@media (max-width: 767px){
 	.features-condition .span3 {
-		width: 48% !important;
+		width: 33.33% !important;
 		float: left !important;
+	}
+}
+
+@media (max-width: 480px){
+	.features-condition .span3 {
+		width: 50% !important;
 	}
 }

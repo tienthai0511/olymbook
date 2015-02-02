@@ -2,10 +2,8 @@
 .infusion-form{
 	bottom: 17px;
 	display: inline;
-	right: 6%;
-	/*height: 42px;*/
 	margin: 0;
-	width:665px;
+	width:710px;
 }
 
 .ul-opt-in li:nth-child(2){
@@ -20,14 +18,13 @@
 }
 .submit-opt-in{
 	text-transform: uppercase;
-	background: #818286!important;
+	background: #4A9905!important;
 	font-weight: normal;
 	font-size: 18px;
 	border-radius: 0 !important;
-	max-width: 100px;
 	height: 35px;
-	font-family: "SFUHelvetica" !important;
 	line-height: 1;
+	padding: 2px 26px !important;
 }
 .infusion-field-input-container{
 	margin: 0;
