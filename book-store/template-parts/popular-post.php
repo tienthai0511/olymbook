@@ -1,8 +1,8 @@
 <?php $args = array(
 		'posts_per_page'   => 3,
 		'offset'           => 0,
-		//'category_name'    => 'popular-post',
-		//'orderby'        => 'post_date',//
+		'category_name'    => 'popular-post',
+		'orderby'          => 'post_date',
 		'orderby'          => 'comment_count',
 		'order'            => 'DESC',
 		'post_type'        => 'post',
@@ -98,8 +98,8 @@
 	</div>
 	<div class="clearfix"></div>
 	<div class=" height-75 nav-view-more row-fluid content-block-bot">
-			<a href="#" class="view-more">Xem thêm <span class="text-uppercase">Xem những bài viết nổi bật</span></a>
-			<a class="right arrow-icon text-transparent" href="#">#</a>
+			<a href="<?php echo get_category_link( 1 ); ?>" class="view-more">Xem thêm <span class="text-uppercase">Xem những bài viết nổi bật</span></a>
+			<a class="right arrow-icon text-transparent" href="<?php echo get_category_link( 1 ); ?>">#</a>
 	</div>
 </div>
 <?php endif; 
