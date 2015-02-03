@@ -87,8 +87,11 @@
 </head>      
          
  <body <?php echo body_class(); ?>>
+	   <div class="over-lay">
+	   </div> 
 <!-- Start Main Wrapper -->
 <div class="wrapper">
+
   <!-- Start Main Header -->
   <!-- Start Top Nav Bar -->
   <section class="top-nav-bar fixed">

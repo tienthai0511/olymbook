@@ -141,3 +141,38 @@ function woocommerce_header_add_to_cartplus_fragment_number_ordered( $fragments 
     }
     return $fragments;
 }
+/**
+ * Register ajax file
+ */
+ 
+/**
+ * Add script ajax 
+ */
+function my_script_enqueuer() {
+	wp_register_script("olymbook_search_script", get_template_directory_uri() . '/js/olymbook.js', array('jquery'));
+	wp_localize_script('olymbook_search_script', 'olymbookAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('olymbook_search_script');
+}
+add_action('init', 'my_script_enqueuer');
+/**
+ * Vote for post
+ */
+function olymbook_search() {
+	$postID = $_POST['post_id'];
+	$html = '<div class="span3 slide columns">';
+	$html .= '<div class="product-thumb">
+				<a href="http://www.olymbook.com/product/business-strategy-marketing/woo-logo-2/" title="Woo Logo"><img style="width:200px; height:200px; " src="http://www.olymbook.com/wp-content/uploads/2013/06/hoodie_6_front1-200x200.jpg" alt=""></a></div><div class="clearfix"></div><div class="title-holder title"><a href="http://www.olymbook.com/product/business-strategy-marketing/woo-logo-2/" style="right: 0px;">Woo Logo</a></div><div class="product-meta"><div class="cart-btn2"><a href="/product-category/thinking_personal_development/?add-to-cart=60" rel="nofollow" data-product_id="60" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
+	<div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
+	<span class="price"><span class="amount">₫35</span></span>
+<span class="price"></span></div></div></div>';
+	$response = array( 
+		'sucess' => true, 
+		'html' => $html,
+		'id' => $postID , 
+		);
+	echo json_encode($response);
+	die();
+}
+add_action("wp_ajax_olymbook_search", "olymbook_search");
+add_action("wp_ajax_nopriv_olymbook_search", "olymbook_search");

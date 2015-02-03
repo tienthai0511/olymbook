@@ -30,46 +30,7 @@ get_header(); ?>
 	?>
 	<script>
 		jQuery(document).ready(function($){
-			var nav = $('.sort-content'),
-			animateTime = 300,
-			navLink = $('.check-sort-button');
-			autoHeightAnimate(nav, animateTime);
-			navLink.removeClass('close-status').addClass('open-status');
-			$( window ).resize(function() {
-			  autoHeightAnimate(nav, animateTime);
-			});
-			navLink.click(function() {
-				if (nav.height() === 0) {
-					navLink.removeClass('close-status').addClass('open-status');
-					(autoHeightAnimate(nav, animateTime));
-				}
-				else{
-					navLink.removeClass('open-status').addClass('close-status');
-					nav.stop().animate({ height: '0' }, animateTime);
-				}
-			});
-
-			
-			function autoHeightAnimate(element, time) {
-				var curHeight = element.height(), // Get Default Height
-				autoHeight = element.css('height', 'auto').height(); // Get Auto Height
-				element.height(curHeight); // Reset to Default Height
-				element.stop().animate({ height: autoHeight }, parseInt(time)); // Animate to Auto Height
-			}
-			//click search condition
-			$('.col-filter').each(function(){
-				$(this).bind('click', function(){
-					autoHeightAnimate(nav, animateTime);
-					text = $(this).text();
-					$('.tag-filter-cd ul li:last-child').after('<li class="term-tag"><i class="term-tag-close"></i><span href="#">' + text + '</span></li>');
-				});
-			});
-
-				$(document).on('click','.term-tag-close', function(){
-					autoHeightAnimate(nav, animateTime);
-					$(this).parent().remove();
-					//alert($(this).next().text());
-			});
+		
 		});
 	</script>
 	
@@ -89,7 +50,7 @@ get_header(); ?>
 					<div class="sort-content row-fluid">
 						<div class="span8">
 							<div class="filter-sort">
-								<span class="filter-sort-text">Điều kiện lọc</span>
+								<span class="filter-sort-text test" >Điều kiện lọc</span>
 							</div><!--./div-->
 							<div class="span12 filter-sort-cd mt20 grid-holder features-condition">
 								<ul>
@@ -333,5 +294,7 @@ get_header(); ?>
              
        </section>
        </section>
+	   <!-- Div Overlay-->
+
 <!--content-separator-->
 <?php get_footer(); ?>
