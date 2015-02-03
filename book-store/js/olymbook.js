@@ -30,6 +30,7 @@ jQuery(document).ready( function($) {
 	}
 	
 	function ajaxSearch( product_id ) {
+		autoHeightAnimate(nav, animateTime);
 		jQuery.ajax({
 		type : "post",
 		dataType : "json",
@@ -47,17 +48,16 @@ jQuery(document).ready( function($) {
 	$('.col-filter').each(function(){
 		$(this).bind('click', function(){
 			condition = 11;
-			autoHeightAnimate(nav, animateTime);
 			text = $(this).text();
 			jQuery('.over-lay').show();
-			$('.tag-filter-cd ul li:last-child').after('<li class="term-tag"><i class="term-tag-close"></i><span href="#">' + text + '</span></li>');
+			element_li = '<li class="term-tag"><i class="term-tag-close"></i><span href="#">' + text + '</span></li>';
+			($('.tag-filter-cd ul li').length > 0) ? $('.tag-filter-cd ul li:last-child').after(element_li) : $('.tag-filter-cd ul').html(element_li);
 			ajaxSearch(condition);
 		});
 	});
 
 	// remove condition
 	$(document).on('click','.term-tag-close', function(){
-		autoHeightAnimate(nav, animateTime);
 		$(this).parent().remove();
 			var condition = 1;//jQuery(this).attr("post_id");
 			jQuery('.over-lay').show();
