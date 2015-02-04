@@ -83,12 +83,8 @@
 	background: #DCDDDF;
 }
 
-.sort-content .span8{
+.sort-content .span12{
 	padding:20px 20px 10px 20px;
-}
-
-.sort-content .span4{
-	padding: 20px 20px 0px 0;
 }
 
 .line-condition{
@@ -139,8 +135,8 @@
 	min-height: 10px !important;
 	line-height: 1.2;
 }
-.row-fluid .span3.col-filter{
-	width:25%;
+.row-fluid .span2.col-filter{
+	width:14.27%;
 }
 
 .col-filter a{

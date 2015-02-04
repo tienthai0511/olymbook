@@ -48,45 +48,26 @@ get_header(); ?>
 			<div class="span12 check-sort-content">
 				<span class="check-sort-button close-status"></span>
 					<div class="sort-content row-fluid">
-						<div class="span8">
+						<div class="span12">
 							<div class="filter-sort">
 								<span class="filter-sort-text test" >Điều kiện lọc</span>
 							</div><!--./div-->
-							<div class="span12 filter-sort-cd mt20 grid-holder features-condition">
+							<div class="filter-sort-cd mt20 grid-holder features-condition">
 								<ul>
-									<li class="span3 col-filter"><a href="#">conditon 1</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 2</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 3</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 4</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 5</a></li>
-									<li class="span3 col-filter"><a href="#">conditon 6</a></li>
-								<ul>
+									<li class="span2 col-filter"><a href="#">conditon 1</a></li>
+									<li class="span2 col-filter"><a href="#">conditon 2</a></li>
+									<li class="span2 col-filter"><a href="#">conditon 3</a></li>
+									<li class="span2 col-filter"><a href="#">conditon 4</a></li>
+									<li class="span2 col-filter"><a href="#">conditon 5</a></li>
+									<li class="span2 col-filter"><a href="#">conditon 6</a></li>
+									<li class="span2 col-filter"><a href="#">conditon 6</a></li>
+								</ul>
 							</div>
-						</div>
-						<div class="span4">
-							<div class="relative right-filter-cs" style="height:1px"><span class="filter-sort-text">Sắp sếp theo</span></div>
-							<select class="select-filter mt20">
-								<option value="">Tăng dần</option>
-								<option value="">Tăng dần</option>
-								<option value="">Tăng dần</option>
-								<option value="">Tăng dần</option>
-							</select>
 						</div>
 						<div class="clear"></div>
 						<div class="line-condition"></div>
 						<div class="tag-filter-cd">
 							<ul>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
 								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
 							</ul>
 							<div class="clear"></div>
@@ -170,6 +151,7 @@ get_header(); ?>
 							$counter_product = 0;
 							while( have_posts() ){
 							global $post;
+							global $product;
 							the_post();	
 							
 							if($counter_product % 4 == 0 ){
@@ -210,7 +192,7 @@ get_header(); ?>
 												 }
 												echo '</div>';
 												echo '<div class="clearfix"></div>';
-												echo '<div class="title-holder title"><a href="' . get_permalink() . '">' . $short_title. '</a></div>';
+												echo '<div class="title"><a href="' . get_permalink() . '">' . $short_title. '</a></div>';
 												echo '<div class="product-meta">';
 												echo '<div class="cart-btn2">';
 												do_action( 'woocommerce_after_shop_loop_item' );
