@@ -159,20 +159,90 @@ add_action('init', 'my_script_enqueuer');
  * Vote for post
  */
 function olymbook_search() {
+	$html = $debugString = $searchCondition = "";
 	$postID = $_POST['post_id'];
-	$html = '<div class="span3 slide columns">';
-	$html .= '<div class="product-thumb">
-				<a href="http://www.olymbook.com/product/business-strategy-marketing/woo-logo-2/" title="Woo Logo"><img style="width:200px; height:200px; " src="http://www.olymbook.com/wp-content/uploads/2013/06/hoodie_6_front1-200x200.jpg" alt=""></a></div><div class="clearfix"></div><div class="title-holder title"><a href="http://www.olymbook.com/product/business-strategy-marketing/woo-logo-2/" style="right: 0px;">Woo Logo</a></div><div class="product-meta"><div class="cart-btn2"><a href="/product-category/thinking_personal_development/?add-to-cart=60" rel="nofollow" data-product_id="60" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-	<div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-	<span class="price"><span class="amount">₫35</span></span>
-<span class="price"></span></div></div></div>';
+	$args = array(
+		'posts_per_page' => 100,
+		'product_cat' => 'thinking_personal_development',
+		'post_type' => 'product',
+		'meta_query' => array(
+			'relation' => 'AND',
+		  	array(
+				'key' => '_rating',
+				'value' => array( 1, 5 ),
+				'type' => 'numeric',
+				'compare' => 'BETWEEN'
+		  	),
+			array(
+	  			'relation' => 'OR',
+				array(
+					'key' => '_price',
+					'value' => array( 50000, 400000 ),
+					'type' => 'numeric',
+					'compare' => 'BETWEEN'
+			  	),
+			  	array(
+					'key' => '_sale_price',
+					'value' => array( 50000, 400000 ),
+					'type' => 'numeric',
+					'compare' => 'BETWEEN'
+			  	),
+		  	),
+		 ),
+	);
+	
+	$loop = new WP_Query( $args );
+	$i = 0;
+	if (($loop->have_posts())) :
+	while ( $loop->have_posts() ) : $loop->the_post(); global $product;
+		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
+		$debugString .= $product->get_sale_price(). "/n".$product->get_regular_price()."/n".json_encode($product)."/n"."/n"."/n";
+		if ($product->get_price() != NULL) 
+			$poductPrice = number_format($product->get_price(),0,".",".")." VNĐ";
+		else 
+			$poductPrice = "";
+		$html .= '<div class="span3 slide columns">';
+		$html .= '    <span class="onsale"><span class="saletext">Sale!</span></span>';
+		$html .= '    <div class="product-thumb">';
+		$html .= '        <a title="'.$product->post->post_title.'" href="'.get_permalink( $loop->post->ID ).'"><img alt="" src="'.$image[0].'" style="width:250px; height:250px; ">';
+		$html .= '        </a>';
+		$html .= '    </div>';
+		$html .= '    <div class="clearfix"></div>';
+		$html .= '    <div class="title-holder title">';
+		$html .= '        <a href="'.get_permalink( $loop->post->ID ).'" style="right: 0px;"></a>';
+		$html .= '    </div>';
+		$html .= '    <div class="product-meta">';
+		$html .= '        <div class="cart-btn2"><a class="button add_to_cart_button product_type_simple" data-quantity="1" data-product_sku="" data-product_id="'.$product->id.'" rel="nofollow" href="/product-category/add-to-card/?add-to-cart='.$product->id.'">Add to cart</a>';
+		$html .= '            <span class="price">'.$poductPrice;
+		$html .= '            </span>';
+		$html .= '        </div>';
+		$html .= '    </div>';
+		$html .= '</div>';
+	$i++;
+	endwhile;
+	endif;
+	
 	$response = array( 
 		'sucess' => true, 
 		'html' => $html,
-		'id' => $postID , 
-		);
+		'id' => $postID ,
+		'debugString' => $debugString,
+		'searchCondition' => $searchCondition,
+	);
 	echo json_encode($response);
 	die();
 }
+
 add_action("wp_ajax_olymbook_search", "olymbook_search");
 add_action("wp_ajax_nopriv_olymbook_search", "olymbook_search");
+
+add_action('shutdown', 'sql_logger');
+function sql_logger() {
+    global $wpdb;
+    $log_file = fopen(get_template_directory().'/sql.log', 'a');
+    fwrite($log_file, "//////////////////////////////////////////\n\n" . date("F j, Y, g:i:sa" )."\n");
+    foreach($wpdb->queries as $q) {
+        fwrite($log_file, $q[0] . " - ($q[1] s)" . "\n\n");
+    }
+    fclose($log_file);
+}

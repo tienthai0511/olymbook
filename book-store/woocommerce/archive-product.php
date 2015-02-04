@@ -1,7 +1,7 @@
 <?php 
 	/*
 	 * This file is used to generate WordPress standard archive/category pages.
-	  * @author     CrunchPress
+	  * @author     TânTV
       * @package 	WooCommerce/Templates
       * @version     2.0.0
  */	

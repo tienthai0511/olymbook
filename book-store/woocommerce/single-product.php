@@ -30,8 +30,29 @@ get_header('shop'); ?>
         </div>
      
         <div class="page-outer">
-		<?php  while ( have_posts() ) : the_post(); ?>
-
+		<?php  while ( have_posts() ) : the_post();
+			$count = $wpdb->get_var("
+			    SELECT COUNT(meta_value) FROM $wpdb->commentmeta
+			    LEFT JOIN $wpdb->comments ON $wpdb->commentmeta.comment_id = $wpdb->comments.comment_ID
+			    WHERE meta_key = 'rating'
+			    AND comment_post_ID = ".get_the_ID()."
+			    AND comment_approved = '1'
+			    AND meta_value > 0
+			");
+			
+			$rating = $wpdb->get_var("
+			    SELECT SUM(meta_value) FROM $wpdb->commentmeta
+			    LEFT JOIN $wpdb->comments ON $wpdb->commentmeta.comment_id = $wpdb->comments.comment_ID
+			    WHERE meta_key = 'rating'
+			    AND comment_post_ID = ".get_the_ID()."
+			    AND comment_approved = '1'
+			");
+			if ( $count > 0 ) {
+		    	$average = number_format($rating / $count, 2);
+		    	add_post_meta( get_the_ID(), '_rating', $average, true ) || update_post_meta( get_the_ID(), '_rating', $average );
+		    }
+		?>
+			
 			<?php woocommerce_get_template_part( 'content', 'single-product' ); ?>
 
 		<?php endwhile; // end of the loop. ?>

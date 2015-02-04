@@ -39,6 +39,7 @@ jQuery(document).ready( function($) {
 			if (response.sucess == true) {
 				jQuery('.over-lay').hide();
 				jQuery('.grid-holder.features-books').html(response.html);
+				console.log(response.debugString);
 			} 
 		}
 	});
