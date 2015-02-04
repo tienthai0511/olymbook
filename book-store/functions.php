@@ -184,3 +184,12 @@ function price_replace_element($price){
 	return $price;
 }
 add_filter( 'woocommerce_get_price_html', 'price_replace_element', 100, 2 );
+
+//add total review to star 
+function custom_woocommerce_after_shop_loop_titles()
+{
+	global $product;
+	if ($product->get_rating_count() > 0)
+		echo '<label class="total_review">(' . $product->get_rating_count() . ' '. __('nhận xét', 'book-store').')</label>';
+}
+add_action( 'woocommerce_after_shop_loop_item_title', 'custom_woocommerce_after_shop_loop_titles');

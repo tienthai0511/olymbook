@@ -151,6 +151,7 @@ get_header(); ?>
 							$counter_product = 0;
 							while( have_posts() ){
 							global $post;
+							global $product;
 							the_post();	
 							
 							if($counter_product % 4 == 0 ){
@@ -191,7 +192,7 @@ get_header(); ?>
 												 }
 												echo '</div>';
 												echo '<div class="clearfix"></div>';
-												echo '<div class="title-holder title"><a href="' . get_permalink() . '">' . $short_title. '</a></div>';
+												echo '<div class="title"><a href="' . get_permalink() . '">' . $short_title. '</a></div>';
 												echo '<div class="product-meta">';
 												echo '<div class="cart-btn2">';
 												do_action( 'woocommerce_after_shop_loop_item' );

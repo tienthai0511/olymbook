@@ -1367,11 +1367,18 @@ span.onsale {
 	text-transform: uppercase;
 }
 .saletext {
-font-size: 14px;
-left: -1px;
-position: absolute;
-top: -35px;
-transform: rotate(-45deg);
--webkit-transform: rotate(-45deg);
--moz-transform: rotate(-45deg);
+	font-size: 14px;
+	left: -1px;
+	position: absolute;
+	top: -35px;
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+}
+.total_review{
+	display: inline;
+	position: absolute;
+	top: -21px;
+	left: 68px;
+	font-size: 12px;
 }

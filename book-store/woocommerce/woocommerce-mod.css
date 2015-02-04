@@ -829,13 +829,13 @@ a.button.alt:hover,button.button.alt:hover,input.button.alt:hover,#respond input
 
 .star-rating {
     float: right;
-    width: 80px;
+    width: 69px;
     height: 16px;
-    background: url(images/star.png) repeat-x left 0;
+    background: url(images/star_bg.gif) repeat-x 0 0;
 }
 
 .star-rating span {
-    background: url(images/star.png) repeat-x left -32px;
+    background: url(images/star.gif) repeat-x 0 0 ;
     height: 0;
     padding-top: 16px;
     overflow: hidden;
@@ -883,11 +883,11 @@ p.stars:after {
 }
 
 p.stars span {
-    width: 80px;
+    width: 69px;
     height: 16px;
     position: relative;
     float: left;
-    background: url(images/star.png) repeat-x left 0;
+    background: url(images/star_bg.gif) repeat-x 0 0;
 }
 
 p.stars span a {
@@ -895,18 +895,18 @@ p.stars span a {
     position: absolute;
     left: 0;
     top: 0;
-    width: 16px;
+    width: 13.8px;
     height: 0;
     padding-top: 16px;
     overflow: hidden;
 }
 
 p.stars span a:hover,p.stars span a:focus {
-    background: url(images/star.png) repeat-x left -16px;
+    background: url(images/star.gif) repeat-x 0 0;
 }
 
 p.stars span a.active {
-    background: url(images/star.png) repeat-x left -32px;
+      background: url(images/star.gif) repeat-x 0 0;
 }
 
 p.stars span a.star-1 {
@@ -915,22 +915,22 @@ p.stars span a.star-1 {
 }
 
 p.stars span a.star-2 {
-    width: 32px;
+    width: 27.6px;
     z-index: 9;
 }
 
 p.stars span a.star-3 {
-    width: 48px;
+    width: 41.4px;
     z-index: 8;
 }
 
 p.stars span a.star-4 {
-    width: 64px;
+    width: 55.2px;
     z-index: 7;
 }
 
 p.stars span a.star-5 {
-    width: 80px;
+    width: 69px;
     z-index: 6;
 }
 
