@@ -54,22 +54,18 @@ get_header(); ?>
 							</div><!--./div-->
 							<div class="filter-sort-cd mt20 grid-holder features-condition">
 								<ul>
-									<li class="span2 col-filter"><a href="#">conditon 1</a></li>
-									<li class="span2 col-filter"><a href="#">conditon 2</a></li>
-									<li class="span2 col-filter"><a href="#">conditon 3</a></li>
-									<li class="span2 col-filter"><a href="#">conditon 4</a></li>
-									<li class="span2 col-filter"><a href="#">conditon 5</a></li>
-									<li class="span2 col-filter"><a href="#">conditon 6</a></li>
-									<li class="span2 col-filter"><a href="#">conditon 6</a></li>
+									<li class="span2 col-filter" id="price" onclick="javascript:search('price', '100-200', 'add')"><a href="javascript:void(0);">price 1</a></li>
+									<li class="span2 col-filter" id="price2" onclick="javascript:search('price2', '500-600', 'add')"><a href="javascript:void(0);">price 2</a></li>
+									<li class="span2 col-filter" id="best" onclick="javascript:search('best', 'best', 'add')"><a href="javascript:void(0);">year 1</a></li>
+									<li class="span2 col-filter" id="sell" onclick="javascript:search('sell', 'sell', 'add')"><a href="javascript:void(0);">best-seller1</a></li>
+									
 								</ul>
 							</div>
 						</div>
 						<div class="clear"></div>
 						<div class="line-condition"></div>
 						<div class="tag-filter-cd">
-							<ul>
-								<li class="term-tag"><i class="term-tag-close"></i><span href="#">condition 1</span></li>
-							</ul>
+							<ul></ul>
 							<div class="clear"></div>
 						</div><!--./tag-filter-cd-->
 					</div>
