@@ -176,3 +176,11 @@ function olymbook_search() {
 }
 add_action("wp_ajax_olymbook_search", "olymbook_search");
 add_action("wp_ajax_nopriv_olymbook_search", "olymbook_search");
+
+/*change format price element*/
+function price_replace_element($price){
+	$price = str_replace('</del>', '</label>', $price);
+	$price = str_replace('<del>', '<label>', $price);
+	return $price;
+}
+add_filter( 'woocommerce_get_price_html', 'price_replace_element', 100, 2 );

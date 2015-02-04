@@ -1336,3 +1336,42 @@ div.subtotal-buttons{
 .sub-menu li a{
 	font-weight:normal !important;
 }
+/*style price*/
+.price label {
+	display:inline-block;
+}
+.price label span.amount{
+	color:#999999;
+	font-size:13px;
+	text-decoration:line-through;
+}
+ins span.amount,span.price > span.amount{
+	color:#000;
+	font-size:15px;
+	font-weight:bold;
+}
+.product-meta ins{
+	text-decoration: inherit !important;
+}
+span.onsale {
+	border-style: solid;
+	border-width: 52px 52px 0 0;
+	height: 0;
+	left: 16px;
+	line-height: 0;
+	position: absolute;
+	top: 16px;
+	width: 0;
+	z-index: 100;
+	color: #fff;
+	text-transform: uppercase;
+}
+.saletext {
+font-size: 14px;
+left: -1px;
+position: absolute;
+top: -35px;
+transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+-moz-transform: rotate(-45deg);
+}
