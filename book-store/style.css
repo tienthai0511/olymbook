@@ -386,6 +386,7 @@ img
 .cart-btn2
 {
 	position: relative;
+	margin-top:20px;
 }
 .cart-btn2 a
 {
@@ -515,8 +516,7 @@ img
 }
 .product-archive .product-meta
 {
-	height: 40px;
-	margin-top:24px;
+	height: 70px;
 	width:98%;
 }
 .features-books .slide .title a
