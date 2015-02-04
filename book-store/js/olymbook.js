@@ -35,12 +35,28 @@ function removeSeach(attr, value){
 	return false;
 }
 
+function addSort(){
+	arrSearch = new Array();
+	
+	jQuery('.tag-filter-cd li.term-tag').each(function(index){
+		arrSearch.push(jQuery(this).attr('data-search'));
+	});
+	ajaxSearch(arrSearch);
+	arrSearch = new Array();
+	return false;
+}
+
 	function ajaxSearch(data) {
 		
 		var url      = window.location.href; 
 		urlString = data.join('&');
 		urlString = urlString.replace(/:/g, "=");
 		url_after = url.split('?')[0];
+		var orderBy = jQuery( ".orderby" ).val()
+		if(urlString == "")
+			urlString = "orderBy="+orderBy;
+		else
+			urlString += "&order_by="+orderBy;
 
 		urlString = url_after + '?' + urlString;
 		jQuery('.over-lay').show();
@@ -90,6 +106,9 @@ jQuery(document).ready( function($) {
 		}
 	});
 
+	jQuery( ".orderby" ).change(function() {
+		addSort();
+	});
 	// get height element
 
 
