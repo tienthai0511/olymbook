@@ -175,49 +175,20 @@
 	float:left;
 }
 /*Block book design*/
-.features-books-block .span6{
-	width:48% !important;
-	float:left;
-	padding: 16px;
-	border:1px solid transparent;
-	position:relative;
-	
+.portfolio-item-holder .span3.block-cols, .product-archive .span3.block-cols{
+	width:48.4% !important;
 }
-.features-books-block .span6.slide:hover{
-	border-color: #809F14!important;
-	opacity:0.7;
+.product-archive .span3.block-cols .product-thumb img{
+	width:478px !important;
+	height:300px !important;
 }
-.title-block{
-	margin: 10px 0;
-	line-height: 1.2;
+.product-archive .span3.slide.columns.block-cols{
+	margin-bottom:0 !important;
 }
-.title-block a{
-	color: #000;
-	height: 20px;
-	overflow: hidden;
-	position: relative;
-	font-family: Droid Serif;
-}
-.roll-over{
-	position:absolute;
-	width:100%;
-	height:100%;
-	background:red;
-	z-index:1000111;
-}
-.button-add-cart-over {
-	position:absolute;
-	top:0;
-	left:0;
-	display:none;
-	opacity:0.5 !important;
-	background:red !important;
-	transition: background 1s;
-}
-.features-books-block .span6:hover  .button-add-cart-over{
-	display:inline-block;
-	opacity:1;
-	background:#000;
+.product-archive .span3.slide.columns  .product-meta {
+	height:48px !important;
+	width:98%;
+	overflow:hidden;
 }
 @media (max-width: 767px){
 	.features-condition .span3 {
@@ -225,7 +196,11 @@
 		float: left !important;
 	}
 }
-
+@media (max-width: 600px){
+	.product-archive .span3.block-cols{
+		width:100% !important;
+	}
+}
 @media (max-width: 480px){
 	.features-condition .span3 {
 		width: 50% !important;

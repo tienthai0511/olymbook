@@ -152,7 +152,7 @@ get_header(); ?>
 							
 							if($counter_product % 4 == 0 ){
 								
-								echo '<div class="span3 slide columns">';
+								echo '<div class="span3 slide columns block-cols">';
 							 
 								 $thumbnail_types = "Image";
 								 
@@ -201,7 +201,7 @@ get_header(); ?>
 					
 							}else{
 								
-								echo '<div class="span3 slide columns">';
+								echo '<div class="span3 slide columns block-cols">';
 							      woocommerce_show_product_loop_sale_flash();
 								 $thumbnail_types = "Image";
 												if( $thumbnail_types == "Image" ){
