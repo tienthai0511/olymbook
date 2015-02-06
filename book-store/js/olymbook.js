@@ -56,7 +56,7 @@ function ajaxSearch(data) {
 		type : "post",
 		dataType : "json",
 		url : olymbookAjax.ajaxurl,
-		data : {action: "olymbook_search", data : data},
+		data : {action: "olymbook_search",orderBy: orderBy ,data : data},
 		success: function(response) {
 			if (response.sucess == true) {
 				jQuery('.over-lay').hide();

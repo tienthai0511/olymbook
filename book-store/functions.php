@@ -160,37 +160,77 @@ add_action('init', 'my_script_enqueuer');
  */
 function olymbook_search() {
 	$html = $debugString = $searchCondition = "";
+	//print_r($_POST);
 	$postID = $_POST['post_id'];
+	
 	$args = array(
 		'posts_per_page' => 100,
-		'product_cat' => 'thinking_personal_development',
+		'product_cat' => 'communicate',
 		'post_type' => 'product',
 		'meta_query' => array(
 			'relation' => 'AND',
+			array(
+	  			'relation' => 'OR',
+				array(
+					'key' => '_price',
+					'value' => array( 20000, 400000 ),
+					'type' => 'numeric',
+					'compare' => 'BETWEEN'
+			  	),
+			  	array(
+					'key' => '_sale_price',
+					'value' => array( 20000, 400000 ),
+					'type' => 'numeric',
+					'compare' => 'BETWEEN'
+			  	),
+		  	),
 		  	array(
 				'key' => '_rating',
 				'value' => array( 1, 5 ),
 				'type' => 'numeric',
 				'compare' => 'BETWEEN'
 		  	),
+		  	/*
 			array(
-	  			'relation' => 'OR',
-				array(
-					'key' => '_price',
-					'value' => array( 50000, 400000 ),
-					'type' => 'numeric',
-					'compare' => 'BETWEEN'
-			  	),
-			  	array(
-					'key' => '_sale_price',
-					'value' => array( 50000, 400000 ),
-					'type' => 'numeric',
-					'compare' => 'BETWEEN'
-			  	),
-		  	),
-		 ),
+				'key' => '_price',
+				'value' => array( 20000, 400000 ),
+				'type' => 'numeric',
+				'compare' => 'BETWEEN'
+		  	),*/
+		),
 	);
-	
+	switch ($_POST['orderBy']) :
+		case 'date' :
+			$args['orderby'] = 'date';
+			$args['order'] = 'asc';
+			$args['meta_key'] = '';
+		break;
+		case 'price' :
+			$args['orderby'] = 'meta_value_num';
+			$args['order'] = 'asc';
+			$args['meta_key'] = '_price';
+		break;
+		case 'price-desc' :
+			$args['orderby'] = 'meta_value_num';
+			$args['order'] = 'desc';
+			$args['meta_key'] = '_price';
+		break;
+		case 'rating' :
+			$args['orderby'] = 'meta_value_num';
+			$args['order'] = 'asc';
+			$args['meta_key'] = '_rating';
+		break;
+		case 'popularity' :
+			$args['orderby'] = 'comment_count';
+			$args['order'] = 'desc';
+			$args['meta_key'] = '';
+		break;
+		case 'menu_order' :
+			$args['orderby'] = 'menu_order';
+			$args['order'] = 'desc';
+			$args['meta_key'] = '';
+		break;
+	endswitch;
 	$loop = new WP_Query( $args );
 	$i = 0;
 	if (($loop->have_posts())) :
@@ -245,3 +285,16 @@ function price_replace_element($price){
 	return $price;
 }
 add_filter( 'woocommerce_get_price_html', 'price_replace_element', 100, 2 );
+
+add_action("wp_ajax_nopriv_olymbook_search", "olymbook_search");
+
+add_action('shutdown', 'sql_logger');
+function sql_logger() {
+    global $wpdb;
+    $log_file = fopen(get_template_directory().'/sql.log', 'a');
+    fwrite($log_file, "//////////////////////////////////////////\n\n" . date("F j, Y, g:i:sa" )."\n");
+    foreach($wpdb->queries as $q) {
+        fwrite($log_file, $q[0] . " - ($q[1] s)" . "\n\n");
+    }
+    fclose($log_file);
+}
