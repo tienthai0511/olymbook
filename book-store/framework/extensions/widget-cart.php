@@ -61,8 +61,7 @@ function woocommerce_cartitems_add_to_cart_fragment( $fragments ) {
   <li> <a href="<?php echo get_permalink( $cart_item['product_id'] ); ?>"> <?php echo $_product->get_image(); ?> <?php echo apply_filters('woocommerce_widget_cart_product_title', $_product->get_title(), $_product ); ?> </a> <?php echo $woocommerce->cart->get_item_data( $cart_item ); ?> <span class="quantity"><?php printf( '%s &times; %s', $cart_item['quantity'], $product_price ); ?></span> </li>
   <?php endforeach; ?>
   <?php else : ?>
-  <li class="empty">
-  <li class="empty"> <?php echo get_option(THEME_NAME_S.'_translation_cart_no_product','No products in the cart.'); ?> </li>
+  <li class="empty no-product"> <?php echo get_option(THEME_NAME_S.'_translation_cart_no_product','No products in the cart.'); ?> </li>
   <?php endif; ?>
 </ul>
 <!-- end product list -->
@@ -154,9 +153,7 @@ class WooCommerce_Widget_CartPlus extends WP_Widget {
   <?php else : ?>
   
   <!-- if the cart is empty, show a message saying so -->
-  
-  <li class="empty">
-  <li class="empty"> <?php echo get_option(THEME_NAME_S.'_translation_cart_no_product','No products in the cart.'); ?> </li>
+  <li class="empty no-cart"> <?php echo get_option(THEME_NAME_S.'_translation_cart_no_product','No products in the cart.'); ?> </li>
   <?php endif; ?>
 </ul>
 <!-- end product list --> 
