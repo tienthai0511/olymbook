@@ -52,12 +52,39 @@ while( have_posts() ){
 
 usort($filterPrices, "usortBySortKey");
 usort($filterRatings, "usortBySortKey");
-get_header(); ?>
+/*
+ * Set search condition if have parameter in URL
+ */
+$label_search = [
+	'default'=> 'Điều kiện',
+	'price1' => 'Nhỏ hơn 50k',
+	'price2' => '50k - 100k',
+	'price3' => '100k - 500k',
+	'price4' => '500k - 1M',
+	'best-seller' => 'best-seller',
+];
+$string_pararm = $_SERVER['QUERY_STRING'];
+$url_output = $html_tag = '';
+$aray_key = [];
+if ($string_pararm != "")
+	parse_str($string_pararm, $url_output);
+if (($url_output) != '') {
+	foreach ($url_output as $key => $value) {
+		$label_text = ($label_search [$key]) ? $label_search [$key] : $label_search ['default'];
+		if ($key !='orderby') {
+			$html_tag .= '<li class="term-tag" id="del_'. $key .'" data-search="' .$key. '='.$value.'" data-value="'.$value.'" onclick="javascript:removeSeach(\'' .$key .'\', \''. $value.'\')"><i class="term-tag-close"></i><span href="javascript:void(0);">' . $label_text . '</span></li>';
+			$aray_key[] = $key;
+		}
+	}
+}
+get_header();
+
+?>
 <?php
 	    global $paged, $sidebar, $left_sidebar, $right_sidebar;
 		$left_sidebar = "Shop Left Sidebar";
 		$right_sidebar = "Shop Right Sidebar";
-			
+
 		$sidebar = get_option ( THEME_NAME_S . '_products_page_sidebar', 'no-sidebar' );
         $sidebar = str_replace('product-', '', $sidebar) ; 
 		    $bcontainer_class = '';
@@ -72,14 +99,15 @@ get_header(); ?>
         } else {
 		    $container_class = "span12";	
 		}
-		
 	?>
 	<script>
 		jQuery(document).ready(function($){
-		
+			var arrayFromPHP = [<?php echo '"' . implode('","',  $aray_key ) . '"' ?>] | [];
+			$.each(arrayFromPHP, function( index, value ) {
+				$('.filter-sort-cd #' + value).addClass('added-filter');
+			});
 		});
 	</script>
-	
 		<div class="row-fluid sort-condition main-content-block mt20">
 			<ul class="left-menu-sort">
 				<li><a href="#">Dòng Sách</a></li>
@@ -120,7 +148,9 @@ get_header(); ?>
 						<div class="clear"></div>
 						<div class="line-condition"></div>
 						<div class="tag-filter-cd">
-							<ul></ul>
+							<ul>
+								<?php echo $html_tag;?>
+							</ul>
 							<div class="clear"></div>
 						</div><!--./tag-filter-cd-->
 					</div>
