@@ -1,7 +1,7 @@
 var  animateTime = 300;
 function search(attr, value){
 	arrSearch = new Array();
-	text = jQuery('#' + attr).text();
+	text = jQuery('#' + attr).html();
 	element_li = '<li class="term-tag" id=\"del_' + attr + '\" data-search=\"' + attr + '=' + value + '\" data-value=\"' + value + '\" onclick="javascript:removeSeach(\'' + attr + '\', \'' + value +  '\')"><i class="term-tag-close"></i><span href="javascript:void(0);">' + text + '</span></li>';
 
 	if (jQuery('#' + attr).hasClass('added-filter')) return false;
