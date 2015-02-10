@@ -74,6 +74,7 @@ function autoHeightAnimate( element, time ) {
 	element.stop().animate({ height: autoHeight }, parseInt(time)); // Animate to Auto Height
 }
 jQuery(document).ready( function($) {
+	addSort();
 	// show / hide search content 
 	var nav = $('.sort-content'),
 	animateTime = 300,

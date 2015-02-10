@@ -228,6 +228,18 @@ function olymbook_search() {
 	);
 
 	$postids = $wpdb->get_col($sql);
+	if($postids == array()){
+		$response = array( 
+			'sucess' => true, 
+			'html' => "",
+			'id' => $postID ,
+			'debugString' => "",
+			'searchCondition' => "",
+		);
+		echo json_encode($response);
+		die();
+	}
+		
 	$args = array(
 		'posts_per_page' => 100,
 		'product_cat' => 'thinking_personal_development',

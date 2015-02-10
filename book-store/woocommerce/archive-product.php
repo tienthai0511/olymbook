@@ -19,8 +19,10 @@ while( have_posts() ){
 	
 	$starString = '<img src="http://www.olymbook.com/wp-content/themes/book-store/woocommerce/images/star.gif">';
 	if($rating == ""){
+		/*
 		if (!in_array(array("sortkey" => 1,"key" => 'un-sort', "value"=> "chưa có đánh giá"), $filterRatings))
 			$filterRatings[] = array("sortkey" => 1,"key" => 'un-sort', "value"=> "chưa có đánh giá");
+		*/
 	}elseif($rating < 2){
 		if (!in_array(array("sortkey" => 2,"key" => '0-2', "value"=> "0 đến {$starString}{$starString}"), $filterRatings))
 			$filterRatings[] = array("sortkey" => 2,"key" => '0-2', "value"=> "0 đến {$starString}{$starString}");
