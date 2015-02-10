@@ -276,7 +276,6 @@ function olymbook_search() {
 add_action("wp_ajax_olymbook_search", "olymbook_search");
 add_action("wp_ajax_nopriv_olymbook_search", "olymbook_search");
 
-add_action("wp_ajax_nopriv_olymbook_search", "olymbook_search");
 
 /*change format price element*/
 function price_replace_element($price){
@@ -286,4 +285,21 @@ function price_replace_element($price){
 }
 add_filter( 'woocommerce_get_price_html', 'price_replace_element', 100, 2 );
 
-add_action("wp_ajax_nopriv_olymbook_search", "olymbook_search");
+/*
+ * format money to K/M/B/T
+ * echo money_format(110100) => 110.1K
+ * echo money_format(1101000) => 1.1M
+ * echo money_format(1101000000) => 1.1B
+ * echo money_format(1101000000000) => 1.1T
+ */
+function money_format($money) {
+	if ($money < 1000) return $money . 'Đ';
+	$f_money = round($money);
+	$x_number_format = number_format($f_money);
+	$x_array = explode(',', $x_number_format);
+	$x_parts = array('K', 'M', 'B', 'T');
+	$x_count_parts = count($x_array) - 1;
+	$x_display = $x_array[0] . ((int) $x_array[1][0] !== 0 ? '.' . $x_array[1][0] : '');
+	$x_display .= $x_parts[$x_count_parts - 1];
+	return $x_display;
+}
