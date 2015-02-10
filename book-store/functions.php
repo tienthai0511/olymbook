@@ -242,14 +242,16 @@ function olymbook_search() {
 		else 
 			$poductPrice = "";
 		$html .= '<div class="span3 slide columns">';
-		$html .= '    <span class="onsale"><span class="saletext">Sale!</span></span>';
+		if ($product->is_on_sale()) {
+			$html .= '    <span class="onsale"><span class="saletext">Sale!</span></span>';
+		}
 		$html .= '    <div class="product-thumb">';
-		$html .= '        <a title="'.$product->post->post_title.'" href="'.get_permalink( $loop->post->ID ).'"><img alt="" src="'.$image[0].'" style="width:250px; height:250px; ">';
+		$html .= '        <a title="'.$product->post->post_title . '" href="'.get_permalink( $loop->post->ID ).'"><img alt="" src="'.$image[0].'" style="width:250px; height:250px; ">';
 		$html .= '        </a>';
 		$html .= '    </div>';
 		$html .= '    <div class="clearfix"></div>';
 		$html .= '    <div class="title-holder title">';
-		$html .= '        <a href="'.get_permalink( $loop->post->ID ).'" style="right: 0px;"></a>';
+		$html .= '        <a href="'.get_permalink( $loop->post->ID ).'" style="right: 0px;">'.$product->post->post_title . '</a>';
 		$html .= '    </div>';
 		$html .= '    <div class="product-meta">';
 		$html .= '        <div class="cart-btn2"><a class="button add_to_cart_button product_type_simple" data-quantity="1" data-product_sku="" data-product_id="'.$product->id.'" rel="nofollow" href="/product-category/add-to-card/?add-to-cart='.$product->id.'">Add to cart</a>';
