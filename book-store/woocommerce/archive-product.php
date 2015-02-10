@@ -1,11 +1,57 @@
 <?php 
-	/*
+/*
 	 * This file is used to generate WordPress standard archive/category pages.
 	  * @author     TânTV
       * @package 	WooCommerce/Templates
       * @version     2.0.0
- */	
+*/	
+$filterPrices = $filterRatings = array();
+while( have_posts() ){
+	global $post;
+	global $product;
+	the_post();
+							
+	$price = get_post_meta( get_the_ID(), '_price', true);
+	$sale = get_post_meta( get_the_ID(), '_sale_price', true);
+	$rating = get_post_meta( get_the_ID(), '_rating', true);
+	if($sale == "")
+		$sale = $price;
+	
+	$starString = '<img src="http://www.olymbook.com/wp-content/themes/book-store/woocommerce/images/star.gif">';
+	if($rating == ""){
+		if (!in_array(array("sortkey" => 1,"key" => 'un-sort', "value"=> "chưa có đánh giá"), $filterRatings))
+			$filterRatings[] = array("sortkey" => 1,"key" => 'un-sort', "value"=> "chưa có đánh giá");
+	}elseif($rating < 2){
+		if (!in_array(array("sortkey" => 2,"key" => '0-2', "value"=> "0 đến {$starString}{$starString}"), $filterRatings))
+			$filterRatings[] = array("sortkey" => 2,"key" => '0-2', "value"=> "0 đến {$starString}{$starString}");
+	}elseif($rating >= 2 && $rating < 4){
+		if (!in_array(array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}"), $filterRatings))
+			$filterRatings[] = array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}");
+	}elseif($rating >= 4){
+		if (!in_array(array("sortkey" => 4,"key" => '5-0', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}"), $filterRatings))
+			$filterRatings[] = array("sortkey" => 4,"key" => '5-0', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}");
+	}
+	
+	if($price < 50000 || $sale < 50000){
+		if (!in_array(array("sortkey" => 1,"key" => '0-50000', "value"=> "Nhỏ hơn 50k"), $filterPrices))
+			$filterPrices[] = array("sortkey" => 1,"key" => '0-50000', "value"=> "Nhỏ hơn 50k");
+	}elseif(($price >= 50000 && $price < 100000) || ($sale >= 50000 && $sale < 100000)){
+		if (!in_array(array("sortkey" => 2,"key" => '50000-100000', "value" => "50k - 100k"), $filterPrices))
+			$filterPrices[] = array("sortkey" => 2,"key" => '50000-100000', "value" => "50k - 100k");
+	}elseif(($price >= 100000 && $price < 200000) || ($sale >= 100000 && $sale < 200000)){
+		if (!in_array(array("sortkey" => 3,"key" => '100000-200000', "value" => "100k - 200k"), $filterPrices))
+			$filterPrices[] = array("sortkey" => 3,"key" => '100000-200000', "value" => "100k - 200k");
+	}elseif(($price >= 200000 && $price < 500000) || ($sale >= 200000 && $sale < 500000)){
+		if (!in_array(array("sortkey" => 4,"key" => '200000-500000', "value" => "200k - 500k"), $filterPrices))
+			$filterPrices[] = array("sortkey" => 4,"key" => '200000-500000', "value" => "200k - 500k");
+	}elseif(($price >= 200000 && $price < 500000) || ($sale >= 200000 && $sale < 500000)){
+		if (!in_array(array("sortkey" => 5,"key" => '500000-0', "value" => "Lơn hơn 500k"), $filterPrices))
+			$filterPrices[] = array("sortkey" => 5,"key" => '500000-0', "value" => "Lơn hơn 500k");
+	}	
+}
 
+usort($filterPrices, "usortBySortKey");
+usort($filterRatings, "usortBySortKey");
 get_header(); ?>
 <?php
 	    global $paged, $sidebar, $left_sidebar, $right_sidebar;
@@ -54,11 +100,20 @@ get_header(); ?>
 							</div><!--./div-->
 							<div class="filter-sort-cd mt20 grid-holder features-condition">
 								<ul>
-									<li class="span2 col-filter" id="price" onclick="javascript:search('price', '100-200', 'add')"><a href="javascript:void(0);">price 1</a></li>
-									<li class="span2 col-filter" id="price2" onclick="javascript:search('price2', '500-600', 'add')"><a href="javascript:void(0);">price 2</a></li>
-									<li class="span2 col-filter" id="best" onclick="javascript:search('best', 'best', 'add')"><a href="javascript:void(0);">year 1</a></li>
-									<li class="span2 col-filter" id="sell" onclick="javascript:search('sell', 'sell', 'add')"><a href="javascript:void(0);">best-seller1</a></li>
-									
+									<?php 
+									if(count($filterPrices) > 1)
+										foreach ($filterPrices as $key => $filterPrice){
+											echo "<li class=\"span2 col-filter\" id=\"price{$key}\" onclick=\"javascript:search('price{$key}', '{$filterPrice['key']}', 'add')\"><a href=\"javascript:void(0);\">{$filterPrice['value']}</a></li>";
+										}
+									?>
+									<li class="span2 col-filter" id="best-seller" onclick="javascript:search('best-seller', 'best-seller', 'add')"><a href="javascript:void(0);">Best Seller</a></li>
+									<li class="span2 col-filter" id="new" onclick="javascript:search('new', 'new', 'add')"><a href="javascript:void(0);">New</a></li>
+									<?php 
+									if(count($filterRatings) > 1)
+										foreach ($filterRatings as $key => $filterRating){
+											echo "<li class=\"span2 col-filter\" id=\"rating{$key}\" onclick=\"javascript:search('rating{$key}', '{$filterRating['key']}', 'add')\"><a href=\"javascript:void(0);\">{$filterRating['value']}</a></li>";
+										}
+									?>
 								</ul>
 							</div>
 						</div>

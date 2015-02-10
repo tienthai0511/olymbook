@@ -303,3 +303,10 @@ function money_format($money) {
 	$x_display .= $x_parts[$x_count_parts - 1];
 	return $x_display;
 }
+
+function usortBySortKey($array1, $array2) {
+	if($array1['sortkey'] < $array2['sortkey'])
+		return -1;
+	else 
+		return 1;
+}
