@@ -1,7 +1,7 @@
 var  animateTime = 300;
 function search(attr, value){
 	arrSearch = new Array();
-	text = jQuery('#' + attr).html();
+	text = jQuery('#' + attr + ' > a').html();
 	element_li = '<li class="term-tag" id=\"del_' + attr + '\" data-search=\"' + attr + '=' + value + '\" data-value=\"' + value + '\" onclick="javascript:removeSeach(\'' + attr + '\', \'' + value +  '\')"><i class="term-tag-close"></i><span href="javascript:void(0);">' + text + '</span></li>';
 
 	if (jQuery('#' + attr).hasClass('added-filter')) return false;
@@ -74,7 +74,6 @@ function autoHeightAnimate( element, time ) {
 	element.stop().animate({ height: autoHeight }, parseInt(time)); // Animate to Auto Height
 }
 jQuery(document).ready( function($) {
-	addSort();
 	// show / hide search content 
 	var nav = $('.sort-content'),
 	animateTime = 300,

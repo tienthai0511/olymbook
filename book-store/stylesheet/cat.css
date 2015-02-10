@@ -168,8 +168,11 @@
 	background:#fff;
 	padding:0 4px;
 	color:#C6C7C9;
+	min-height:20px;
 }
-
+.tag-filter-cd li.term-tag  span img{
+	margin-top:3px;
+}
 .term-tag-close {
 	background:url('../images/close.png') no-repeat center center;
 	height:20px;
