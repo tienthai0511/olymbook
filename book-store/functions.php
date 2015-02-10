@@ -180,9 +180,9 @@ function olymbook_search() {
 						$priceSql .= "OR key2.meta_value >= {$filterValues[0]} OR key1.meta_value >= {$filterValues[0]}\n";
 				else 
 					if($priceSql == "AND (")
-						$priceSql .= "key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} OR key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]}\n";
+						$priceSql .= "(key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key2.meta_value <> '') OR (key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key1.meta_value <> '')\n";
 					else 
-						$priceSql .= "OR key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} OR key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]}\n";
+						$priceSql .= "OR (key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key2.meta_value <> '') OR (key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key1.meta_value <> '')\n";
 			}elseif($filterKey[0] == 'rating1' || $filterKey[0] == 'rating2' || $filterKey[0] == 'rating3' || $filterKey[0] == 'rating4'){
 				$filterValues = explode("-",$filterKey[1]);
 				if($ratingSql == "AND (key3.meta_key =  '_rating' AND (")
@@ -201,6 +201,10 @@ function olymbook_search() {
 		$ratingSql .= "))";
 	else 
 		$ratingSql = "";
+	if($slugsNew == $slugsBestSeller)
+		$needCategories = 1;
+	else 
+		$needCategories = 0;
 	$sql = $wpdb->prepare( 
 	"	SELECT      DISTINCT key3.post_id
 		FROM        $wpdb->postmeta key3
@@ -215,13 +219,14 @@ function olymbook_search() {
 		INNER JOIN  $wpdb->postmeta key2
 		            ON key2.post_id = key3.post_id
 		            AND key2.meta_key = '_sale_price'
-		WHERE       t.slug IN (%s,%s)
+		WHERE       (t.slug IN (%s,%s) OR {$needCategories})
 					{$ratingSql}
 					{$priceSql}
 		ORDER BY    key1.meta_value, key2.meta_value
 		"
 		,$slugsNew,$slugsBestSeller
 	);
+
 	$postids = $wpdb->get_col($sql);
 	$args = array(
 		'posts_per_page' => 100,
@@ -229,8 +234,7 @@ function olymbook_search() {
 		'post_type' => 'product',
 		'post__in' => $postids,
 	);
-	/*echo $sql;
-	print_r($postids);*/
+	//echo $sql;
 	switch ($_POST['orderBy']) :
 		case 'date' :
 			$args['orderby'] = 'date';
