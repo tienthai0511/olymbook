@@ -86,9 +86,8 @@ if (($url_output) != '') {
 		}
 		elseif ($key !='orderby') {
 			$html_tag .= '<li class="term-tag" id="del_'. $key .'" data-search="' .$key. '='.$value.'" data-value="'.$value.'" onclick="javascript:removeSeach(\'' .$key .'\', \''. $value.'\')"><i class="term-tag-close"></i><span href="javascript:void(0);">' . $label_text . '</span></li>';
-			$aray_key[] = $key;
 		}
-		
+		if ($key !='orderby') $aray_key[] = $key;
 	}
 }
 get_header();
