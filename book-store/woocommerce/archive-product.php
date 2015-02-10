@@ -102,7 +102,8 @@ get_header();
 	?>
 	<script>
 		jQuery(document).ready(function($){
-			var arrayFromPHP = [<?php echo '"' . implode('","',  $aray_key ) . '"' ?>] | [];
+			var arrayFromPHP = [<?php echo (count($aray_key)) ? '"' . implode('","',  $aray_key ) . '"' : ''; ?>];
+			//console.log(arrayFromPHP);
 			$.each(arrayFromPHP, function( index, value ) {
 				$('.filter-sort-cd #' + value).addClass('added-filter');
 			});
