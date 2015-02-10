@@ -122,6 +122,9 @@
 	padding-left: 16px;
 	background-size: 10px;
 }
+.filter-sort-cd li.added-filter{
+	background: url('../images/icon-demo-active.png') no-repeat left center !important;
+}
 
 .features-condition .span3{
 	moz-transition: 1s;
