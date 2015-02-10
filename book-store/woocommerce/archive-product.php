@@ -10,7 +10,7 @@ while( have_posts() ){
 	global $post;
 	global $product;
 	the_post();
-							
+
 	$price = get_post_meta( get_the_ID(), '_price', true);
 	$sale = get_post_meta( get_the_ID(), '_sale_price', true);
 	$rating = get_post_meta( get_the_ID(), '_rating', true);
@@ -28,8 +28,8 @@ while( have_posts() ){
 		if (!in_array(array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}"), $filterRatings))
 			$filterRatings[] = array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}");
 	}elseif($rating >= 4){
-		if (!in_array(array("sortkey" => 4,"key" => '5-0', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}"), $filterRatings))
-			$filterRatings[] = array("sortkey" => 4,"key" => '5-0', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}");
+		if (!in_array(array("sortkey" => 4,"key" => '5-6', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}"), $filterRatings))
+			$filterRatings[] = array("sortkey" => 4,"key" => '5-6', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}");
 	}
 	
 	if($price < 50000 || $sale < 50000){
@@ -103,7 +103,7 @@ get_header(); ?>
 									<?php 
 									if(count($filterPrices) > 1)
 										foreach ($filterPrices as $key => $filterPrice){
-											echo "<li class=\"span2 col-filter\" id=\"price{$key}\" onclick=\"javascript:search('price{$key}', '{$filterPrice['key']}', 'add')\"><a href=\"javascript:void(0);\">{$filterPrice['value']}</a></li>";
+											echo "<li class=\"span2 col-filter\" id=\"price{$filterPrice['sortkey']}\" onclick=\"javascript:search('price{$filterPrice['sortkey']}', '{$filterPrice['key']}', 'add')\"><a href=\"javascript:void(0);\">{$filterPrice['value']}</a></li>";
 										}
 									?>
 									<li class="span2 col-filter" id="best-seller" onclick="javascript:search('best-seller', 'best-seller', 'add')"><a href="javascript:void(0);">Best Seller</a></li>
@@ -111,7 +111,7 @@ get_header(); ?>
 									<?php 
 									if(count($filterRatings) > 1)
 										foreach ($filterRatings as $key => $filterRating){
-											echo "<li class=\"span2 col-filter\" id=\"rating{$key}\" onclick=\"javascript:search('rating{$key}', '{$filterRating['key']}', 'add')\"><a href=\"javascript:void(0);\">{$filterRating['value']}</a></li>";
+											echo "<li class=\"span2 col-filter\" id=\"rating{$filterRating['sortkey']}\" onclick=\"javascript:search('rating{$filterRating['sortkey']}', '{$filterRating['key']}', 'add')\"><a href=\"javascript:void(0);\">{$filterRating['value']}</a></li>";
 										}
 									?>
 								</ul>

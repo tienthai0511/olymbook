@@ -159,46 +159,78 @@ add_action('init', 'my_script_enqueuer');
  * Vote for post
  */
 function olymbook_search() {
-	$html = $debugString = $searchCondition = "";
-	//print_r($_POST);
-	$postID = $_POST['post_id'];
-	
+	global $wpdb;
+	$slugsNew = $slugsBestSeller = "default-category-none";
+	$priceSql = "AND (";
+	$ratingSql = "AND (key3.meta_key =  '_rating' AND (";
+	if(count($_POST['data']) > 0)
+	foreach ($_POST['data'] as $filterKey){
+		if($filterKey == "new=new"){
+			$slugsNew = "new";
+		}elseif ($filterKey == "best-seller=best-seller"){
+			$slugsBestSeller = "best-seller";
+		}else{
+			$filterKey = explode("=",$filterKey);
+			if($filterKey[0] == 'price1' || $filterKey[0] == 'price2' || $filterKey[0] == 'price3' || $filterKey[0] == 'price4' || $filterKey[0] == 'price5' ){
+				$filterValues = explode("-",$filterKey[1]);
+				if($filterValues[1] == 0)
+					if($priceSql == "AND (")
+						$priceSql .= "key2.meta_value >= {$filterValues[0]} OR key1.meta_value >= {$filterValues[0]}\n";
+					else 
+						$priceSql .= "OR key2.meta_value >= {$filterValues[0]} OR key1.meta_value >= {$filterValues[0]}\n";
+				else 
+					if($priceSql == "AND (")
+						$priceSql .= "key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} OR key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]}\n";
+					else 
+						$priceSql .= "OR key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} OR key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]}\n";
+			}elseif($filterKey[0] == 'rating1' || $filterKey[0] == 'rating2' || $filterKey[0] == 'rating3' || $filterKey[0] == 'rating4'){
+				$filterValues = explode("-",$filterKey[1]);
+				if($ratingSql == "AND (key3.meta_key =  '_rating' AND (")
+					$ratingSql .= "key3.meta_value BETWEEN {$filterValues[0]} AND $filterValues[1]\n";
+				else
+					$ratingSql .= "OR key3.meta_value BETWEEN {$filterValues[0]} AND $filterValues[1]\n";
+				
+			}
+		}
+	}
+	if($priceSql != "AND (")
+		$priceSql .= ")";
+	else 
+		$priceSql = "";
+	if($ratingSql != "AND (key3.meta_key =  '_rating' AND (")
+		$ratingSql .= "))";
+	else 
+		$ratingSql = "";
+	$sql = $wpdb->prepare( 
+	"	SELECT      DISTINCT key3.post_id
+		FROM        $wpdb->postmeta key3
+		INNER JOIN 	$wpdb->term_relationships tr 
+					ON (key3.post_id = tr.object_id)
+		INNER JOIN 	$wpdb->term_taxonomy tt 
+					ON (tr.term_taxonomy_id = tt.term_taxonomy_id AND tt.taxonomy = 'product_cat')
+		INNER JOIN	$wpdb->terms t ON tt.term_id = t.term_id
+		INNER JOIN  $wpdb->postmeta key1 
+		            ON key1.post_id = key3.post_id
+		            AND key1.meta_key = '_price' 
+		INNER JOIN  $wpdb->postmeta key2
+		            ON key2.post_id = key3.post_id
+		            AND key2.meta_key = '_sale_price'
+		WHERE       t.slug IN (%s,%s)
+					{$ratingSql}
+					{$priceSql}
+		ORDER BY    key1.meta_value, key2.meta_value
+		"
+		,$slugsNew,$slugsBestSeller
+	);
+	$postids = $wpdb->get_col($sql);
 	$args = array(
 		'posts_per_page' => 100,
-		'product_cat' => 'communicate',
+		'product_cat' => 'thinking_personal_development',
 		'post_type' => 'product',
-		'meta_query' => array(
-			'relation' => 'AND',
-			array(
-	  			'relation' => 'OR',
-				array(
-					'key' => '_price',
-					'value' => array( 20000, 400000 ),
-					'type' => 'numeric',
-					'compare' => 'BETWEEN'
-			  	),
-			  	array(
-					'key' => '_sale_price',
-					'value' => array( 20000, 400000 ),
-					'type' => 'numeric',
-					'compare' => 'BETWEEN'
-			  	),
-		  	),
-		  	array(
-				'key' => '_rating',
-				'value' => array( 1, 5 ),
-				'type' => 'numeric',
-				'compare' => 'BETWEEN'
-		  	),
-		  	/*
-			array(
-				'key' => '_price',
-				'value' => array( 20000, 400000 ),
-				'type' => 'numeric',
-				'compare' => 'BETWEEN'
-		  	),*/
-		),
+		'post__in' => $postids,
 	);
+	/*echo $sql;
+	print_r($postids);*/
 	switch ($_POST['orderBy']) :
 		case 'date' :
 			$args['orderby'] = 'date';
@@ -231,16 +263,53 @@ function olymbook_search() {
 			$args['meta_key'] = '';
 		break;
 	endswitch;
+	wp_reset_query();
 	$loop = new WP_Query( $args );
 	$i = 0;
 	if (($loop->have_posts())) :
 	while ( $loop->have_posts() ) : $loop->the_post(); global $product;
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
-		$debugString .= $product->get_sale_price(). "/n".$product->get_regular_price()."/n".json_encode($product)."/n"."/n"."/n";
+		$debugString .= "get_sale_price : ".$product->get_sale_price(). " - get_regular_price: ".$product->get_regular_price();
 		if ($product->get_price() != NULL) 
 			$poductPrice = number_format($product->get_price(),0,".",".")." VNĐ";
 		else 
 			$poductPrice = "";
+		
+		$html .= "<div class=\"span3 slide columns\">";
+		$html .= "    <span class=\"onsale\">";
+		$html .= "        <span class=\"saletext\">Sale!</span>";
+		$html .= "    </span>";
+		$html .= "    <div class=\"product-thumb\">";
+		$html .= "        <a title=\"{$product->post->post_title}\" href=\"".get_permalink( $loop->post->ID )."\">";
+		$html .= "            <img alt=\"\" src=\"{$image[0]}\" style=\"width:250px; height:250px; \">";
+		$html .= "            </a>";
+		$html .= "        </div>";
+		$html .= "        <div class=\"clearfix\"></div>";
+		$html .= "        <div class=\"title-holder title\">";
+		$html .= "            <a href=\"".get_permalink( $loop->post->ID )."\" style=\"right: 0px;\">{$product->post->post_title}</a>";
+		$html .= "        </div>";
+		$html .= "        <div class=\"product-meta\">";
+		$html .= "            <div class=\"cart-btn2\">";
+		$html .= "                <a class=\"button add_to_cart_button product_type_simple\" data-quantity=\"1\" data-product_sku=\"\" data-product_id=\"{$product->id}\" rel=\"nofollow\" href=\"/product-category/thinking_personal_development/?add-to-cart={$product->id}\">Add to cart</a>";
+		$html .= "                <div title=\"Rated 4.00 out of 5\" class=\"star-rating\">";
+		$html .= "                    <span style=\"width:80%\">";
+		$html .= "                        <strong class=\"rating\">4.00</strong> out of 5";
+		$html .= "                    </span>";
+		$html .= "                </div>";
+		$html .= "                <span class=\"price\">";
+		$html .= "                    <label>";
+		$html .= "                        <span class=\"amount\">$poductPrice;</span>";
+		$html .= "                    </label>";
+		$html .= "                    <ins>";
+		$html .= "                        <span class=\"amount\">$poductPrice;</span>";
+		$html .= "                    </ins>";
+		$html .= "                </span>";
+		$html .= "                <span class=\"price\"></span>";
+		$html .= "            </div>";
+		$html .= "        </div>";
+		$html .= "    </div>";
+			
+		/*
 		$html .= '<div class="span3 slide columns">';
 		if ($product->is_on_sale()) {
 			$html .= '    <span class="onsale"><span class="saletext">Sale!</span></span>';
@@ -260,6 +329,7 @@ function olymbook_search() {
 		$html .= '        </div>';
 		$html .= '    </div>';
 		$html .= '</div>';
+		*/
 	$i++;
 	endwhile;
 	endif;
