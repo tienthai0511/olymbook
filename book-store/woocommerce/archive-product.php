@@ -64,6 +64,9 @@ $label_search = [
 	'price3' => '100k - 500k',
 	'price4' => '500k - 1M',
 	'best-seller' => 'best-seller',
+	'rating2' => "0 đến {$starString}{$starString}",
+	'rating3' => "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}",
+	'rating4' => "{$starString}{$starString}{$starString}{$starString}{$starString}"
 ];
 $string_pararm = $_SERVER['QUERY_STRING'];
 $url_output = $html_tag = '';
