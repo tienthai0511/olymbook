@@ -285,12 +285,15 @@ function olymbook_search() {
 	if (($loop->have_posts())) :
 	while ( $loop->have_posts() ) : $loop->the_post(); global $product;
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
+		
 		$debugString .= "get_sale_price : ".$product->get_sale_price(). " - get_regular_price: ".$product->get_regular_price();
 		if ($product->get_price() != NULL) 
 			$poductPrice = number_format($product->get_price(),0,".",".")." VNĐ";
 		else 
 			$poductPrice = "";
 		
+		$rating = get_post_meta( $loop->post->ID, "_rating", TRUE );
+			
 		$html .= "<div class=\"span3 slide columns\">";
 		$html .= "    <span class=\"onsale\">";
 		$html .= "        <span class=\"saletext\">Sale!</span>";
@@ -308,7 +311,7 @@ function olymbook_search() {
 		$html .= "            <div class=\"cart-btn2\">";
 		$html .= "                <a class=\"button add_to_cart_button product_type_simple\" data-quantity=\"1\" data-product_sku=\"\" data-product_id=\"{$product->id}\" rel=\"nofollow\" href=\"/product-category/thinking_personal_development/?add-to-cart={$product->id}\">Add to cart</a>";
 		$html .= "                <div title=\"Rated 4.00 out of 5\" class=\"star-rating\">";
-		$html .= "                    <span style=\"width:80%\">";
+		$html .= "                    <span style=\"width:".( ( $rating / 5 ) * 100 ) ."%\">";
 		$html .= "                        <strong class=\"rating\">4.00</strong> out of 5";
 		$html .= "                    </span>";
 		$html .= "                </div>";
