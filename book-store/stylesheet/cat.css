@@ -118,12 +118,12 @@
 }
 
 .filter-sort-cd li{
-	background: url('../images/icon-demo.png') no-repeat left center;
+	background: url('../images/icon-filter.png') no-repeat left center;
 	padding-left: 16px;
 	background-size: 10px;
 }
 .filter-sort-cd li.added-filter{
-	background: url('../images/icon-demo-active.png') no-repeat left center !important;
+	background: url('../images/icon-filter-active.png') no-repeat left center !important;
 }
 
 .features-condition .span3{
