@@ -23,7 +23,7 @@
 						data-product_sku="1200" 
 						data-product_id="<?php echo $product->id;?>" 
 						rel="nofollow" 
-						href="/shop/?add-to-cart=<?php echo $product->id;?>"><?php if ($product->get_price() != NULL) echo number_format($product->get_price(),0,".",".")." VNĐ"; ?></a>
+						href="/shop/?add-to-cart=<?php echo $product->id;?>"><?php if ($product->get_price() != NULL) echo money_format($product->get_price())/*number_format($product->get_price(),0,".",".")." VNĐ"*/; ?></a>
 				</div>
 				<div class="clearfix"></div>
 				<div class="pd-10">
