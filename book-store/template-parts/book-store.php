@@ -50,7 +50,15 @@
 				<h2 class="title-store text-uppercase text-justify">
 				<?php echo $product->post->post_title;?>
 				</h2>
-				<span class="author text-uppercase">John Kenl</span>
+				<span class="author text-uppercase">
+				<?php 
+					$taxonomies = get_the_term_list($product->id, 'product_author' );
+					if($taxonomies != FALSE)
+						echo $taxonomies;
+					else 
+						echo "-";
+				?>
+				</span>
 				<div class="content-store-text">
 					<p class="text-justify color-style-1"><?php echo $product->post->post_content;?></p>
 				</div>

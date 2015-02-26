@@ -55,7 +55,7 @@
 		<div class="clearfix"></div>
 	<div class=" height-75 nav-view-more row-fluid relative">
 		<a href="<?php echo get_term_link("course", 'product_cat' )?>" class="view-more">Xem thêm <span class="text-uppercase">Khóa Học</span></a>
-		<a class="right arrow-icon text-transparent" href="#">#</a>
+		<a class="right arrow-icon text-transparent" href="<?php echo get_term_link("course", 'product_cat' )?>">#</a>
 	</div>
 </div>
 <?php endif;?>
