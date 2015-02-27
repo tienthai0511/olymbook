@@ -4,18 +4,19 @@ Author: TânTV
 */
 if($_POST['ispost_hidden'] == 'Y') {  
 	//Form data sent  
-	if(isset($_FILES['myFormImageImage']['name']) && $_FILES['myFormImageImage']['name'] != "" && ($_FILES['myFormImageImage']['type'] == "image/jpeg" || $_FILES['myFormImageImage']['type'] == "image/png" || $_FILES['myFormImageImage']['type'] == "image/gif")){
+	$allow_type = ['image/jpeg', 'image/png', 'image/gif'];
+	if(isset($_FILES['myFormImageImage']['name']) && $_FILES['myFormImageImage']['name'] != "" && in_array($_FILES['myFormImageImage']['type'], $allow_type)) {
 		// file hợp lệ, tiến hành upload
 		$path = "images/"; // file lưu vào thư mục data
 		if (!file_exists($path)) {
-		    mkdir($path, 0777, true);
+			mkdir($path, 0777, true);
 		}
 		
-	    $tmp_name = $_FILES['myFormImageImage']['tmp_name'];
-	    $name = $_FILES['myFormImageImage']['name'];
-	    move_uploaded_file($tmp_name,$path.$name);
-	     
-	    $imageOptinForm = $path.$name;  
+		$tmp_name = $_FILES['myFormImageImage']['tmp_name'];
+		$imageOptinForm = $path . $name;
+		$name = $_FILES['myFormImageImage']['name'];
+		move_uploaded_file($tmp_name, $imageOptinForm);
+		$imageOptinForm = $path . $name;  
 		update_option('imageOptinForm', $imageOptinForm);  
 	}else{
 		echo "Kiểu file không hợp lệ";
@@ -70,24 +71,22 @@ jQuery( document ).ready( function() {
 }
 </style>
 <div class="wrap">  
-    <?php    echo "<h2>" . __( 'My Opt-in Form Option', 'myoptinform_trdom' ) . "</h2>"; ?>  
-    <form name="my_product" enctype="multipart/form-data" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">   
-    	<input name="ispost_hidden" type="hidden" value="Y"/>
-        <?php    echo "<h4>" . __( 'My Opt-in Form Option', 'myoptinform_trdom' ) . "</h4>"; ?> 
-        <table>
-        	<tr>
-        		<td><?php _e("My Optin Form: " ); ?></td>
-        		<td>
-        		<select id="styleoptinForm" name="styleOptinForm"">
-        			<option <?php if($styleOptinForm == 1) echo "selected"; ?> value="1">Style 1</option>
-        			<option <?php if($styleOptinForm == 2) echo "selected"; ?> value="2">Style 2</option>
-        			<option <?php if($styleOptinForm == 3) echo "selected"; ?> value="3">Style 3</option>
-        			<option <?php if($styleOptinForm == 4) echo "selected"; ?> value="4">Style 4</option>
-        			<option <?php if($styleOptinForm == 5) echo "selected"; ?> value="5">Style 5</option>
-        		</select>
-        		</td>
-        		<td>
-	        		<div class="span12" style="background:#404042;">
+	<?php    echo "<h2>" . __( 'My Opt-in Form Option', 'myoptinform_trdom' ) . "</h2>"; ?>  
+	<form name="my_product" enctype="multipart/form-data" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">   
+		<input name="ispost_hidden" type="hidden" value="Y"/>
+		<?php    echo "<h4>" . __( 'My Opt-in Form Option', 'myoptinform_trdom' ) . "</h4>"; ?> 
+		<table>
+			<tr>
+				<td><?php _e("My Optin Form: " ); ?></td>
+				<td>
+				<select id="styleoptinForm" name="styleOptinForm">
+					<option <?php if($styleOptinForm == 1) echo "selected"; ?> value="1">Style 1</option>
+					<option <?php if($styleOptinForm == 2) echo "selected"; ?> value="2">Style 2</option>
+					<option <?php if($styleOptinForm == 3) echo "selected"; ?> value="3">Style 3</option>
+				</select>
+				</td>
+				<td>
+					<div class="span12">
 						<div id="style1" style="margin:0 auto;<?php if($styleOptinForm == 1) echo "display: block";?>">
 							<!--Style 1-->
 							<?php echo myFormHTML(1);?>
@@ -98,40 +97,34 @@ jQuery( document ).ready( function() {
 						<div id="style3" style="margin:0 auto;<?php if($styleOptinForm == 3) echo "display: block";?>">
 							<?php echo myFormHTML(3);?>
 						</div>
-						<div id="style4" style="margin:0 auto;<?php if($styleOptinForm == 4) echo "display: block";?>">
-							<?php echo myFormHTML(4);?>
-						</div>
-						<div id="style5" style="margin:0 auto;<?php if($styleOptinForm == 5) echo "display: block";?>">
-							<?php echo myFormHTML(5);?>
-						</div>
 					</div>
 				</td>
-        	</tr>
-        	<tr>
-        		<td><?php _e("My Optin Image: " ); ?></td>
-        		<td colspan="2"><input id="myFormImageImage" type="file" name="myFormImageImage" value="<?php echo $imageOptinForm;?>"></td>
-        	</tr>
-        	<tr>
-        		<td><?php _e("Description: " ); ?></td>
-        		<td colspan="2">
-        		<textarea cols="80" id="description" name="description" rows="10">
-        			<?php echo $description; ?>
-        		</textarea>
-        		</td>
-        	</tr>
-        	<tr>
-        		<td><?php _e("Short description: " ); ?></td>
-        		<td colspan="2" >
-        		<textarea cols="80" id="shortDescription" name="shortDescription" rows="10">
-        			<?php echo $shortDescription; ?>
-        		</textarea>
-        		</td>
-        	</tr>
-        	<tr>
-        		<td colspan="3" align="center">
-        			<input type="submit" name="Submit" value="<?php _e('Update Options', 'zopimapi_trdom' ) ?>" />  
-        		</td>
-        	</tr>
-        </table>
-    </form>  
+			</tr>
+			<tr>
+				<td><?php _e("My Optin Image: " ); ?></td>
+				<td colspan="2"><input id="myFormImageImage" type="file" name="myFormImageImage" value="<?php echo $imageOptinForm;?>"></td>
+			</tr>
+			<tr>
+				<td><?php _e("Description: " ); ?></td>
+				<td colspan="2">
+				<textarea cols="80" id="description" name="description" rows="10">
+					<?php echo $description; ?>
+				</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td><?php _e("Short description: " ); ?></td>
+				<td colspan="2" >
+				<textarea cols="80" id="shortDescription" name="shortDescription" rows="10">
+					<?php echo $shortDescription; ?>
+				</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" align="center">
+					<input type="submit" name="Submit" value="<?php _e('Update Options', 'zopimapi_trdom' ) ?>" />  
+				</td>
+			</tr>
+		</table>
+	</form>  
 </div>  
