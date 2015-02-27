@@ -436,8 +436,12 @@ zoom: 1;
 		margin-top:24px;
 	}
 	.infusion-form{
-		position: absolute;
+		float:left;
+		padding:10px 15px;
+		margin-left:40px;
+		width:700px;
 	}
+	
 
 	.ul-opt-in {
 		float:right;
@@ -1321,11 +1325,11 @@ div.subtotal-buttons{
 .header-block .cart-btn2{
 	left:0;
 }
-.img-optin-bg{
-	max-height: 185px;
-	max-width: 350px;
+.img-optin-bg {
+	max-height: 152px;
+	max-width: 273px;
 	width: 100%;
-	height: 185px;
+	float:left;
 }
 
 .top-nav-bar,.container-fluid{
