@@ -22,7 +22,7 @@ get_header(); ?>
 	?>
 
 	
-      <section id="content-holder" class="container-fluid">
+      <section id="content-holder" style="margin-top:0 !important" class="container-fluid">
        <section class="container">
 
 		       <div class="row-fluid <?php echo $sidebar_class; ?>">	 
@@ -42,7 +42,7 @@ get_header(); ?>
 
 											 echo '<article class="b-post">';
 											 
-											   echo '<div class="b-post-img">';
+											   echo '<div class="b-post-img-m">';
 												// Inside Thumbnail
 												if( $sidebar == "left-sidebar" || $sidebar == "right-sidebar" ){
 													$item_size = "850x250";
@@ -95,15 +95,17 @@ echo '</div>';
 												
 												
 			                                  	echo '</div>';
- 												
-			                                    echo '<h3 class="blog-thumbnail-title post-title-color cp-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+ 												echo '<div class="heading-bar">';
+			                                    echo '<h2 class="blog-thumbnail-title post-title-color cp-title">' . get_the_title() . '</h2>';
+												echo '<span class="h-line"></span>';
+												echo '</div>';
               
-												echo '<div class="blog-thumbnail-content">';
+												echo '<div class="blog-thumbnail-content page-outer">';
 												echo the_content();
 												wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'cp_front_end' ) . '</span>', 'after' => '</div>' ) );
 												echo '</div>';	
 											
-												echo '<div class="b-post-bottom">';
+												echo '<div class="b-post-bottom page-outer">';
 												echo '<ul class="post-nav">';
 												echo '<li class="blog-thumbnail-author"> ' . __('Posted by','cp_front_end') . ' ' . get_the_author_link() . '</li>';	
 												echo '<li>on ';
@@ -126,7 +128,7 @@ echo '</div>';
 											echo '</div>';
 										echo '</article>';
 									
-										 echo '<div class="comment-wrapper">';
+										 echo '<div class="comment-wrapper page-outer">';
 											comments_template(); 
 										 echo '</div>';
 										
