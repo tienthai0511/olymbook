@@ -10,10 +10,10 @@ Author URI: https://www.facebook.com/lonelyghost.the
 ob_start();
 // ---------- admin configuration page ----------
 add_action( 'admin_menu', 'my_plugin_menu' );
+$imageOptinForm = get_option('imageOptinForm'); 
 $styleOptinForm = get_option('styleOptinForm');
 $description= get_option('description');
 $shortDescription= get_option('shortDescription');
-
 function my_plugin_menu() {
 	add_menu_page( 'My Opt-in Form Options', 'My Opt-in Form', 'manage_options', 'my-opt-in-form', 'my_optin_form_options',plugins_url('my-optin-form/images/icon.png'));
 }
@@ -28,27 +28,32 @@ function my_optin_form_options() {
  * GET form Optin
  */
 function optinforms_create_my_form() {
-	global $styleOptinForm,$description, $shortDescription;
-	$urlImg = get_template_directory_uri();
+	global $styleOptinForm;
+	return myFormHTML($styleOptinForm);
+}
+
+function myFormHTML($styleOptinForm){
+	global $description, $shortDescription,$imageOptinForm;
+	$urlImg = get_site_url();
 	if ($styleOptinForm == 1) {
 		return "" . '
-				<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
-				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
-				<div class="contain-optin">
-					<div class="descripttion-opt">'.$description.'</div>
-					<div class="shortdesciption-opt">'.$shortDescription.'</div>
-					<ul class="ul-opt-in">
-					
-					<li><input type="text" name="email" id="email" class="infusion-field-input-container" placeholder="Tên bạn"></li>
-					<li><input type="text" name="email" id="email" class="infusion-field-input-container" placeholder="Email của bạn"></li>
-					<li><input type="submit" border="0" value="đăng ký" class="submit-opt-in"  name="submit"></li>
-				</ul><!--/*ul-opt-in-->
-				</div>
+			<img class="img-optin-bg" src="' . $urlImg. "/wp-admin/" .$imageOptinForm . '">
+			<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
+			<div class="contain-optin">
+				<div class="descripttion-opt">'.$description.'</div>
+				<div class="shortdesciption-opt">'.$shortDescription.'</div>
+				<ul class="ul-opt-in">
+				
+				<li><input type="text" name="email" id="email" class="infusion-field-input-container" placeholder="Tên bạn"></li>
+				<li><input type="text" name="email" id="email" class="infusion-field-input-container" placeholder="Email của bạn"></li>
+				<li><input type="submit" border="0" value="đăng ký" class="submit-opt-in"  name="submit"></li>
+			</ul><!--/*ul-opt-in-->
+			</div>
 			</form>';
 	}
 	elseif ($styleOptinForm == 2) {
 		return "" . '
-			<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
+			<img class="img-optin-bg" src="' . $urlImg . '/wp-admin/' . $imageOptinForm . '">
 			<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
 				<div id="optinforms-form2-container">
 				<div id="optinforms-form2" style="background: #266d7c;background: #266d7c;padding-top: 31px;padding: 31px 0 0 11px;">
@@ -71,7 +76,7 @@ function optinforms_create_my_form() {
 						';
 	} else if ($styleOptinForm == 3){
 		return ''.'
-				<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
+				<img class="img-optin-bg" src="' . $urlImg . '/wp-admin/' . $styleOptinForm . '.png">
 				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
 				<div id="optinforms-form3-container">
                             <div id="optinforms-form3">
@@ -94,7 +99,7 @@ function optinforms_create_my_form() {
 	}
 	elseif ($styleOptinForm == 5){
 		return ''. '
-		<img class="img-optin-bg" src="' . $urlImg . '/images/banner' . $styleOptinForm . '.png">
+		<img class="img-optin-bg" src="' . $urlImg . '/wp-admin/' . $styleOptinForm . '.png">
 			<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm">
 		<div id="optinforms-form5-container">
                             <div id="optinforms-form5" style="background: #333333;">
@@ -115,7 +120,7 @@ function optinforms_create_my_form() {
 						';
 						
 	}
- }
+}
  //add shortcode
  add_shortcode( 'optinmyform', 'optinforms_create_my_form' );
 
