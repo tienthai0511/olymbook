@@ -242,11 +242,10 @@ function olymbook_search() {
 		
 	$args = array(
 		'posts_per_page' => 100,
-		'product_cat' => 'thinking_personal_development',
+		'product_cat' => $_POST['currentCategorySlug'],
 		'post_type' => 'product',
 		'post__in' => $postids,
 	);
-	//echo $sql;
 	switch ($_POST['orderBy']) :
 		case 'date' :
 			$args['orderby'] = 'date';
@@ -286,11 +285,23 @@ function olymbook_search() {
 	while ( $loop->have_posts() ) : $loop->the_post(); global $product;
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
 		
-		$debugString .= "get_sale_price : ".$product->get_sale_price(). " - get_regular_price: ".$product->get_regular_price();
-		if ($product->get_price() != NULL) 
-			$poductPrice = number_format($product->get_price(),0,".",".")." VNĐ";
-		else 
-			$poductPrice = "";
+		$debugString .= "get_sale_price : ".$product->get_sale_price(). " - get_regular_price: ".$product->get_regular_price()." <----->";
+		if($product->is_on_sale()){
+			if ($product->get_regular_price() != NULL) 
+				$poductPrice = money_format($product->get_regular_price());
+			else 
+				$poductPrice = "";
+				
+			if ($product->get_sale_price() != NULL) 
+				$poductSalePrice = money_format($product->get_sale_price());
+			else 
+				$poductSalePrice = "";
+		}else{
+			if ($product->get_regular_price() != NULL) 
+				$poductSalePrice = money_format($product->get_regular_price());
+			else 
+				$poductSalePrice = "";
+		}
 		
 		$rating = get_post_meta( $loop->post->ID, "_rating", TRUE );
 			
@@ -317,10 +328,10 @@ function olymbook_search() {
 		$html .= "                </div>";
 		$html .= "                <span class=\"price\">";
 		$html .= "                    <label>";
-		$html .= "                        <span class=\"amount\">$poductPrice;</span>";
+		$html .= "                        <span class=\"amount\">{$poductPrice}</span>";
 		$html .= "                    </label>";
 		$html .= "                    <ins>";
-		$html .= "                        <span class=\"amount\">$poductPrice;</span>";
+		$html .= "                        <span class=\"amount\">{$poductSalePrice}</span>";
 		$html .= "                    </ins>";
 		$html .= "                </span>";
 		$html .= "                <span class=\"price\"></span>";

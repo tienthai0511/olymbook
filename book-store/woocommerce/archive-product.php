@@ -6,7 +6,18 @@
       * @version     2.0.0
 */	
 $filterPrices = $filterRatings = array();
+$newFlag = $bestSalerFlag = FALSE;
 while( have_posts() ){
+	if($newFlag == FALSE || $bestSalerFlag == FALSE ){
+		$productCategories = get_the_terms( get_the_ID(), 'product_cat' );
+		foreach ($productCategories as $productCategory){
+			if($productCategory->slug == 'new'){
+				$newFlag = TRUE;
+			}elseif ($productCategory->slug == 'best-seller'){
+				$bestSalerFlag = TRUE;
+			}
+		}
+	}
 	global $post;
 	global $product;
 	the_post();
@@ -96,7 +107,6 @@ if (($url_output) != '') {
 	}
 }
 get_header();
-
 ?>
 <?php
 	    global $paged, $sidebar, $left_sidebar, $right_sidebar;
@@ -129,13 +139,20 @@ get_header();
 	</script>
 		<div class="row-fluid sort-condition main-content-block mt20">
 			<ul class="left-menu-sort">
-				<li><a href="#">Dòng Sách</a></li>
-				<li><a href="#">Tủ Sách</a></li>
+				<li><a href="#">Dòng Sách
+				<?php 
+				if (is_product_category()) {
+			        global $wp_query;
+			        $cat = $wp_query->get_queried_object();
+			        echo "<input id='currentCategorySlug' type=\"hidden\" id=\"myInput\" value=\"{$cat->slug}\">";
+			    }else{
+			    	echo "<input id='currentCategorySlug' type=\"hidden\" id=\"myInput\" value=\"\">";
+			    }
+				?></a></li>
+				<li><a href="<?php echo get_term_link("bookcase", 'product_cat' )?>">Tủ Sách</a></li>
 			</ul><!--./left-menu-sort-->
 			<ul class="right-menu-sort">
 				<li><a href="#">Tất cả</a></li>
-				<li><a href="#">Sách mới</a></li>
-				<li><a href="#">Best Seller</a></li>
 			</ul><!--./left-menu-sort-->
 			<div class="clear"></div>
 			<div class="span12 check-sort-content">
@@ -152,10 +169,16 @@ get_header();
 										foreach ($filterPrices as $key => $filterPrice){
 											echo "<li class=\"span2 col-filter\" id=\"price{$filterPrice['sortkey']}\" onclick=\"javascript:search('price{$filterPrice['sortkey']}', '{$filterPrice['key']}', 'add')\"><a href=\"javascript:void(0);\">{$filterPrice['value']}</a></li>";
 										}
+									if($bestSalerFlag){
 									?>
 									<li class="span2 col-filter" id="best-seller" onclick="javascript:search('best-seller', 'best-seller', 'add')"><a href="javascript:void(0);">Best Seller</a></li>
+									<?php 
+									}
+									if($newFlag){
+									?>
 									<li class="span2 col-filter" id="new" onclick="javascript:search('new', 'new', 'add')"><a href="javascript:void(0);">New</a></li>
 									<?php 
+									}
 									if(count($filterRatings) > 1)
 										foreach ($filterRatings as $key => $filterRating){
 											echo "<li class=\"span2 col-filter\" id=\"rating{$filterRating['sortkey']}\" onclick=\"javascript:search('rating{$filterRating['sortkey']}', '{$filterRating['key']}', 'add')\"><a href=\"javascript:void(0);\">{$filterRating['value']}</a></li>";
@@ -255,7 +278,6 @@ get_header();
 							the_post();	
 							
 							if($counter_product % 4 == 0 ){
-								
 								//echo '<div class="span3 slide columns block-cols">';
 							 	echo '<div class="span3 slide columns">';
 								 $thumbnail_types = "Image";

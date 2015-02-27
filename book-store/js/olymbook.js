@@ -52,11 +52,12 @@ function ajaxSearch(data) {
 
 	urlString = url_after + '?' + urlString;
 	jQuery('.over-lay').show();
+	var currentCategorySlug = jQuery('#currentCategorySlug').val();
 	jQuery.ajax({
 		type : "post",
 		dataType : "json",
 		url : olymbookAjax.ajaxurl,
-		data : {action: "olymbook_search",orderBy: orderBy ,data : data},
+		data : {action: "olymbook_search",orderBy: orderBy,currentCategorySlug : currentCategorySlug ,data : data},
 		success: function(response) {
 			if (response.sucess == true) {
 				jQuery('.over-lay').hide();
