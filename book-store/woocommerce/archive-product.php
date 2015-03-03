@@ -4,67 +4,82 @@
 	  * @author     TânTV
       * @package 	WooCommerce/Templates
       * @version     2.0.0
-*/	
+*/
 $filterPrices = $filterRatings = array();
-$newFlag = $bestSalerFlag = FALSE;
-while( have_posts() ){
-	if($newFlag == FALSE || $bestSalerFlag == FALSE ){
-		$productCategories = get_the_terms( get_the_ID(), 'product_cat' );
-		foreach ($productCategories as $productCategory){
-			if($productCategory->slug == 'new'){
-				$newFlag = TRUE;
-			}elseif ($productCategory->slug == 'best-seller'){
-				$bestSalerFlag = TRUE;
-			}
-		}
-	}
-	global $post;
-	global $product;
-	the_post();
-
-	$price = get_post_meta( get_the_ID(), '_price', true);
-	$sale = get_post_meta( get_the_ID(), '_sale_price', true);
-	$rating = get_post_meta( get_the_ID(), '_rating', true);
-	if($sale == "")
-		$sale = $price;
+$bestSalerFlag = $newFlag = false;
+if (is_product_category()) {
+	global $wp_query;
+	$cat = $wp_query->get_queried_object();
+	$filterCondistions = getFilterCondistion($cat);
 	
-	$starString = '<img src="http://www.olymbook.com/wp-content/themes/book-store/woocommerce/images/star.gif">';
-	if($rating == ""){
-		/*
-		if (!in_array(array("sortkey" => 1,"key" => 'un-sort', "value"=> "chưa có đánh giá"), $filterRatings))
-			$filterRatings[] = array("sortkey" => 1,"key" => 'un-sort', "value"=> "chưa có đánh giá");
-		*/
-	}elseif($rating < 2){
-		if (!in_array(array("sortkey" => 2,"key" => '0-2', "value"=> "0 đến {$starString}{$starString}"), $filterRatings))
-			$filterRatings[] = array("sortkey" => 2,"key" => '0-2', "value"=> "0 đến {$starString}{$starString}");
-	}elseif($rating >= 2 && $rating < 4){
-		if (!in_array(array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}"), $filterRatings))
-			$filterRatings[] = array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}");
-	}elseif($rating >= 4){
-		if (!in_array(array("sortkey" => 4,"key" => '5-6', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}"), $filterRatings))
-			$filterRatings[] = array("sortkey" => 4,"key" => '5-6', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}");
+	if($filterCondistions['new'] > 0)
+		$newFlag = true;
+		
+	if($filterCondistions['bestSeller'] > 0)
+		$bestSalerFlag = true;	
+		
+	if($filterCondistions['maxPrice'] < 50000)
+		$prices[0] = 1;
+	else if($filterCondistions['maxPrice'] < 100000){
+		$prices[0] = 1;
+		$prices[1] = 1;
+	}else if($filterCondistions['maxPrice'] < 200000){
+		$prices[0] = 1;
+		$prices[1] = 1;
+		$prices[2] = 1;
+	}else if($filterCondistions['maxPrice'] < 500000){
+		$prices[0] = 1;
+		$prices[1] = 1;
+		$prices[2] = 1;
+		$prices[3] = 1;
+	}else{
+		$prices[0] = 1;
+		$prices[1] = 1;
+		$prices[2] = 1;
+		$prices[3] = 1;
+		$prices[4] = 1;
 	}
-	
-	if($price < 50000 || $sale < 50000){
-		if (!in_array(array("sortkey" => 1,"key" => '0-50000', "value"=> "Nhỏ hơn 50k"), $filterPrices))
-			$filterPrices[] = array("sortkey" => 1,"key" => '0-50000', "value"=> "Nhỏ hơn 50k");
-	}elseif(($price >= 50000 && $price < 100000) || ($sale >= 50000 && $sale < 100000)){
-		if (!in_array(array("sortkey" => 2,"key" => '50000-100000', "value" => "50k - 100k"), $filterPrices))
-			$filterPrices[] = array("sortkey" => 2,"key" => '50000-100000', "value" => "50k - 100k");
-	}elseif(($price >= 100000 && $price < 200000) || ($sale >= 100000 && $sale < 200000)){
-		if (!in_array(array("sortkey" => 3,"key" => '100000-200000', "value" => "100k - 200k"), $filterPrices))
-			$filterPrices[] = array("sortkey" => 3,"key" => '100000-200000', "value" => "100k - 200k");
-	}elseif(($price >= 200000 && $price < 500000) || ($sale >= 200000 && $sale < 500000)){
-		if (!in_array(array("sortkey" => 4,"key" => '200000-500000', "value" => "200k - 500k"), $filterPrices))
-			$filterPrices[] = array("sortkey" => 4,"key" => '200000-500000', "value" => "200k - 500k");
-	}elseif(($price >= 200000 && $price < 500000) || ($sale >= 200000 && $sale < 500000)){
-		if (!in_array(array("sortkey" => 5,"key" => '500000-0', "value" => "Lơn hơn 500k"), $filterPrices))
-			$filterPrices[] = array("sortkey" => 5,"key" => '500000-0', "value" => "Lơn hơn 500k");
+	if($filterCondistions['minPrice'] > 50000){
+		unset($prices[0]);
+	}else if($filterCondistions['minPrice'] > 100000){
+		unset($prices[0]);
+		unset($prices[1]);
+	}else if($filterCondistions['minPrice'] > 200000){
+		unset($prices[0]);
+		unset($prices[1]);
+		unset($prices[2]);
+	}else if($filterCondistions['minPrice'] > 500000){
+		unset($prices[0]);
+		unset($prices[1]);
+		unset($prices[2]);
+		unset($prices[3]);
 	}	
+	if(isset($prices[0]))
+		$filterPrices[] = array("sortkey" => 1,"key" => '0-50000', "value"=> "Nhỏ hơn 50k");
+	if(isset($prices[1]))
+		$filterPrices[] = array("sortkey" => 2,"key" => '50000-100000', "value" => "50k - 100k");
+	if(isset($prices[2]))
+		$filterPrices[] = array("sortkey" => 3,"key" => '100000-200000', "value" => "100k - 200k");
+	if(isset($prices[3]))
+		$filterPrices[] = array("sortkey" => 4,"key" => '200000-500000', "value" => "200k - 500k");
+	if(isset($prices[4]))
+		$filterPrices[] = array("sortkey" => 5,"key" => '500000-0', "value" => "Lơn hơn 500k");
+		
+	$starString = '<img src="http://www.olymbook.com/wp-content/themes/book-store/woocommerce/images/star.gif">';
+	if($filterCondistions['minRating'] < 2 && $filterCondistions['maxRating'] >= 5){
+		$filterRatings[] = array("sortkey" => 2,"key" => '0-2', "value"=> "0 đến {$starString}{$starString}");
+		$filterRatings[] = array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}");
+		$filterRatings[] = array("sortkey" => 4,"key" => '5-6', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}");
+	}elseif($filterCondistions['minRating'] < 2 && $filterCondistions['maxRating'] >= 4){
+		$filterRatings[] = array("sortkey" => 2,"key" => '0-2', "value"=> "0 đến {$starString}{$starString}");
+		$filterRatings[] = array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}");
+	}elseif ($filterCondistions['minRating'] >= 2 && $filterCondistions['maxRating'] >= 5){
+		$filterRatings[] = array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}");
+		$filterRatings[] = array("sortkey" => 4,"key" => '5-6', "value"=> "{$starString}{$starString}{$starString}{$starString}{$starString}");
+	}
+	usort($filterPrices, "usortBySortKey");
+	usort($filterRatings, "usortBySortKey");
 }
-
-usort($filterPrices, "usortBySortKey");
-usort($filterRatings, "usortBySortKey");
 /*
  * Set search condition if have parameter in URL
  */

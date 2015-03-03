@@ -40,6 +40,16 @@ function addSort(){
 	return false;
 }
 
+function addSortPage(page){
+	arrSearch = new Array();
+	jQuery('.tag-filter-cd li.term-tag').each(function(index){
+		arrSearch.push(jQuery(this).attr('data-search'));
+	});
+	arrSearch.push('pageNumber='+page);
+	ajaxSearch(arrSearch);
+	//return false;
+}
+
 function ajaxSearch(data) {
 	var url = window.location.href; 
 	urlString = data.join('&');
@@ -62,6 +72,7 @@ function ajaxSearch(data) {
 			if (response.sucess == true) {
 				jQuery('.over-lay').hide();
 				jQuery('.grid-holder.features-books').html(response.html);
+				jQuery('.pagination.cp-divider').html(response.htmlPagination);
 				window.history.pushState(null, null, urlString);
 			}
 		}
@@ -99,5 +110,11 @@ jQuery(document).ready( function($) {
 
 	jQuery( ".orderby" ).change(function() {
 		addSort();
+	});
+	
+	jQuery( ".page-numbers" ).click(function() {
+		var page = jQuery(this).html();
+		addSortPage(page);
+		return false;
 	});
 });

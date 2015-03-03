@@ -160,6 +160,7 @@ add_action('init', 'my_script_enqueuer');
  */
 function olymbook_search() {
 	global $wpdb;
+	$page['Begin'] = 0;
 	$slugsNew = $slugsBestSeller = "default-category-none";
 	$priceSql = "AND (";
 	$ratingSql = "AND (key3.meta_key =  '_rating' AND (";
@@ -171,7 +172,8 @@ function olymbook_search() {
 			$slugsBestSeller = "best-seller";
 		}else{
 			$filterKey = explode("=",$filterKey);
-			if($filterKey[0] == 'price1' || $filterKey[0] == 'price2' || $filterKey[0] == 'price3' || $filterKey[0] == 'price4' || $filterKey[0] == 'price5' ){
+			
+			if(in_array($filterKey[0], ['price1','price2','price3','price4','price5',])){
 				$filterValues = explode("-",$filterKey[1]);
 				if($filterValues[1] == 0)
 					if($priceSql == "AND (")
@@ -183,13 +185,15 @@ function olymbook_search() {
 						$priceSql .= "(key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key2.meta_value <> '') OR (key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key1.meta_value <> '')\n";
 					else 
 						$priceSql .= "OR (key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key2.meta_value <> '') OR (key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key1.meta_value <> '')\n";
-			}elseif($filterKey[0] == 'rating1' || $filterKey[0] == 'rating2' || $filterKey[0] == 'rating3' || $filterKey[0] == 'rating4'){
+			}elseif(in_array($filterKey[0], ['rating1','rating2','rating3','rating4'])){
 				$filterValues = explode("-",$filterKey[1]);
 				if($ratingSql == "AND (key3.meta_key =  '_rating' AND (")
 					$ratingSql .= "key3.meta_value BETWEEN {$filterValues[0]} AND $filterValues[1]\n";
 				else
 					$ratingSql .= "OR key3.meta_value BETWEEN {$filterValues[0]} AND $filterValues[1]\n";
 				
+			}else if($filterKey[0] == 'pageNumber'){
+				$page['Begin'] = ($filterKey[1] - 1)*12;
 			}
 		}
 	}
@@ -283,93 +287,82 @@ function olymbook_search() {
 	$i = 0;
 	if (($loop->have_posts())) :
 	while ( $loop->have_posts() ) : $loop->the_post(); global $product;
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
-		
-		$debugString .= "get_sale_price : ".$product->get_sale_price(). " - get_regular_price: ".$product->get_regular_price()." <----->";
-		if($product->is_on_sale()){
-			if ($product->get_regular_price() != NULL) 
-				$poductPrice = money_format($product->get_regular_price());
-			else 
-				$poductPrice = "";
+		if($i >= $page['Begin'] && $i < $page['Begin']+12){
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'single-post-thumbnail' );
+			
+			$debugString .= "get_sale_price : ".$product->get_sale_price(). " - get_regular_price: ".$product->get_regular_price()." <----->";
+			if($product->is_on_sale()){
+				if ($product->get_regular_price() != NULL) 
+					$poductPrice = money_format($product->get_regular_price());
+				else 
+					$poductPrice = "";
+					
+				if ($product->get_sale_price() != NULL) 
+					$poductSalePrice = money_format($product->get_sale_price());
+				else 
+					$poductSalePrice = "";
+			}else{
+				if ($product->get_regular_price() != NULL) 
+					$poductSalePrice = money_format($product->get_regular_price());
+				else 
+					$poductSalePrice = "";
+			}
+			
+			$rating = get_post_meta( $loop->post->ID, "_rating", TRUE );
 				
-			if ($product->get_sale_price() != NULL) 
-				$poductSalePrice = money_format($product->get_sale_price());
-			else 
-				$poductSalePrice = "";
-		}else{
-			if ($product->get_regular_price() != NULL) 
-				$poductSalePrice = money_format($product->get_regular_price());
-			else 
-				$poductSalePrice = "";
+			$html .= "<div class=\"span3 slide columns\">";
+			$html .= "    <span class=\"onsale\">";
+			$html .= "        <span class=\"saletext\">Sale!</span>";
+			$html .= "    </span>";
+			$html .= "    <div class=\"product-thumb\">";
+			$html .= "        <a title=\"{$product->post->post_title}\" href=\"".get_permalink( $loop->post->ID )."\">";
+			$html .= "            <img alt=\"\" src=\"{$image[0]}\" style=\"width:250px; height:250px; \">";
+			$html .= "            </a>";
+			$html .= "        </div>";
+			$html .= "        <div class=\"clearfix\"></div>";
+			$html .= "        <div class=\"title-holder title\">";
+			$html .= "            <a href=\"".get_permalink( $loop->post->ID )."\" style=\"right: 0px;\">{$product->post->post_title}</a>";
+			$html .= "        </div>";
+			$html .= "        <div class=\"product-meta\">";
+			$html .= "            <div class=\"cart-btn2\">";
+			$html .= "                <a class=\"button add_to_cart_button product_type_simple\" data-quantity=\"1\" data-product_sku=\"\" data-product_id=\"{$product->id}\" rel=\"nofollow\" href=\"/product-category/thinking_personal_development/?add-to-cart={$product->id}\">Add to cart</a>";
+			$html .= "                <div title=\"Rated 4.00 out of 5\" class=\"star-rating\">";
+			$html .= "                    <span style=\"width:".( ( $rating / 5 ) * 100 ) ."%\">";
+			$html .= "                        <strong class=\"rating\">4.00</strong> out of 5";
+			$html .= "                    </span>";
+			$html .= "                </div>";
+			$html .= "                <span class=\"price\">";
+			$html .= "                    <label>";
+			$html .= "                        <span class=\"amount\">{$poductPrice}</span>";
+			$html .= "                    </label>";
+			$html .= "                    <ins>";
+			$html .= "                        <span class=\"amount\">{$poductSalePrice}</span>";
+			$html .= "                    </ins>";
+			$html .= "                </span>";
+			$html .= "                <span class=\"price\"></span>";
+			$html .= "            </div>";
+			$html .= "        </div>";
+			$html .= "    </div>";
 		}
-		
-		$rating = get_post_meta( $loop->post->ID, "_rating", TRUE );
-			
-		$html .= "<div class=\"span3 slide columns\">";
-		$html .= "    <span class=\"onsale\">";
-		$html .= "        <span class=\"saletext\">Sale!</span>";
-		$html .= "    </span>";
-		$html .= "    <div class=\"product-thumb\">";
-		$html .= "        <a title=\"{$product->post->post_title}\" href=\"".get_permalink( $loop->post->ID )."\">";
-		$html .= "            <img alt=\"\" src=\"{$image[0]}\" style=\"width:250px; height:250px; \">";
-		$html .= "            </a>";
-		$html .= "        </div>";
-		$html .= "        <div class=\"clearfix\"></div>";
-		$html .= "        <div class=\"title-holder title\">";
-		$html .= "            <a href=\"".get_permalink( $loop->post->ID )."\" style=\"right: 0px;\">{$product->post->post_title}</a>";
-		$html .= "        </div>";
-		$html .= "        <div class=\"product-meta\">";
-		$html .= "            <div class=\"cart-btn2\">";
-		$html .= "                <a class=\"button add_to_cart_button product_type_simple\" data-quantity=\"1\" data-product_sku=\"\" data-product_id=\"{$product->id}\" rel=\"nofollow\" href=\"/product-category/thinking_personal_development/?add-to-cart={$product->id}\">Add to cart</a>";
-		$html .= "                <div title=\"Rated 4.00 out of 5\" class=\"star-rating\">";
-		$html .= "                    <span style=\"width:".( ( $rating / 5 ) * 100 ) ."%\">";
-		$html .= "                        <strong class=\"rating\">4.00</strong> out of 5";
-		$html .= "                    </span>";
-		$html .= "                </div>";
-		$html .= "                <span class=\"price\">";
-		$html .= "                    <label>";
-		$html .= "                        <span class=\"amount\">{$poductPrice}</span>";
-		$html .= "                    </label>";
-		$html .= "                    <ins>";
-		$html .= "                        <span class=\"amount\">{$poductSalePrice}</span>";
-		$html .= "                    </ins>";
-		$html .= "                </span>";
-		$html .= "                <span class=\"price\"></span>";
-		$html .= "            </div>";
-		$html .= "        </div>";
-		$html .= "    </div>";
-			
-		/*
-		$html .= '<div class="span3 slide columns">';
-		if ($product->is_on_sale()) {
-			$html .= '    <span class="onsale"><span class="saletext">Sale!</span></span>';
-		}
-		$html .= '    <div class="product-thumb">';
-		$html .= '        <a title="'.$product->post->post_title . '" href="'.get_permalink( $loop->post->ID ).'"><img alt="" src="'.$image[0].'" style="width:250px; height:250px; ">';
-		$html .= '        </a>';
-		$html .= '    </div>';
-		$html .= '    <div class="clearfix"></div>';
-		$html .= '    <div class="title-holder title">';
-		$html .= '        <a href="'.get_permalink( $loop->post->ID ).'" style="right: 0px;">'.$product->post->post_title . '</a>';
-		$html .= '    </div>';
-		$html .= '    <div class="product-meta">';
-		$html .= '        <div class="cart-btn2"><a class="button add_to_cart_button product_type_simple" data-quantity="1" data-product_sku="" data-product_id="'.$product->id.'" rel="nofollow" href="/product-category/add-to-card/?add-to-cart='.$product->id.'">Add to cart</a>';
-		$html .= '            <span class="price">'.$poductPrice;
-		$html .= '            </span>';
-		$html .= '        </div>';
-		$html .= '    </div>';
-		$html .= '</div>';
-		*/
-	$i++;
+		$i++;
 	endwhile;
 	endif;
-	
+	$numberPage = ceil($i/12);
+	$currenpage = ($page['Begin']/12)+1;
+	$htmlPagination = "";
+	for($flagPage = 1; $flagPage <= $numberPage; $flagPage++){
+		if($flagPage == $currenpage)
+			$htmlPagination .= "<span class=\"page-numbers current\">{$flagPage}</span>";
+		else 
+			$htmlPagination .= "<a href=\"javascript:addSortPage({$flagPage});\" class=\"page-numbers\">{$flagPage}</a>";
+	}
 	$response = array( 
 		'sucess' => true, 
 		'html' => $html,
 		'id' => $postID ,
 		'debugString' => $debugString,
 		'searchCondition' => $searchCondition,
+		'htmlPagination' => $htmlPagination,
 	);
 	echo json_encode($response);
 	die();
@@ -411,4 +404,58 @@ function usortBySortKey($array1, $array2) {
 		return -1;
 	else 
 		return 1;
+}
+
+function getFilterCondistion($slug){
+	global $wpdb;
+	$sql = $wpdb->prepare( 
+	"	SELECT      MIN(CAST(key3.meta_value AS UNSIGNED)) as `minPrice`
+					, MAX(CAST(key3.meta_value AS UNSIGNED)) as `maxPrice`
+					, MAX(CAST(key1.meta_value AS DECIMAL(19,2))) as `maxRating`
+					, MIN(CAST(key1.meta_value AS DECIMAL(19,2))) as `minRating`
+		FROM        $wpdb->postmeta key3
+		INNER JOIN 	$wpdb->term_relationships tr 
+					ON (key3.post_id = tr.object_id)
+		INNER JOIN 	$wpdb->term_taxonomy tt 
+					ON (tr.term_taxonomy_id = tt.term_taxonomy_id AND tt.taxonomy = 'product_cat')
+		INNER JOIN	$wpdb->terms t ON tt.term_id = t.term_id
+		LEFT JOIN  	$wpdb->postmeta key1 
+		            ON key1.post_id = key3.post_id
+		            AND key1.meta_key = '_rating' 
+		LEFT JOIN  	$wpdb->postmeta key2
+		            ON key2.post_id = key3.post_id
+		            AND key2.meta_key = '_sale_price'
+		WHERE       t.slug = %s
+					AND (key3.meta_key =  '_price')
+		"
+		,$slug->slug
+	);
+	$filterCondistions = $wpdb->get_results($sql);
+	$filterCondistion = [];
+	if(isset($filterCondistions[0])){
+		$filterCondistion['minPrice'] = $filterCondistions[0]->minPrice;
+        $filterCondistion['maxPrice'] = $filterCondistions[0]->maxPrice;
+        $filterCondistion['maxRating'] = $filterCondistions[0]->maxRating;
+        $filterCondistion['minRating'] = $filterCondistions[0]->minRating;
+	}
+
+	$sql = $wpdb->prepare( 
+	"	SELECT count(DISTINCT IF(t1.slug = 'new',key3.post_id,NULL)) `new`,count(DISTINCT IF(t1.slug = 'best-seller',key3.post_id,NULL)) `bestSeller` 
+		FROM $wpdb->postmeta key3 
+		INNER JOIN $wpdb->term_relationships tr ON (key3.post_id = tr.object_id) 
+		INNER JOIN $wpdb->term_taxonomy tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id AND tt.taxonomy = 'product_cat') 
+		INNER JOIN $wpdb->terms t ON tt.term_id = t.term_id 
+		INNER JOIN $wpdb->term_relationships tr1 ON (key3.post_id = tr1.object_id) 
+		INNER JOIN $wpdb->term_taxonomy tt1 ON (tr1.term_taxonomy_id = tt1.term_taxonomy_id AND tt1.taxonomy = 'product_cat')
+		INNER JOIN $wpdb->terms t1 ON tt1.term_id = t1.term_id AND t1.slug IN ('new','best-seller')
+		WHERE t.slug = %s
+		"
+		,$slug->slug
+	);
+	$newAndBestSalers = $wpdb->get_results($sql);
+	if(isset($newAndBestSalers[0])){
+		$filterCondistion['new'] = $newAndBestSalers[0]->new;
+		$filterCondistion['bestSeller'] = $newAndBestSalers[0]->bestSeller;
+	}
+	return $filterCondistion;
 }
