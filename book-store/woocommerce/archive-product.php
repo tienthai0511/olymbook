@@ -84,7 +84,6 @@ if (is_product_category()) {
  * Set search condition if have parameter in URL
  */
 $label_search = [
-	'default'=> 'Điều kiện',
 	'price1' => 'Nhỏ hơn 50k',
 	'price2' => '50k - 100k',
 	'price3' => '100k - 500k',
@@ -101,24 +100,26 @@ if ($string_pararm != "")
 	parse_str($string_pararm, $url_output);
 if (($url_output) != '') {
 	foreach ($url_output as $key => $value) {
-		$label_text = ($label_search [$key]) ? $label_search [$key] : $label_search ['default'];
-		if (strpos($key, 'rating') !== false) {
+		if (array_key_exists($key, $label_search)) {
+			$label_text = $label_search [$key];
+			if (strpos($key, 'rating') !== false) {
 			
-			preg_match_all('!\d+!', $key, $matches);
-			$loop_rating = ($matches[0][0] > 0) ? $matches[0][0] : 0;
-			if ($loop_rating > 0 && $loop_rating < 6) {
-				$html_tag .= '<li class="term-tag" id="del_'. $key .'" data-search="' .$key. '='.$value.'" data-value="'.$value.'" onclick="javascript:removeSeach(\'' .$key .'\', \''. $value.'\')"><i class="term-tag-close"></i><span href="javascript:void(0);">';
-				$html_tag .= '<a href="javascript:void(0);">';
-				for ($i = 0 ; $i < $loop_rating ; $i++)
-					$html_tag .= '<img src="'. CP_PATH_URL .'/woocommerce/images/star.gif">';
-				$html_tag .= '</a>';
-				$html_tag .= '</span></li>';
+				preg_match_all('!\d+!', $key, $matches);
+				$loop_rating = ($matches[0][0] > 0) ? $matches[0][0] : 0;
+				if ($loop_rating > 0 && $loop_rating < 6) {
+					$html_tag .= '<li class="term-tag" id="del_'. $key .'" data-search="' .$key. '='.$value.'" data-value="'.$value.'" onclick="javascript:removeSeach(\'' .$key .'\', \''. $value.'\')"><i class="term-tag-close"></i><span href="javascript:void(0);">';
+					$html_tag .= '<a href="javascript:void(0);">';
+					for ($i = 0 ; $i < $loop_rating ; $i++)
+						$html_tag .= '<img src="'. CP_PATH_URL .'/woocommerce/images/star.gif">';
+					$html_tag .= '</a>';
+					$html_tag .= '</span></li>';
+				}
 			}
+			elseif ($key !='orderby') {
+				$html_tag .= '<li class="term-tag" id="del_'. $key .'" data-search="' .$key. '='.$value.'" data-value="'.$value.'" onclick="javascript:removeSeach(\'' .$key .'\', \''. $value.'\')"><i class="term-tag-close"></i><span href="javascript:void(0);">' . $label_text . '</span></li>';
+			}
+			if ($key !='orderby') $aray_key[] = $key;
 		}
-		elseif ($key !='orderby') {
-			$html_tag .= '<li class="term-tag" id="del_'. $key .'" data-search="' .$key. '='.$value.'" data-value="'.$value.'" onclick="javascript:removeSeach(\'' .$key .'\', \''. $value.'\')"><i class="term-tag-close"></i><span href="javascript:void(0);">' . $label_text . '</span></li>';
-		}
-		if ($key !='orderby') $aray_key[] = $key;
 	}
 }
 get_header();
