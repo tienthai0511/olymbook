@@ -120,7 +120,7 @@ function customize_css_site() {
 function customize_css_admin() {
 	wp_enqueue_style('optinforms-admin-stylesheet', plugins_url('/stylesheet/optinforms-admin.css', __FILE__ ));
 }
-if (is_admin){
+if (is_admin()){
 	add_action( 'admin_enqueue_scripts', 'customize_css_admin' );
 }
 add_action( 'wp_enqueue_scripts', 'customize_css_site' );

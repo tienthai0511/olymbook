@@ -2,24 +2,25 @@
 /*
 Author: TânTV 
 */
-if($_POST['ispost_hidden'] == 'Y') {  
+if(isset($_POST['ispost_hidden']) && $_POST['ispost_hidden'] == 'Y') {  
+	$flag = false;
 	//Form data sent  
-	$allow_type = ['image/jpeg', 'image/png', 'image/gif'];
+	$allow_type = array('image/jpeg', 'image/png', 'image/gif');
 	if(isset($_FILES['myFormImageImage']['name']) && $_FILES['myFormImageImage']['name'] != "" && in_array($_FILES['myFormImageImage']['type'], $allow_type)) {
 		// file hợp lệ, tiến hành upload
 		$path = "images/"; // file lưu vào thư mục data
 		if (!file_exists($path)) {
 			mkdir($path, 0777, true);
 		}
-		
 		$tmp_name = $_FILES['myFormImageImage']['tmp_name'];
+		
+		$name = $_FILES['myFormImageImage']['name']; 
 		$imageOptinForm = $path . $name;
-		$name = $_FILES['myFormImageImage']['name'];
 		move_uploaded_file($tmp_name, $imageOptinForm);
 		$imageOptinForm = $path . $name;  
 		update_option('imageOptinForm', $imageOptinForm);  
 	}else{
-		echo "Kiểu file không hợp lệ";
+		$flag = true;
 	}
 	if(isset($_POST['styleOptinForm']) && $_POST['styleOptinForm'] != NULL){
 		$styleOptinForm = $_POST['styleOptinForm'];  
@@ -36,7 +37,9 @@ if($_POST['ispost_hidden'] == 'Y') {
 		update_option('shortDescription', $shortDescription);
 	}
 ?>
-<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>  
+<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div> 
+<?php if ($flag)?>
+<div class="error"><p><strong>Kiểu file không hợp lệ</strong></p></div>  
 <?php
 }
 else {
@@ -49,7 +52,7 @@ else {
 ?>
 <script src="<?php echo get_template_directory_uri();?>/javascript/ckediter/jquery-1.11.2.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/javascript/ckediter/ckeditor.js"></script>
-<script src="<?php echo get_template_directory_uri();?>/javascript/ckediter/adapters/jquery.js"></script>*/
+<script src="<?php echo get_template_directory_uri();?>/javascript/ckediter/adapters/jquery.js"></script>
 <script>
 jQuery( document ).ready( function() {
 	$( 'textarea#description' ).ckeditor();
@@ -116,7 +119,7 @@ jQuery( document ).ready( function() {
 				<td><?php _e("Short description: " ); ?></td>
 				<td colspan="2" >
 				<textarea cols="80" id="shortDescription" name="shortDescription" rows="10">
-					<?php echo $shortDescription; ?>
+					<?php if(isset($shortDescription) && $shortDescription != '') echo $shortDescription; ?>
 				</textarea>
 				</td>
 			</tr>
