@@ -62,28 +62,14 @@
 			   </div>
 			
       </div>
-	
-			<?php// get_sidebar( 'main' ); ?>
-
-			<!--<div class="site-info">
-				<?php //do_action( 'twentythirteen_credits' ); ?>
-				<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentythirteen' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentythirteen' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentythirteen' ), 'WordPress' ); ?></a>
-			</div><!-- .site-info -->
 		<div class="clearfix"></div>
-		</footer><!-- #colophon -->
-           
-  
- 									 <script type="text/javascript">
-                                       <?php get_template_part( 'cufon', 'replace' ); ?>
-								    </script> 
+		</footer><!-- #colophon -->  
+		<script type="text/javascript">
+			<?php get_template_part( 'cufon', 'replace' ); ?>
+		</script> 
   <?php wp_footer(); ?>
-  
             <script type="text/javascript">
 			    <?php get_template_part( '/javascript/bx', 'scripts' ); ?>
             </script>
-            
-            
 </body>
-</html>       
-           
-    
+</html>

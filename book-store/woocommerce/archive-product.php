@@ -7,6 +7,7 @@
 */
 $filterPrices = $filterRatings = array();
 $bestSalerFlag = $newFlag = false;
+$starString = '<img src="'. CP_PATH_URL .'/woocommerce/images/star.gif">';
 if (is_product_category()) {
 	global $wp_query;
 	$cat = $wp_query->get_queried_object();
@@ -64,8 +65,6 @@ if (is_product_category()) {
 		$filterPrices[] = array("sortkey" => 4,"key" => '200000-500000', "value" => "200k - 500k");
 	if(isset($prices[4]))
 		$filterPrices[] = array("sortkey" => 5,"key" => '500000-0', "value" => "Lơn hơn 500k");
-		
-	$starString = '<img src="http://www.olymbook.com/wp-content/themes/book-store/woocommerce/images/star.gif">';
 	if($filterCondistions['minRating'] < 2 && $filterCondistions['maxRating'] >= 5){
 		$filterRatings[] = array("sortkey" => 2,"key" => '0-2', "value"=> "0 đến {$starString}{$starString}");
 		$filterRatings[] = array("sortkey" => 3,"key" => '2-4', "value"=> "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}");
@@ -83,7 +82,7 @@ if (is_product_category()) {
 /*
  * Set search condition if have parameter in URL
  */
-$label_search = [
+$label_search = array(
 	'price1' => 'Nhỏ hơn 50k',
 	'price2' => '50k - 100k',
 	'price3' => '100k - 500k',
@@ -92,10 +91,10 @@ $label_search = [
 	'rating2' => "0 đến {$starString}{$starString}",
 	'rating3' => "{$starString}{$starString} đến {$starString}{$starString}{$starString}{$starString}",
 	'rating4' => "{$starString}{$starString}{$starString}{$starString}{$starString}"
-];
+);
 $string_pararm = $_SERVER['QUERY_STRING'];
 $url_output = $html_tag = '';
-$aray_key = [];
+$aray_key = array();
 if ($string_pararm != "")
 	parse_str($string_pararm, $url_output);
 if (($url_output) != '') {

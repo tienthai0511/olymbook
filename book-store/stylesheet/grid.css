@@ -1386,3 +1386,9 @@ span.onsale {
 	left: 68px;
 	font-size: 12px;
 }
+/*img loading*/
+.over-lay img{
+	position:absolute;
+	left:50%;
+	top:40%;
+}

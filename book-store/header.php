@@ -85,10 +85,9 @@
 <?php wp_head(); ?>
 
 </head>      
-         
+
  <body <?php echo body_class(); ?>>
-	   <div class="over-lay">
-	   </div> 
+	<div class="over-lay"><img src="<?php echo CP_PATH_URL;?>/images/loading_1.gif" alt="loading"/></div> 
 <!-- Start Main Wrapper -->
 <div class="wrapper">
 

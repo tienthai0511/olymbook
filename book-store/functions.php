@@ -161,6 +161,8 @@ add_action('init', 'my_script_enqueuer');
 function olymbook_search() {
 	global $wpdb;
 	$page['Begin'] = 0;
+	$arrayPrice = array('price1','price2','price3','price4','price5');
+	$arrayRating = array('rating1','rating2','rating3','rating4');
 	$slugsNew = $slugsBestSeller = "default-category-none";
 	$priceSql = "AND (";
 	$ratingSql = "AND (key3.meta_key =  '_rating' AND (";
@@ -173,7 +175,7 @@ function olymbook_search() {
 		}else{
 			$filterKey = explode("=",$filterKey);
 			
-			if(in_array($filterKey[0], ['price1','price2','price3','price4','price5',])){
+			if(in_array($filterKey[0], $arrayPrice)){
 				$filterValues = explode("-",$filterKey[1]);
 				if($filterValues[1] == 0)
 					if($priceSql == "AND (")
@@ -185,7 +187,7 @@ function olymbook_search() {
 						$priceSql .= "(key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key2.meta_value <> '') OR (key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key1.meta_value <> '')\n";
 					else 
 						$priceSql .= "OR (key2.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key2.meta_value <> '') OR (key1.meta_value BETWEEN {$filterValues[0]} AND {$filterValues[1]} AND key1.meta_value <> '')\n";
-			}elseif(in_array($filterKey[0], ['rating1','rating2','rating3','rating4'])){
+			}elseif(in_array($filterKey[0], $arrayRating)){
 				$filterValues = explode("-",$filterKey[1]);
 				if($ratingSql == "AND (key3.meta_key =  '_rating' AND (")
 					$ratingSql .= "key3.meta_value BETWEEN {$filterValues[0]} AND $filterValues[1]\n";
@@ -293,17 +295,17 @@ function olymbook_search() {
 			$debugString .= "get_sale_price : ".$product->get_sale_price(). " - get_regular_price: ".$product->get_regular_price()." <----->";
 			if($product->is_on_sale()){
 				if ($product->get_regular_price() != NULL) 
-					$poductPrice = money_format($product->get_regular_price());
+					$poductPrice = money_format_k($product->get_regular_price());
 				else 
 					$poductPrice = "";
 					
 				if ($product->get_sale_price() != NULL) 
-					$poductSalePrice = money_format($product->get_sale_price());
+					$poductSalePrice = money_format_k($product->get_sale_price());
 				else 
 					$poductSalePrice = "";
 			}else{
 				if ($product->get_regular_price() != NULL) 
-					$poductSalePrice = money_format($product->get_regular_price());
+					$poductSalePrice = money_format_k($product->get_regular_price());
 				else 
 					$poductSalePrice = "";
 			}
@@ -382,12 +384,12 @@ add_filter( 'woocommerce_get_price_html', 'price_replace_element', 100, 2 );
 
 /*
  * format money to K/M/B/T
- * echo money_format(110100) => 110.1K
- * echo money_format(1101000) => 1.1M
- * echo money_format(1101000000) => 1.1B
- * echo money_format(1101000000000) => 1.1T
+ * echo money_format_k(110100) => 110.1K
+ * echo money_format_k(1101000) => 1.1M
+ * echo money_format_k(1101000000) => 1.1B
+ * echo money_format_k(1101000000000) => 1.1T
  */
-function money_format($money) {
+function money_format_k($money) {
 	if ($money < 1000) return $money . 'Đ';
 	$f_money = round($money);
 	$x_number_format = number_format($f_money);
@@ -431,7 +433,7 @@ function getFilterCondistion($slug){
 		,$slug->slug
 	);
 	$filterCondistions = $wpdb->get_results($sql);
-	$filterCondistion = [];
+	$filterCondistion = array();
 	if(isset($filterCondistions[0])){
 		$filterCondistion['minPrice'] = $filterCondistions[0]->minPrice;
         $filterCondistion['maxPrice'] = $filterCondistions[0]->maxPrice;
