@@ -52,11 +52,7 @@
 				</h2>
 				<span class="author text-uppercase">
 				<?php 
-					$taxonomies = get_the_term_list($product->id, 'product_author' );
-					if($taxonomies != FALSE)
-						echo $taxonomies;
-					else 
-						echo "-";
+					echo (get_the_term_list($product->id, 'product_author' ) != FALSE) ? (get_the_term_list($product->id, 'product_author' )) : '-';
 				?>
 				</span>
 				<div class="content-store-text">
@@ -76,7 +72,7 @@
 		</div>
 		<div class="clearfix"></div>
 	<div class=" height-75 nav-view-more row-fluid relative">
-		<a href="/product-category/bookcase/" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách</span></a>
+		<a href="/product-category/bookcase/" class="view-more">Xem thêm <span class="text-uppercase">Danh mục giải pháp tủ sách (<?php echo $i;?>)</span></a>
 		<a class="right arrow-icon text-transparent" href="/product-category/bookcase/">#</a>
 	</div>
 </div>

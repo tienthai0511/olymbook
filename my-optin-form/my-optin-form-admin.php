@@ -29,11 +29,13 @@ if(isset($_POST['ispost_hidden']) && $_POST['ispost_hidden'] == 'Y') {
 
 	if(isset($_POST['description']) && $_POST['description'] != NULL){
 		$description = $_POST['description'];
+		$description = str_replace(array('\"'), '', $description);
 		update_option('description', $description);
 	}
 	
 	if(isset($_POST['shortDescription']) && $_POST['shortDescription'] != NULL){
 		$shortDescription = $_POST['shortDescription'];
+		$shortDescription = str_replace(array('\"'), '', $shortDescription);
 		update_option('shortDescription', $shortDescription);
 	}
 ?>

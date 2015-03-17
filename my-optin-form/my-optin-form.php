@@ -41,7 +41,7 @@ function myFormHTML($styleOptinForm){
 				<img class="img-optin-bg" src="' . $source_img . '">
 				<form method="POST" class="infusion-form" action="http://email.olymbook.com/form.php?form=1" accept-charset="UTF-8" id="UserOptinForm" 
 					<div id="optinforms-form1-container">
-                            <div id="optinforms-form1" style="background:#FFFFFF; border-color:#E0E0E0">
+                            <div id="optinforms-form1" style="color:#fff">
                                 <p id="optinforms-form1-title" style="font-family:Damion; font-size:36px; line-height:36px; color:#eb432c; ">' . $shortDescription . '</p>
         
                                 <p id="optinforms-form1-subtitle" style="font-family:Arial; font-size:16px; line-height: 16px; ">' . $description .'</p>
@@ -52,7 +52,7 @@ function myFormHTML($styleOptinForm){
                                     <input type="text" id="optinforms-form1-email-field" placeholder="Nhập email" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666">
                                 </div><!--optinforms-form1-email-field-container-->
                                 <div id="optinforms-form1-button-container">
-                                    <input type="button" id="optinforms-form1-button" value="SIGN UP" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#FFFFFF; background-color:#20A64C">
+                                    <input type="button" id="optinforms-form1-button" value="ĐĂNG KÝ" style="font-family:Arial, Helvetica, sans-serif; font-size:21px; color:#FFFFFF; background-color:#818286!important">
                                 </div><!--optinforms-form1-button-container-->
                                 <div class="clear"></div>
                             </div><!--optinforms-form1-->

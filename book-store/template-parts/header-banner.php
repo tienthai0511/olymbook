@@ -17,8 +17,8 @@
 						<ul>
 							<li class="text-uppercase book-icon-servise">
 								<p>Chuyên đóng sách</p>
-								<p>kinh doanh& </p>
-								<p>Phát triển bản than</p>
+								<p>kinh doanh & </p>
+								<p>Phát triển bản thân</p>
 							</li>
 							<li class="text-uppercase book-icon-dis">
 								<p>Giao hàng miễn phí</p>
@@ -27,7 +27,7 @@
 							</li>
 							<li class="text-uppercase book-icon-tel">
 								<p>Hot line 24/7</p>
-								<p class="hight-light">1900 545 056</p>
+								<p class="hight-light">1900 54 55 56</p>
 								<p>chỉ với <sub>1000</sub>Đ/Phút</p>
 							</li>
 						</ul>

@@ -162,7 +162,9 @@ jQuery(document).ready(function($) {
         <section class="span3 e-commerce-list">
 		<ul class="nav navbar-nav navbar-right inline-block-li">
 			<li class=""><?php get_search_form(); ?><a href="#">&nbsp;&nbsp;</a></li>
-			<li class="login-btn"><a href="<?php get_site_url(); ?>/my-account/">&nbsp;&nbsp;</a></li>
+			<!--<li class="login-btn simplemodal-login"><a href="<?php get_site_url(); ?>/my-account/">&nbsp;&nbsp;</a></li>-->
+			<li class="login-btn" data-toggle="modal" data-target="#alimir_bootmodal"><a href="javascript:void(0)">&nbsp;&nbsp;</a></li>
+			<?php do_shortcode('[Alimir_BootModal_Login]'); ?>
 			<?php if (!(is_cart() || is_checkout())) :?>
 			<li class="relative shopping-cart relative" ><a href="#">&nbsp;&nbsp;</a>
 			<span id="cart_status_label"><?php

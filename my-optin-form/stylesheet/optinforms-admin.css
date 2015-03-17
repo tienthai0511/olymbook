@@ -65,7 +65,7 @@
 ---------------------------------------------------*/
 
 #optinforms-form1-container {width: 98%; margin: 10px 0; max-width: 750px;}
-#optinforms-form1 {display: block; float: left; background:#efefef; padding: 15px 3%; text-align: center; border-radius: 8px; border: 2px solid #e0e0e0;}
+#optinforms-form1 {display: block; float: left; background:#efefef; padding: 15px 3%; width:525px;text-align: center; border-radius: 8px; border: 2px solid #e0e0e0;}
 /* on admin pages */
 #optinforms-form1-title {display: block; text-align: center; color: #eb432c; margin: 0 0 15px; font-family: Damion, sans-serif;}
 #optinforms-form1-subtitle {font-size: 16px; color: #333; margin: 0px 0;}

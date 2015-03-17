@@ -19,15 +19,16 @@
 			global $product;
 			if (has_post_thumbnail( $loop->post->ID )) {
 				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), '357x355' );
+				$imageOrigin = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'full');
 			}
 			else {
 				
 			}
 			?>
 			<div class="span4">
-				<a href="<?php echo get_permalink( $loop->post->ID ); ?>">
+				<a href="<?php echo $imageOrigin[0]; ?>" class="fancybox image">
 				<div class="main-block text-center">
-					<img src="<?php echo $image[0]; ?>"/>
+					<img class="alignnone" src="<?php echo $image[0]; ?>"/>
 				</div>
 				<div class="clearfix"></div>
 				</a>
@@ -39,8 +40,8 @@
 	</div>
 	<div class="clearfix"></div>
 	<div class=" height-75 nav-view-more widh-1075 content-block-bot">
-		<a href="<?php echo get_category_link( 20 ); ?>" class="view-more">Xem thêm <span class="text-uppercase">Những câu danh ngôn hay nhất(10)</span></a>
-		<a class="right arrow-icon text-transparent" href="#">#</a>
+		<a href="<?php echo get_category_link( 20 ); ?>" class="view-more">Xem thêm <span class="text-uppercase">Những câu danh ngôn hay nhất</span></a>
+		<a class="right arrow-icon text-transparent" href="<?php echo get_category_link( 20 ); ?>">#</a>
 	</div>
 	<div class="clearfix"></div>
 	</div><!-- slider-bar-->

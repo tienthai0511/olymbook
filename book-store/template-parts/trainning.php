@@ -42,7 +42,7 @@
 				</div>
 				<div class="clearfix"></div>
 				<div class="view-more-c">
-					<a href="<?php echo get_permalink( $loop->post->ID );?>">Xem thêm </a>
+					<a class="right arrow-icon" style="line-height:1;padding-right:15px;" href="<?php echo get_permalink( $loop->post->ID );?>">Xem thêm</a>
 				</div>
 			</div><!--/*content*/-->
 		</div>
@@ -54,7 +54,7 @@
 		</div>
 		<div class="clearfix"></div>
 	<div class=" height-75 nav-view-more row-fluid relative">
-		<a href="<?php echo get_term_link("course", 'product_cat' )?>" class="view-more">Xem thêm <span class="text-uppercase">Khóa Học</span></a>
+		<a href="<?php echo get_term_link("course", 'product_cat' )?>" class="view-more">Xem thêm <span class="text-uppercase">Khóa Học (<?php echo $i; ?>)</span></a>
 		<a class="right arrow-icon text-transparent" href="<?php echo get_term_link("course", 'product_cat' )?>">#</a>
 	</div>
 </div>

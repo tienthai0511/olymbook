@@ -44,7 +44,7 @@
 	<!-- block item-->
 	<div class="span4 right-block pd-0 row">
 		<ul>
-		<?php if (count($myposts[1])) :
+		<?php if (isset($myposts[1]) && count($myposts[1])) :
 			if (has_post_thumbnail( $myposts[1]->ID )) {
 			if (has_post_thumbnail( $myposts[1]->ID )) {
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $myposts[1]->ID ), '357x178' );
@@ -67,7 +67,7 @@
 				</div>
 			</li>
 		<?php endif; ?>
-		<?php if (count($myposts[2])) :
+		<?php if (isset($myposts[2]) && count($myposts[2])) :
 			if (has_post_thumbnail( $myposts[2]->ID )) {
 			if (has_post_thumbnail( $myposts[2]->ID )) {
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $myposts[2]->ID ), '357x178' );
@@ -98,8 +98,8 @@
 	</div>
 	<div class="clearfix"></div>
 	<div class=" height-75 nav-view-more row-fluid content-block-bot">
-			<a href="<?php echo get_category_link( 1 ); ?>" class="view-more">Xem thêm <span class="text-uppercase">Xem những bài viết nổi bật</span></a>
-			<a class="right arrow-icon text-transparent" href="<?php echo get_category_link( 1 ); ?>">#</a>
+			<a href="<?php echo get_category_link(25); ?>" class="view-more">Xem thêm <span class="text-uppercase">Xem những bài viết nổi bật</span></a>
+			<a class="right arrow-icon text-transparent" href="<?php echo get_category_link( 25 ); ?>">#</a>
 	</div>
 </div>
 <?php endif; 
