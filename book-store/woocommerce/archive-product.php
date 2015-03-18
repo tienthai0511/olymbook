@@ -156,6 +156,7 @@ get_header();
 			<ul class="left-menu-sort">
 				<li><a href="#">Dòng Sách
 				<?php 
+				$cat = null;
 				if (is_product_category()) {
 			        global $wp_query;
 			        $cat = $wp_query->get_queried_object();
@@ -267,7 +268,6 @@ get_header();
 					
 							
 						$num_fetch = get_option(THEME_NAME_S.'_products_page_item');
-						$item_size = get_option(THEME_NAME_S.'_products_page_thumb_size', '250x250');		
 						$paged = (get_query_var('page')) ? get_query_var('page') : 1; 
 					   	echo ' <section class="grid-holder features-books">';
 							
@@ -293,8 +293,16 @@ get_header();
 							the_post();	
 							
 							if($counter_product % 4 == 0 ){
-								//echo '<div class="span3 slide columns block-cols">';
-							 	echo '<div class="span3 slide columns">';
+								if (is_product_category()) {
+									global $wp_query;
+									$cat = $wp_query->get_queried_object();
+									if($cat->slug == "bookcase")
+										echo '<div class="span3 slide columns block-cols">';
+									else
+										echo '<div class="span3 slide columns">';
+								}else{								
+									echo '<div class="span3 slide columns">';
+								}
 								 $thumbnail_types = "Image";
 								 
 												if( $thumbnail_types == "Image" ){
@@ -302,7 +310,7 @@ get_header();
 													$image_type = "Lightbox to Current Thumbnail";
 													$image_type = empty($image_type)? "Link to Current Post": $image_type; 
 													$thumbnail_id = get_post_thumbnail_id();
-													$thumbnail = wp_get_attachment_image_src( $thumbnail_id , $item_size );
+													$thumbnail = wp_get_attachment_image_src( $thumbnail_id , $item_size);
 													$alt_text = get_post_meta($thumbnail_id , '_wp_attachment_image_alt', true);
 													$image_type ="Lightbox to Picture";
 													if($image_type == "Lightbox to Picture" ){
@@ -321,7 +329,7 @@ get_header();
 															 echo '<a href="' . get_permalink() . '" title="' . get_the_title() . '">';
 															 echo '<img style="width:'.$item_size_new_w.'px; height:'.$item_size_new_h.'px; " src="' . $thumbnail[0] .'" alt="'. $alt_text .'"/>';
 															 echo '</a>';
-															}else {
+												}else {
 															 echo '<a href="' . get_permalink() . '" title="' . get_the_title() . '">';
 																	$item_size_arr= explode('x',$item_size); $item_size_new_h=$item_size_arr[1]; $item_size_new_w=$item_size_arr[0];
 																	  echo '<img style="width:'.$item_size_new_w.'px; height:'.$item_size_new_h.'px; " width="'. $item_size_new_w .'px"  height="'. $item_size_new_h .'px" " src="' .CP_PATH_URL.'/images/no-image.jpg" alt="no image"/>';
@@ -342,8 +350,16 @@ get_header();
 					
 							}else{
 								
-								//echo '<div class="span3 slide columns block-cols">';
-								echo '<div class="span3 slide columns">';
+								if (is_product_category()) {
+									global $wp_query;
+									$cat = $wp_query->get_queried_object();
+									if($cat->slug == "bookcase")
+										echo '<div class="span3 slide columns block-cols">';
+									else
+										echo '<div class="span3 slide columns">';
+								}else{								
+									echo '<div class="span3 slide columns">';
+								}
 							      woocommerce_show_product_loop_sale_flash();
 								 $thumbnail_types = "Image";
 												if( $thumbnail_types == "Image" ){
